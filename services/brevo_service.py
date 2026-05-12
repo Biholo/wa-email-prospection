@@ -1,4 +1,5 @@
 import os
+from urllib.parse import quote
 
 import httpx
 
@@ -158,7 +159,7 @@ class BrevoService:
     def update_contact(self, email: str, fields: dict) -> None:
         if not email:
             return
-        url = f"{BREVO_API_BASE}/contacts/{email}"
+        url = f"{BREVO_API_BASE}/contacts/{quote(email, safe='')}"
         with httpx.Client(headers=self.headers, timeout=30) as client:
             resp = client.put(url, json={"attributes": fields})
             resp.raise_for_status()

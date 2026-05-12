@@ -127,6 +127,7 @@ Règles :
 - Conserve sens et structure du template
 - N'invente rien, utilise uniquement les variables fournies
 - Pas d'emoji, pas de "—"
+- Respecte les sauts de ligne du template
 - Sans prénom : adapte la salutation sans laisser de vide
 - Noms de concurrents/entreprises : raccourcis-les dans cet ordre :
   1. Coupe après "|", "–", "-", ":", ","
@@ -288,6 +289,8 @@ class MessageBuilder:
         c2          = concurrent_data.get("concurrent_2", {})
 
         niche    = concurrent_data.get("niche") or str(attrs.get("CATEGORIE") or "")
+        if niche:
+            niche = niche[0].lower() + niche[1:]
         note_val = attrs.get("AVERAGE_RATE") or concurrent_data.get("lead_note")
         avis_val = attrs.get("NUMBER_OF_RATE") or concurrent_data.get("lead_avis")
 
