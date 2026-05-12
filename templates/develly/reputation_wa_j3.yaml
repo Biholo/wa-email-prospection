@@ -9,28 +9,22 @@ punchlines:
     - "La vraie raison pour laquelle certains décrochent plus d'appels,"
   closing:
     - "Vous voulez qu'on en parle 10 minutes ?"
-    - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
-    - "Et si le timing ne s'y prête pas, je le comprends tout à fait — n'hésitez pas à revenir vers moi quand vous le souhaitez."
+    - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+    - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
 message: |
-  {prenom} une dernière chose,
+  {prenom}, une dernière chose,
 
-  On a accompagné un {niche} dans la même situation.
-  Quelques mois plus tard, il était dans le top 3 sur Google Maps
-  et ses demandes avaient suivi.
+  Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+  On a accompagné des {niche} qui étaient dans la même situation,
+  quelques mois plus tard ils recevaient plus d'appels.
 
-  Ce qu'on met en place concrètement : on optimise la fiche Google
-  My Business, on travaille le nombre d'avis, on rédige les réponses
-  aux avis existants et on structure le profil pour qu'il soit crédible
-  dès le premier regard. Tout ce qu'un client regarde avant d'appeler.
-
-  Si ça peut avoir du sens pour {company}, je suis disponible pour en parler
-  10 minutes. Et si ce n'est pas le bon moment, je le comprends tout à fait,
-  n'hésitez pas à revenir vers moi quand vous le souhaitez.
+  Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+  Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez.
 context: |
   Message précédent envoyé à ce prospect :
   {message_j0}
 
   Ce message doit en être la suite logique, pas un nouveau départ.
   J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
-  avec un cas concret, décrit précisément ce que fait Develly sur Google
-  My Business, et laisse une sortie courtoise.
+  avec un cas concret et laisse une sortie courtoise.
+  Ne pas répéter : la comparaison concurrents, la note, ni "fiche Google, avis, présentation".

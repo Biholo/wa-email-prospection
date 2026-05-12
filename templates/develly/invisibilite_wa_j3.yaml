@@ -8,31 +8,25 @@ punchlines:
     - "Ce que vos concurrents ont compris,"
     - "La vraie raison pour laquelle les demandes passent ailleurs,"
   closing:
-    - "Vous voulez qu'on en parle 10 minutes ?"
-    - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
-    - "Et si le timing ne s'y prête pas, je le comprends tout à fait, n'hésitez pas à revenir vers moi quand vous le souhaitez."
+    - "Si c'est quelque chose que vous souhaitez régler, je suis disponible pour en parler quand vous le souhaitez."
+    - "Si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
 message: |
-  {prenom} une dernière chose,
+  {prenom}, une dernière chose,
 
-  Chaque semaine, des gens cherchent un {niche} à {ville}.
-  Ils trouvent {concurrent_1_nom}, ils appellent.
-  Pas parce qu'ils sont meilleurs, parce qu'ils apparaissent et vous non.
+  On a accompagné beaucoup de {niche} qui n'avaient pas de site.
+  En quelques semaines, ils apparaissaient sur Google et recevaient
+  leurs premiers contacts locaux.
 
-  Ce qu'on fait concrètement : on crée des sites pensés pour générer
-  des contacts locaux, et on s'occupe du reste : référencement, maintenance,
-  mises à jour. Beaucoup de {niche} qu'on accompagne avaient exactement
-  le même profil que vous au départ.
+  On s'occupe de tout : création, référencement, maintenance.
 
-  Si ça peut avoir du sens pour {company}, je suis disponible pour en parler
-  10 minutes. Et si ce n'est pas le bon moment, je le comprends tout à fait,
-  n'hésitez pas à revenir vers moi quand vous le souhaitez.
+  Vous voulez qu'on en parle 10 minutes ?
+  Et si ce n'est pas le bon moment, aucun problème, revenez vers moi quand vous le souhaitez.
 context: |
   Message précédent envoyé à ce prospect :
   {message_j0}
 
   Ce message doit en être la suite logique, pas un nouveau départ.
-  J0 a posé le problème. J3 décrit concrètement ce que fait Develly
-  et laisse une sortie courtoise sans pression.
-  Le hook doit introduire le paragraphe de corps, jamais être collé
-  directement à la closing.
+  J0 a posé le problème (pas de site, invisible, perte de clients).
+  J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
   Format obligatoire : hook → corps (1-2 phrases) → closing.

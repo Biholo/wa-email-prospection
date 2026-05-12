@@ -75,6 +75,11 @@ def main() -> None:
         metavar="NUMERO",
         help="Dry-run + envoie wa_1 à ce numéro (ex: 0641552690 ou 33641552690)",
     )
+    parser.add_argument(
+        "--test-mode",
+        action="store_true",
+        help="Lit depuis liste 28, actions réelles vers les autres listes",
+    )
     args = parser.parse_args()
 
     config_path = Path(f"config/{args.config}.yaml")
@@ -92,12 +97,16 @@ def main() -> None:
     if test_phone:
         args.dry_run = True
         args.only = "whatsapp"
+    if args.test_mode:
+        args.only = "whatsapp"
 
-    mode = "[DRY RUN] " if args.dry_run else ""
+    mode = "[TEST MODE] " if args.test_mode else ("[DRY RUN] " if args.dry_run else "")
     target = args.only or "email + whatsapp"
     print(f"{mode}Pipeline {target} — config={args.config}")
     if test_phone:
         print(f"  [TEST] Envoi WA_1 au numéro : {test_phone}")
+    if args.test_mode:
+        print("  [TEST MODE] Source : liste 28 — actions réelles")
 
     svc = _build_services(args.config, config)
 
@@ -125,6 +134,7 @@ def main() -> None:
             wasender=svc["wasender"],
             pagespeed=svc["pagespeed"],
             test_phone=test_phone,
+            test_mode=args.test_mode,
         )
 
     print("Done.")

@@ -16,6 +16,9 @@ from services.wasender_service import WasenderService
 from services.pagespeed_service import PageSpeedService
 
 
+TEST_LIST_ID = 28
+
+
 def run_whatsapp_pipeline(
     config_name: str,
     config: dict,
@@ -28,9 +31,10 @@ def run_whatsapp_pipeline(
     dry_run: bool = False,
     mode: str = "all",  # "all" | "nouveaux" | "relances"
     test_phone: str = "",  # si renseigné : envoie wa_1 à ce numéro, mode dry_run pour tout le reste
+    test_mode: bool = False,  # lit depuis liste 28, actions réelles vers les autres listes
 ) -> None:
     workflow = config.get("workflow", {}).get("whatsapp", {})
-    source_list_id: int = int(workflow["source_list_id"])
+    source_list_id: int = TEST_LIST_ID if test_mode else int(workflow["source_list_id"])
     max_par_jour: int = int(workflow.get("max_per_day", 100))
     delai: int = int(config.get("rules", {}).get("send_delay", 30))
 
@@ -42,7 +46,7 @@ def run_whatsapp_pipeline(
 
     today = date.today()
     today_str = today.isoformat()
-    tag = "[DRY RUN] " if dry_run else ""
+    tag = "[TEST] " if test_mode else ("[DRY RUN] " if dry_run else "")
 
     if not is_sending_day(today):
         print(f"{tag}WA — {today_str} non ouvrable (week-end ou jour férié) — pipeline annulé")
@@ -157,6 +161,7 @@ def run_whatsapp_pipeline(
                 brevo.update_contact(
                     email,
                     {
+                        "CANAL_PRINCIPAL": "WHATSAPP",
                         "TOTAL_MESSAGE_ENVOYE": total_sent + 1,
                         "DATE_DERNIERE_ENVOI": today_str,
                         "PROCHAINE_RELANCE": None,

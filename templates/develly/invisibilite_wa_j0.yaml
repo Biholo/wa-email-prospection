@@ -2,17 +2,17 @@ canal: WHATSAPP
 step: 0
 angle: INVISIBILITÉ
 punchlines:
-  closing:
-    - "C'est voulu ou c'est quelque chose que vous cherchez à régler ?"
-    - "C'est quelque chose que vous avez déjà tenté de remédier ?"
-    - "Vous savez pourquoi vous n'apparaissez pas ?"
+closing:
+- "Si c'est quelque chose que vous souhaitez régler, je suis disponible pour en parler quand vous le souhaitez."
+- "Si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+- "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
 message: |
   Bonjour {prenom},
 
-  J'ai cherché "{niche} {ville}" sur Google tout à l'heure.
-  {concurrent_1_nom} et {concurrent_2_nom} sortent en premier, {company} n'apparaît pas.
+  Petite observation en passant : j'ai tapé "{niche} {ville}" sur Google,
+  {company} n'apparaît pas, probablement parce que vous n'avez pas de site.
 
-  Je crée des sites optimisés pour le référencement local,
-  spécifiquement pour les {niche}.
+  Ça peut coûter des clients sans qu'on s'en rende compte.
 
-  C'est voulu ou c'est quelque chose que vous cherchez à régler ?
+  Je travaille avec des {niche} pour corriger exactement ça.
+  C'est quelque chose que vous avez envie de régler ?

@@ -6,6 +6,7 @@ from pathlib import Path
 import yaml
 
 from core.db import log_entry
+from core.holidays import is_sending_day
 from core.state import increment_errors, increment_processed
 from logic.angle_detector import AngleDetector
 from logic.competitor_resolver import CompetitorResolver
@@ -34,6 +35,11 @@ def run_email_pipeline(
     proprietaire: str = company_cfg.get("owner", "")
 
     tag = "[DRY RUN] " if dry_run else ""
+
+    today_date = date.today()
+    if not is_sending_day(today_date):
+        print(f"{tag}EMAIL — {today_date.isoformat()} non ouvrable (week-end ou jour férié) — pipeline annulé")
+        return
 
     contacts = brevo.get_contacts(
         liste_id=source_list_id,

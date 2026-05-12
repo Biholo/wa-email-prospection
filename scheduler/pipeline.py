@@ -65,7 +65,12 @@ def run_email_only(config_name: str, dry_run: bool = False) -> None:
         update_state(running=False)
 
 
-def run_wa_only(config_name: str, mode: str = "all", dry_run: bool = False) -> None:
+def run_wa_only(
+    config_name: str,
+    mode: str = "all",
+    dry_run: bool = False,
+    test_mode: bool = False,
+) -> None:
     config = _load_config(config_name)
     if config is None or not _acquire(config_name):
         return
@@ -77,6 +82,7 @@ def run_wa_only(config_name: str, mode: str = "all", dry_run: bool = False) -> N
             wasender=WasenderService(),
             pagespeed=PageSpeedService(),
             mode=mode,
+            test_mode=test_mode,
         )
     finally:
         update_state(running=False)

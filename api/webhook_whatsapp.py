@@ -1,16 +1,144 @@
-from fastapi import APIRouter, Request
+import os
+import secrets
+
+from fastapi import APIRouter, Header, HTTPException, Request
 
 from core.db import log_entry
+from services.brevo_service import BrevoService
 
 router = APIRouter(tags=["webhook"])
 
+_WA_LIST_ID = 22
+_WA_READ_TARGET = 24
+
+_STATUS_MAP = {
+    2: None,           # resolved dynamically (j0_sent vs j3_sent)
+    3: "j0_delivered",
+    4: "j0_read",
+}
+
+
+def _phone(jid: str) -> str:
+    return jid.split("@")[0]
+
+
+def _find_contact(brevo: BrevoService, phone: str, *list_ids: int) -> dict | None:
+    for lid in list_ids:
+        hits = brevo.get_contacts(liste_id=lid, attr_equals={"SMS": phone}, limit=1)
+        if hits:
+            return hits[0]
+    return None
+
 
 @router.post("/webhook/whatsapp")
-async def whatsapp_webhook(request: Request):
+async def whatsapp_webhook(
+    request: Request,
+    x_webhook_signature: str | None = Header(default=None),
+):
+    secret = os.getenv("WASENDER_WEBHOOK_SECRET")
+    if secret:
+        if not x_webhook_signature or not secrets.compare_digest(x_webhook_signature, secret):
+            raise HTTPException(status_code=401, detail="Invalid signature")
+
     body = await request.json()
     event = body.get("event", "")
 
-    if event == "messages.received":
+    # ── Delivery / read status updates ──────────────────────────────────────
+    if event == "messages.update":
+        data = body.get("data", {})
+        key = data.get("key", {})
+        if not key.get("fromMe", False):
+            return {"ok": True}
+
+        status_code = data.get("update", {}).get("status")
+        if status_code not in _STATUS_MAP:
+            return {"ok": True}
+
+        phone = _phone(key.get("remoteJid", ""))
+        if not phone:
+            return {"ok": True}
+
+        brevo = BrevoService()
+        contact = _find_contact(brevo, phone, _WA_LIST_ID)
+        if not contact:
+            return {"ok": True}
+
+        email = contact.get("email", "")
+
+        if status_code == 2:
+            total = int(contact.get("attributes", {}).get("TOTAL_MESSAGE_ENVOYE") or 0)
+            wa_status = "j3_sent" if total >= 2 else "j0_sent"
+        else:
+            wa_status = _STATUS_MAP[status_code]
+
+        brevo.update_contact(email, {"WA_STATUS": wa_status})
+        log_entry({"canal": "WHATSAPP_STATUS", "contact_email": email, "status": wa_status,
+                   "erreur_detail": f"status_code={status_code}"})
+        print(f"[WA STATUS] {email}: {wa_status}")
+
+        if status_code == 4:
+            brevo.move_to_list(email, _WA_LIST_ID, _WA_READ_TARGET)
+            print(f"[WA READ] {email}: liste {_WA_LIST_ID} → {_WA_READ_TARGET}")
+
+    # ── Contact replied to our message ──────────────────────────────────────
+    elif event == "messages-personal.received":
+        msg = body.get("data", {}).get("messages", {})
+        key = msg.get("key", {})
+        if key.get("fromMe", False):
+            return {"ok": True}
+
+        sender_jid = key.get("remoteJid", "")
+        phone = _phone(sender_jid)
+        text = msg.get("messageBody", "")
+
+        brevo = BrevoService()
+        contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_READ_TARGET)
+        if contact:
+            email = contact.get("email", "")
+            brevo.update_contact(email, {"WA_STATUS": "replied"})
+            print(f"[WA REPLIED] {email}: replied")
+
+        log_entry({
+            "canal": "WHATSAPP_REPLIED",
+            "contact_email": phone,
+            "status": "replied",
+            "erreur_detail": text[:500],
+        })
+        print(f"[WA INBOUND] {phone}: {text[:120]}")
+
+    # ── Session status changes ───────────────────────────────────────────────
+    elif event == "session.status":
+        status = body.get("data", {}).get("status", "")
+        session_id = body.get("sessionId", "")
+        print(f"[WA SESSION] status={status} session={session_id}")
+
+        if status in ("disconnected", "need_scan"):
+            label = "déconnectée" if status == "disconnected" else "scan QR requis"
+            try:
+                from services.resend_service import ResendService
+                ResendService().send_email(
+                    to="kilian.trouet@gmail.com",
+                    subject=f"⚠️ Develly: WaSender {label}",
+                    html=(
+                        f"<p>Session WaSender <strong>{label}</strong>.</p>"
+                        f"<p>Session ID : <code>{session_id}</code></p>"
+                        "<p>Reconnectez-vous sur "
+                        "<a href='https://www.wasenderapi.com'>wasenderapi.com</a>.</p>"
+                    ),
+                )
+                print(f"[WA SESSION] Email envoyé → kilian.trouet@gmail.com ({status})")
+            except Exception as exc:
+                print(f"[WA SESSION] Erreur envoi email : {exc}")
+
+        log_entry({
+            "canal": "WHATSAPP_SESSION",
+            "contact_email": "",
+            "status": status,
+            "erreur_detail": f"sessionId={session_id}",
+        })
+
+    # ── Generic inbound (non-campaign messages) ──────────────────────────────
+    elif event == "messages.received":
         msg = body.get("data", {}).get("messages", {})
         key = msg.get("key", {})
         from_me = key.get("fromMe", False)

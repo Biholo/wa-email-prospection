@@ -2,9 +2,24 @@ import re
 import unicodedata
 from pathlib import Path
 
+import openai
 import yaml
 
 from services.openai_service import OpenAIService
+
+_OWNER_WA = "33641552699"  # Kilian — alertes critiques
+
+
+def _notify_openai_quota() -> None:
+    try:
+        from services.wasender_service import WasenderService
+        WasenderService().send_whatsapp(
+            _OWNER_WA,
+            "⚠️ Develly: plus de crédits OpenAI — pipeline arrêté. Rechargez sur platform.openai.com.",
+        )
+        print("[OpenAI] Notification quota envoyée → WA perso")
+    except Exception as e:
+        print(f"[OpenAI] Erreur envoi notification quota : {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -355,15 +370,20 @@ class MessageBuilder:
         print(f"  → variables vides     : {empty_vars}")
         print(f"  → system prompt :\n{system_prompt}")
 
-        response = self._openai._client.chat.completions.create(
-            model=self._openai.model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user",   "content": "Génère les messages."},
-            ],
-            temperature=0.7,
-            max_tokens=1200,
-        )
+        try:
+            response = self._openai._client.chat.completions.create(
+                model=self._openai.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user",   "content": "Génère les messages."},
+                ],
+                temperature=0.7,
+                max_tokens=1200,
+            )
+        except openai.RateLimitError as exc:
+            if "insufficient_quota" in str(exc):
+                _notify_openai_quota()
+            raise
         raw   = response.choices[0].message.content.strip()
         usage = response.usage
         print(f"  ← réponse :\n{raw}")

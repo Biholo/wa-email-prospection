@@ -3,18 +3,19 @@ step: 0
 angle: ESTHÉTISME
 punchlines:
   closing:
-    - "C'est quelque chose que vous avez déjà remarqué ?"
-    - "Vous avez déjà eu des retours là-dessus ?"
-    - "C'est quelque chose que vous cherchez à corriger ?"
+    - "C'est quelque chose que vous cherchez à améliorer ?"
+    - "Vous seriez partant pour qu'on en parle rapidement ?"
+    - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
 message: |
   Bonjour {prenom},
 
-  J'ai regardé le site de {company} à côté de {concurrent_1_nom}
-  et {concurrent_2_nom} à {ville}.
+  Petite observation en passant : j'ai regardé le site de {company}
+  à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
 
-  Honnêtement, le leur rassure plus vite au premier coup d'oeil.
+  Un site plus soigné, c'est souvent ce qui fait pencher
+  un client hésitant avant d'appeler.
 
   Je retravaille ça pour des {niche} : des sites qui reflètent
-  vraiment le travail et qui transforment les visites en appels.
+  vraiment le travail et qui permettent de se démarquer.
 
-  C'est quelque chose que vous avez déjà remarqué ?
+  C'est quelque chose que vous cherchez à améliorer ?
