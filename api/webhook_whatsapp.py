@@ -3,7 +3,7 @@ import secrets
 
 from fastapi import APIRouter, Header, HTTPException, Request
 
-from core.db import log_entry
+from core.db import find_contact_by_jid, log_entry
 from services.brevo_service import BrevoService
 
 router = APIRouter(tags=["webhook"])
@@ -74,19 +74,20 @@ async def whatsapp_webhook(
         if not phone:
             return {"ok": True}
 
-        brevo = BrevoService()
-        contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID)
-        if not contact:
+        msg_record = find_contact_by_jid(phone)
+        if not msg_record:
+            print(f"[WA UPDATE] jid={phone!r} introuvable en DB — ignoré")
             return {"ok": True}
 
-        email = contact.get("email", "")
+        email = msg_record["contact_email"]
+        wa_step = msg_record.get("wa_step", "wa_1")
 
         if status_code == 2:
-            total = int(contact.get("attributes", {}).get("TOTAL_MESSAGE_ENVOYE") or 0)
-            wa_status = "j3_sent" if total >= 2 else "j0_sent"
+            wa_status = "j3_sent" if wa_step == "wa_2" else "j0_sent"
         else:
             wa_status = _STATUS_MAP[status_code]
 
+        brevo = BrevoService()
         print(f"[WA STATUS] update_contact {email!r} WA_STATUS={wa_status!r} …")
         brevo.update_contact(email, {"WA_STATUS": wa_status})
         log_entry({"canal": "WHATSAPP_STATUS", "contact_email": email, "status": wa_status,
@@ -94,12 +95,14 @@ async def whatsapp_webhook(
         print(f"[WA STATUS] {email}: {wa_status} OK")
 
         if status_code == 4:
-            contact_lists = contact.get("listIds", [])
-            for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
-                if src in contact_lists:
-                    brevo.move_to_list(email, src, _WA_READ_TARGET)
-                    print(f"[WA READ] {email}: liste {src} → {_WA_READ_TARGET}")
-                    break
+            brevo_contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID)
+            if brevo_contact:
+                contact_lists = brevo_contact.get("listIds", [])
+                for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
+                    if src in contact_lists:
+                        brevo.move_to_list(email, src, _WA_READ_TARGET)
+                        print(f"[WA READ] {email}: liste {src} → {_WA_READ_TARGET}")
+                        break
 
     # ── Contact replied to our message ──────────────────────────────────────
     elif event == "messages-personal.received":

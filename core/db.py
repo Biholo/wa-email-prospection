@@ -1,7 +1,12 @@
+import re
 import sqlite3
 from pathlib import Path
 
 DB_PATH = Path("data/develly.db")
+
+
+def _norm_jid(phone: str) -> str:
+    return re.sub(r"\D", "", phone)
 
 
 def init_db() -> None:
@@ -25,8 +30,44 @@ def init_db() -> None:
             created_at       DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS wa_messages (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            jid           TEXT NOT NULL,
+            contact_email TEXT NOT NULL,
+            wa_step       TEXT,
+            sent_at       DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_wa_messages_jid ON wa_messages(jid)"
+    )
     conn.commit()
     conn.close()
+
+
+def save_wa_message(phone: str, contact_email: str, wa_step: str) -> None:
+    jid = _norm_jid(phone)
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute(
+        "INSERT INTO wa_messages (jid, contact_email, wa_step) VALUES (?, ?, ?)",
+        (jid, contact_email, wa_step),
+    )
+    conn.commit()
+    conn.close()
+
+
+def find_contact_by_jid(phone: str) -> dict | None:
+    jid = _norm_jid(phone)
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.execute(
+        "SELECT * FROM wa_messages WHERE jid = ? ORDER BY sent_at DESC LIMIT 1",
+        (jid,),
+    )
+    row = cursor.fetchone()
+    conn.close()
+    return dict(row) if row else None
 
 
 def log_entry(record: dict) -> None:

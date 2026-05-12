@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from core.db import log_entry
+from core.db import log_entry, save_wa_message
 from core.holidays import is_sending_day
 from core.state import increment_errors, increment_processed
 from logic.angle_detector import AngleDetector
@@ -157,6 +157,7 @@ def run_whatsapp_pipeline(
                     raise ValueError("Champ SMS vide — impossible d'envoyer WhatsApp")
 
                 wasender.send_whatsapp(sms, wa_2)
+                save_wa_message(sms, email, "wa_2")
 
                 brevo.update_contact(
                     email,
@@ -389,6 +390,7 @@ def run_whatsapp_pipeline(
                 raise ValueError("Champ SMS vide — impossible d'envoyer WhatsApp")
 
             wasender.send_whatsapp(sms, wa_1)
+            save_wa_message(sms, email, "wa_1")
 
             prochaine_relance = (today + timedelta(days=3)).isoformat()
 
