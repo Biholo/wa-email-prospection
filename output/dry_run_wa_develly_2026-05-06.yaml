@@ -1,0 +1,135 @@
+- type: nouveau
+  email: ''
+  prenom: ''
+  company: Cordonnerie Du Bonpas
+  niche: Serrurier
+  ville: Avignon
+  proprietaire: Develly
+  angle: INVISIBILITÉ
+  concurrent_1:
+    nom: SPH Med - Ma Porte Pro
+    note: 0.0
+    nb_avis: 0
+  concurrent_2:
+    nom: Weldom Salon De Provence
+    note: 4.2
+    nb_avis: 3498
+  wa_1: 'Bonjour,
+
+
+    En cherchant un Serrurier à Avignon sur Google, SPH Med et Weldom ressortent en
+    premier.
+
+
+    Cordonnerie Du Bonpas n''apparaît pas.
+
+
+    Un client qui cherche appelle ce qu''il trouve. Vous savez pourquoi vous n''êtes
+    pas visible ?'
+  wa_2: "Une chose importante,  \nUn site bien fait ce n'est pas juste une vitrine.\n\
+    \nC'est recevoir des demandes la nuit, le week-end, sans décrocher le téléphone.\n\
+    \nLes gens lisent, font confiance, et appellent déjà convaincus. Vous voulez qu'on\
+    \ regarde ce qu'on peut faire pour Cordonnerie Du Bonpas ?\n\nEt si ce n'est pas\
+    \ le bon moment, pas de problème, revenez vers moi quand vous voulez."
+- type: nouveau
+  email: ''
+  prenom: ''
+  company: Grégory Chauffage
+  niche: Plombier
+  ville: Saint-Quentin
+  proprietaire: Develly
+  angle: INVISIBILITÉ
+  concurrent_1:
+    nom: Power's
+    note: 0.0
+    nb_avis: 0
+  concurrent_2:
+    nom: ENGIE Home Services
+    note: 4.4
+    nb_avis: 363
+  wa_1: "Bonjour,\n\nEn cherchant un Plombier à Saint-Quentin sur Google, \nPower's\
+    \ et ENGIE Home Services ressortent en premier.\n\nGrégory Chauffage n'apparaît\
+    \ pas.\n\nUn client qui cherche appelle ce qu'il trouve. \nVous savez pourquoi\
+    \ vous n'êtes pas visible ?"
+  wa_2: "Une chose importante, \nun site bien fait ce n'est pas juste une vitrine.\n\
+    \nC'est recevoir des demandes la nuit, le week-end, \nsans décrocher le téléphone.\n\
+    \nLes gens lisent, font confiance, et appellent déjà convaincus. \nVous voulez\
+    \ qu'on regarde ce qu'on peut faire pour Grégory Chauffage ?\n\nEt si ce n'est\
+    \ pas le bon moment, \npas de problème, revenez vers moi quand vous voulez."
+- type: nouveau
+  email: ''
+  prenom: ''
+  company: JA94Elec
+  niche: Electricien
+  ville: Le Passage
+  proprietaire: Develly
+  angle: INVISIBILITÉ
+  concurrent_1:
+    nom: SSE-DUSSART
+    note: 5.0
+    nb_avis: 0
+  concurrent_2:
+    nom: Voltwork - Formation Habilitation Électrique Orléans
+    note: 0.0
+    nb_avis: 0
+  wa_1: "Bonjour,\n\nEn cherchant un Electricien à Le Passage sur Google, \nSSE-DUSSART\
+    \ et Voltwork ressortent en premier. \n\nJA94Elec n'apparaît pas. \n\nUn client\
+    \ qui cherche appelle ce qu'il trouve. \nVous savez pourquoi vous n'êtes pas visible\
+    \ ?"
+  wa_2: "Une chose importante, \nUn site bien fait ce n'est pas juste une vitrine.\
+    \ \n\nC'est recevoir des demandes la nuit, le week-end, \nsans décrocher le téléphone.\
+    \ \n\nLes gens lisent, font confiance, et appellent déjà convaincus. \nVous voulez\
+    \ qu'on regarde ce qu'on peut faire pour JA94Elec ? \n\nEt si ce n'est pas le\
+    \ bon moment, \npas de problème, revenez vers moi quand vous voulez."
+- type: nouveau
+  email: ''
+  prenom: ''
+  company: Opendoor
+  niche: Serrurier
+  ville: Narbonne
+  proprietaire: Develly
+  angle: INVISIBILITÉ
+  concurrent_1:
+    nom: ATELIER BAEZA SERRURIER
+    note: 5.0
+    nb_avis: 0
+  concurrent_2:
+    nom: Belmonte Serrurerie
+    note: 4.5
+    nb_avis: 0
+  wa_1: "Bonjour,\n\nEn cherchant un Serrurier à Narbonne sur Google,  \nATELIER BAEZA\
+    \ SERRURIER et Belmonte Serrurerie ressortent en premier.  \n\nOpendoor n'apparaît\
+    \ pas.  \n\nUn client qui cherche appelle ce qu'il trouve.  \nVous savez pourquoi\
+    \ vous n'êtes pas visible ?"
+  wa_2: "Une chose importante,  \nUn site bien fait ce n'est pas juste une vitrine.\
+    \  \n\nC'est recevoir des demandes la nuit, le week-end,  \nsans décrocher le\
+    \ téléphone.  \n\nLes gens lisent, font confiance, et appellent déjà convaincus.\
+    \  \nVous voulez qu'on regarde ce qu'on peut faire pour Opendoor ?  \n\nEt si\
+    \ ce n'est pas le bon moment,  \npas de problème, revenez vers moi quand vous\
+    \ voulez."
+- type: nouveau
+  email: ''
+  prenom: ''
+  company: ARCHIFACTORY architectes
+  niche: Architecte
+  ville: Saint-Germain-sous-Doue
+  proprietaire: Develly
+  angle: ESTHÉTISME
+  concurrent_1:
+    nom: YR Concept
+    note: 0.0
+    nb_avis: 0
+  concurrent_2:
+    nom: Do Architecte
+    note: 0.0
+    nb_avis: 0
+  wa_1: "Bonjour,  \nJ'ai regardé le site de ARCHIFACTORY et YR Concept  \net Do Architecte\
+    \ à Saint-Germain-sous-Doue.  \n\nLe leur inspire confiance au premier coup d'œil.\
+    \  \nLe vôtre ne reflète pas encore ce que vous faites vraiment.  \n\nUn visiteur\
+    \ qui ne fait pas confiance repart sans appeler.  \nC'est quelque chose qui vous\
+    \ préoccupe ?"
+  wa_2: "Une chose importante,  \nQuand un site inspire confiance,  \nle visiteur\
+    \ ne repart plus comparer ailleurs.  \n\nIl lit, il est convaincu, il appelle\
+    \ directement.  \n\nC'est ça la vraie différence avec vos concurrents.  \n\nVous\
+    \ voulez qu'on regarde ce qu'on peut faire pour ARCHIFACTORY ?  \nEt si ce n'est\
+    \ pas le bon moment,  \npas de problème, revenez vers moi quand vous voulez."

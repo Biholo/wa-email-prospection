@@ -1,0 +1,18 @@
+canal: EMAIL
+step: 2
+angle: RÉPUTATION
+objet: "À vous de voir {prenom}"
+message: |
+  Bonjour {prenom},
+
+  Je ne veux pas vous importuner davantage.
+
+  Je voulais juste vous dire que si
+  la question de votre visibilité
+  face à vos concurrents vous revient en tête,
+  je suis disponible pour en parler.
+
+  Pas de pression, pas d'engagement.
+  Juste un échange de 20 minutes
+  pour voir si on peut faire quelque chose
+  pour {company}.

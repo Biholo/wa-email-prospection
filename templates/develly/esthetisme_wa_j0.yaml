@@ -1,0 +1,20 @@
+canal: WHATSAPP
+step: 0
+angle: ESTHÉTISME
+punchlines:
+  closing:
+    - "C'est quelque chose que vous avez déjà remarqué ?"
+    - "Vous avez déjà eu des retours là-dessus ?"
+    - "C'est quelque chose que vous cherchez à corriger ?"
+message: |
+  Bonjour {prenom},
+
+  J'ai regardé le site de {company} à côté de {concurrent_1_nom}
+  et {concurrent_2_nom} à {ville}.
+
+  Honnêtement, le leur rassure plus vite au premier coup d'oeil.
+
+  Je retravaille ça pour des {niche} : des sites qui reflètent
+  vraiment le travail et qui transforment les visites en appels.
+
+  C'est quelque chose que vous avez déjà remarqué ?

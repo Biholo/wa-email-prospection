@@ -1,0 +1,10 @@
+IMPORTANT : aucun concurrent n'a de site dans cette ville.
+Remplace la mention des concurrents par :
+
+"{concurrent_1_nom} et {concurrent_2_nom}
+n'ont pas encore de site web non plus.
+
+C'est une opportunité rare de prendre
+de l'avance sur eux avant qu'ils le fassent
+et de capter tout le trafic de {ville}
+et de ses alentours avant vos concurrents."

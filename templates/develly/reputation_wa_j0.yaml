@@ -1,0 +1,20 @@
+canal: WHATSAPP
+step: 0
+angle: RÉPUTATION
+punchlines:
+  closing:
+    - "Vous savez d'où vient l'écart ?"
+    - "C'est quelque chose que vous cherchez à rattraper ?"
+    - "Vous avez déjà essayé de collecter plus d'avis ?"
+message: |
+  Bonjour {prenom},
+
+  J'ai comparé {company} avec les {niche} de {ville} sur Google Maps.
+
+  {concurrent_1_nom} est à {concurrent_1_note}/5 avec {concurrent_1_nb_avis} avis.
+  Quand un client hésite entre deux, c'est souvent ce qui fait la différence.
+
+  Je travaille avec des {niche} pour combler exactement cet écart :
+  fiche Google, avis, présentation.
+
+  Vous savez d'où vient l'écart ?

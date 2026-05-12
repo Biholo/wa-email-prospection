@@ -1,0 +1,38 @@
+canal: WHATSAPP
+step: 1
+angle: INVISIBILITÉ
+punchlines:
+  hook:
+    - "Ce que peu de {niche} réalisent,"
+    - "Un détail qui change tout,"
+    - "Ce que vos concurrents ont compris,"
+    - "La vraie raison pour laquelle les demandes passent ailleurs,"
+  closing:
+    - "Vous voulez qu'on en parle 10 minutes ?"
+    - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+    - "Et si le timing ne s'y prête pas, je le comprends tout à fait, n'hésitez pas à revenir vers moi quand vous le souhaitez."
+message: |
+  {prenom} une dernière chose,
+
+  Chaque semaine, des gens cherchent un {niche} à {ville}.
+  Ils trouvent {concurrent_1_nom}, ils appellent.
+  Pas parce qu'ils sont meilleurs, parce qu'ils apparaissent et vous non.
+
+  Ce qu'on fait concrètement : on crée des sites pensés pour générer
+  des contacts locaux, et on s'occupe du reste : référencement, maintenance,
+  mises à jour. Beaucoup de {niche} qu'on accompagne avaient exactement
+  le même profil que vous au départ.
+
+  Si ça peut avoir du sens pour {company}, je suis disponible pour en parler
+  10 minutes. Et si ce n'est pas le bon moment, je le comprends tout à fait,
+  n'hésitez pas à revenir vers moi quand vous le souhaitez.
+context: |
+  Message précédent envoyé à ce prospect :
+  {message_j0}
+
+  Ce message doit en être la suite logique, pas un nouveau départ.
+  J0 a posé le problème. J3 décrit concrètement ce que fait Develly
+  et laisse une sortie courtoise sans pression.
+  Le hook doit introduire le paragraphe de corps, jamais être collé
+  directement à la closing.
+  Format obligatoire : hook → corps (1-2 phrases) → closing.

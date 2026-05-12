@@ -1,0 +1,28 @@
+canal: EMAIL
+step: 0
+angle: RÉPUTATION
+objet: "Vos concurrents sont mieux notés, voilà ce que ça change"
+message: |
+  Bonjour {prenom},
+
+  J'ai comparé {company} à vos concurrents
+  les plus proches sur Google.
+
+  Le constat :
+  {concurrent_1_nom} : {concurrent_1_note}/5 étoiles
+  {concurrent_2_nom} : {concurrent_2_note}/5 étoiles
+  Vous : {note}/5 étoiles
+
+  Sur Google, les clients cliquent en priorité
+  sur le mieux noté avant même de lire la suite.
+
+  Vos concurrents captent aujourd'hui
+  plus de demandes qu'avant.
+  Pas parce qu'ils sont meilleurs.
+  Parce qu'ils inspirent plus confiance
+  au premier regard.
+
+  J'accompagne régulièrement des {niche}
+  dans cette situation.
+
+  On en parle ?

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item \"c:\\\\Users\\\\Kilian\\\\Documents\\\\tech\\\\develly\\\\AA-Tools\\\\develly-server\\\\logic\\\\canal_detector.py\" -Force)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\Kilian\\\\Documents\\\\tech\\\\develly\\\\AA-Tools\\\\develly-server\\\\logic\\\\prompt_resolver.py\" -Force)",
+      "Bash(Write-Host \"Deleted\")",
+      "WebFetch(domain:developers.brevo.com)",
+      "WebSearch"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Kilian\\Documents\\tech\\develly\\AA-Tools\\develly-server\\logic"
+    ]
+  }
+}

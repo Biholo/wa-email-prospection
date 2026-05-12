@@ -1,0 +1,63 @@
+company:
+  name:     "Develly"
+  sender:   "Kilian de Develly"
+  email:    "kilian@develly.io"
+  calendly: "https://www.develly.io/prendre-rendez-vous"
+  owner:    "Develly"   # filters contacts by the PROPRIETAIRE Brevo field
+
+scheduler:
+  cron:     "0 9 * * 1-5"   # email pipeline
+  cron_wa1: "0 12 * * 1-5"  # WA nouveaux (wa_1)
+  cron_wa2: "0 17 * * 1-5"  # WA relances (wa_2)
+  timezone: "Europe/Paris"
+
+# Brevo lists used by each pipeline
+workflow:
+  email:
+    source_list_id: 20   # ATTENTE ENVOI EMAIL
+    target_list_id: 21   # AUTOMATISATION EMAIL
+    max_per_day:    200
+  whatsapp:
+    source_list_id: 22   # WORKFLOW WHATSAPP
+    cold_list_id:   25   # À APPELER (fallback when max messages reached)
+    max_per_day:    1
+
+rules:
+  send_delay: 0        # seconds between each contact (shared email + WA)
+  city_spacing_days: 30  # min days before contacting another lead in the same city
+  fixed_only:
+    action:  "move"
+    list_id: 99
+  angle_priority:
+    - "INVISIBILITÉ"
+    - "RÉPUTATION"
+    - "ESTHÉTISME"
+
+# Reference — all Brevo lists in this account
+lists:
+  - id: 20
+    name: "ATTENTE ENVOI EMAIL"
+  - id: 21
+    name: "AUTOMATISATION EMAIL"
+  - id: 22
+    name: "WORKFLOW WHATSAPP"
+  - id: 23
+    name: "SORTI INTÉRESSÉ"
+  - id: 24
+    name: "SORTI NON INTÉRESSÉ"
+  - id: 25
+    name: "À APPELER"
+  - id: 99
+    name: "À appeler manuellement (fixe)"
+
+channels:
+  email:
+    active:   true
+    provider: "brevo"
+  whatsapp:
+    active:   true
+    provider: "maytapi"
+  sms:
+    active:   true
+    provider: "sms_service"
+    max_chars: 160
