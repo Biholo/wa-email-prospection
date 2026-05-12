@@ -55,7 +55,10 @@ async def whatsapp_webhook(
 
     # ── Delivery / read status updates ──────────────────────────────────────
     if event == "messages.update":
-        data = body.get("data", {})
+        raw_data = body.get("data", {})
+        data = raw_data[0] if isinstance(raw_data, list) and raw_data else raw_data
+        print(f"[WA UPDATE] data_type={type(raw_data).__name__} data={data}")
+
         key = data.get("key", {})
         from_me = key.get("fromMe", False)
         status_code = data.get("update", {}).get("status")
