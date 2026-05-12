@@ -61,8 +61,8 @@ async def whatsapp_webhook(
 
         key = data.get("key", {})
         from_me = key.get("fromMe", False)
-        status_code = data.get("update", {}).get("status")
-        raw_jid = key.get("remoteJid", "")
+        status_code = data.get("status")
+        raw_jid = key.get("remoteJid", "") or data.get("remoteJid", "")
         print(f"[WA UPDATE] fromMe={from_me} status_code={status_code} jid={raw_jid!r}")
 
         if not from_me:
