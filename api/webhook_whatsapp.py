@@ -24,10 +24,19 @@ def _phone(jid: str) -> str:
 
 
 def _find_contact(brevo: BrevoService, phone: str, *list_ids: int) -> dict | None:
+    phones_to_try = [phone]
+    if not phone.startswith("+"):
+        phones_to_try.append("+" + phone)
+    print(f"[WA FIND] phone={phone!r} → essai formats: {phones_to_try} dans listes={list_ids}")
     for lid in list_ids:
-        hits = brevo.get_contacts(liste_id=lid, attr_equals={"SMS": phone}, limit=1)
-        if hits:
-            return hits[0]
+        for p in phones_to_try:
+            hits = brevo.get_contacts(liste_id=lid, attr_equals={"SMS": p}, limit=1)
+            print(f"[WA FIND]   liste #{lid} SMS={p!r} → {len(hits)} résultat(s)")
+            if hits:
+                contact = hits[0]
+                print(f"[WA FIND]   trouvé: email={contact.get('email')} listIds={contact.get('listIds', [])}")
+                return contact
+    print(f"[WA FIND] introuvable dans toutes les listes")
     return None
 
 
@@ -96,14 +105,27 @@ async def whatsapp_webhook(
         contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
         if contact:
             email = contact.get("email", "")
-            brevo.update_contact(email, {"WA_STATUS": "replied"})
-            print(f"[WA REPLIED] {email}: replied")
+            print(f"[WA REPLIED] update_contact {email!r} WA_STATUS=replied …")
+            try:
+                brevo.update_contact(email, {"WA_STATUS": "replied"})
+                print(f"[WA REPLIED] update_contact OK")
+            except Exception as exc:
+                print(f"[WA REPLIED] update_contact ERREUR: {exc}")
             contact_lists = contact.get("listIds", [])
+            print(f"[WA REPLIED] listIds du contact: {contact_lists}")
             for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
                 if src in contact_lists:
-                    brevo.move_to_list(email, src, _WA_READ_TARGET)
-                    print(f"[WA REPLIED] {email}: liste {src} → {_WA_READ_TARGET}")
+                    print(f"[WA REPLIED] move_to_list {email!r} {src} → {_WA_READ_TARGET} …")
+                    try:
+                        brevo.move_to_list(email, src, _WA_READ_TARGET)
+                        print(f"[WA REPLIED] move_to_list OK")
+                    except Exception as exc:
+                        print(f"[WA REPLIED] move_to_list ERREUR: {exc}")
                     break
+            else:
+                print(f"[WA REPLIED] {email}: déjà dans liste {_WA_READ_TARGET} ou liste inconnue — pas de move")
+        else:
+            print(f"[WA REPLIED] aucun contact trouvé pour phone={phone!r}")
 
         log_entry({
             "canal": "WHATSAPP_REPLIED",
@@ -158,14 +180,27 @@ async def whatsapp_webhook(
             contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
             if contact:
                 email = contact.get("email", "")
-                brevo.update_contact(email, {"WA_STATUS": "replied"})
-                print(f"[WA REPLIED] {email}: replied")
+                print(f"[WA REPLIED] update_contact {email!r} WA_STATUS=replied …")
+                try:
+                    brevo.update_contact(email, {"WA_STATUS": "replied"})
+                    print(f"[WA REPLIED] update_contact OK")
+                except Exception as exc:
+                    print(f"[WA REPLIED] update_contact ERREUR: {exc}")
                 contact_lists = contact.get("listIds", [])
+                print(f"[WA REPLIED] listIds du contact: {contact_lists}")
                 for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
                     if src in contact_lists:
-                        brevo.move_to_list(email, src, _WA_READ_TARGET)
-                        print(f"[WA REPLIED] {email}: liste {src} → {_WA_READ_TARGET}")
+                        print(f"[WA REPLIED] move_to_list {email!r} {src} → {_WA_READ_TARGET} …")
+                        try:
+                            brevo.move_to_list(email, src, _WA_READ_TARGET)
+                            print(f"[WA REPLIED] move_to_list OK")
+                        except Exception as exc:
+                            print(f"[WA REPLIED] move_to_list ERREUR: {exc}")
                         break
+                else:
+                    print(f"[WA REPLIED] {email}: déjà dans liste {_WA_READ_TARGET} ou liste inconnue — pas de move")
+            else:
+                print(f"[WA REPLIED] aucun contact trouvé pour phone={phone!r}")
 
             log_entry({
                 "canal": "WHATSAPP_INBOUND",

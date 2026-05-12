@@ -79,7 +79,7 @@ def run_whatsapp_pipeline(
                 brevo_filter=f'equals(PROPRIETAIRE,"{proprietaire}")' if proprietaire else None,
                 attr_not_equals={"CATEGORIE": "Expert-comptable"},
                 attr_lte={"TOTAL_MESSAGE_ENVOYE": 0},
-                attr_is_null={"PROCHAINE_RELANCE": True},
+                attr_is_null={"PROCHAINE_RELANCE": True, "WA_STATUS": True},
                 debug=True,
             )
 
