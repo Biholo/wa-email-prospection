@@ -9,6 +9,7 @@ from services.brevo_service import BrevoService
 router = APIRouter(tags=["webhook"])
 
 _WA_LIST_ID = 22
+_WA_TEST_LIST_ID = 28
 _WA_READ_TARGET = 24
 
 _STATUS_MAP = {
@@ -92,11 +93,17 @@ async def whatsapp_webhook(
         text = msg.get("messageBody", "")
 
         brevo = BrevoService()
-        contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_READ_TARGET)
+        contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
         if contact:
             email = contact.get("email", "")
             brevo.update_contact(email, {"WA_STATUS": "replied"})
             print(f"[WA REPLIED] {email}: replied")
+            contact_lists = contact.get("listIds", [])
+            for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
+                if src in contact_lists:
+                    brevo.move_to_list(email, src, _WA_READ_TARGET)
+                    print(f"[WA REPLIED] {email}: liste {src} → {_WA_READ_TARGET}")
+                    break
 
         log_entry({
             "canal": "WHATSAPP_REPLIED",
@@ -146,6 +153,20 @@ async def whatsapp_webhook(
         text = msg.get("messageBody", "")
 
         if not from_me:
+            phone = _phone(key.get("remoteJid", ""))
+            brevo = BrevoService()
+            contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
+            if contact:
+                email = contact.get("email", "")
+                brevo.update_contact(email, {"WA_STATUS": "replied"})
+                print(f"[WA REPLIED] {email}: replied")
+                contact_lists = contact.get("listIds", [])
+                for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
+                    if src in contact_lists:
+                        brevo.move_to_list(email, src, _WA_READ_TARGET)
+                        print(f"[WA REPLIED] {email}: liste {src} → {_WA_READ_TARGET}")
+                        break
+
             log_entry({
                 "canal": "WHATSAPP_INBOUND",
                 "contact_email": sender,
