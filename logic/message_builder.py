@@ -160,6 +160,7 @@ WhatsApp :
 - Format obligatoire : hook → corps (1-2 phrases) → closing
 - Un hook ne peut pas précéder directement une closing
 - Choisis l'alternative qui s'intègre le mieux au contexte
+- Un message doit jamais commencer par un espace ou ","
 """.strip()
 
 _SYSTEM_EMAIL = """
