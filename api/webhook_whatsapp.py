@@ -57,19 +57,25 @@ async def whatsapp_webhook(
     if event == "messages.update":
         data = body.get("data", {})
         key = data.get("key", {})
-        if not key.get("fromMe", False):
-            return {"ok": True}
-
+        from_me = key.get("fromMe", False)
         status_code = data.get("update", {}).get("status")
-        if status_code not in _STATUS_MAP:
+        raw_jid = key.get("remoteJid", "")
+        print(f"[WA UPDATE] fromMe={from_me} status_code={status_code} jid={raw_jid!r}")
+
+        if not from_me:
+            print(f"[WA UPDATE] fromMe=False — ignoré")
             return {"ok": True}
 
-        phone = _phone(key.get("remoteJid", ""))
+        if status_code not in _STATUS_MAP:
+            print(f"[WA UPDATE] status_code={status_code} hors _STATUS_MAP — ignoré")
+            return {"ok": True}
+
+        phone = _phone(raw_jid)
         if not phone:
             return {"ok": True}
 
         brevo = BrevoService()
-        contact = _find_contact(brevo, phone, _WA_LIST_ID)
+        contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID)
         if not contact:
             return {"ok": True}
 
@@ -81,14 +87,19 @@ async def whatsapp_webhook(
         else:
             wa_status = _STATUS_MAP[status_code]
 
+        print(f"[WA STATUS] update_contact {email!r} WA_STATUS={wa_status!r} …")
         brevo.update_contact(email, {"WA_STATUS": wa_status})
         log_entry({"canal": "WHATSAPP_STATUS", "contact_email": email, "status": wa_status,
                    "erreur_detail": f"status_code={status_code}"})
-        print(f"[WA STATUS] {email}: {wa_status}")
+        print(f"[WA STATUS] {email}: {wa_status} OK")
 
         if status_code == 4:
-            brevo.move_to_list(email, _WA_LIST_ID, _WA_READ_TARGET)
-            print(f"[WA READ] {email}: liste {_WA_LIST_ID} → {_WA_READ_TARGET}")
+            contact_lists = contact.get("listIds", [])
+            for src in (_WA_LIST_ID, _WA_TEST_LIST_ID):
+                if src in contact_lists:
+                    brevo.move_to_list(email, src, _WA_READ_TARGET)
+                    print(f"[WA READ] {email}: liste {src} → {_WA_READ_TARGET}")
+                    break
 
     # ── Contact replied to our message ──────────────────────────────────────
     elif event == "messages-personal.received":
@@ -175,7 +186,7 @@ async def whatsapp_webhook(
         text = msg.get("messageBody", "")
 
         if not from_me:
-            phone = _phone(key.get("remoteJid", ""))
+            phone = key.get("cleanedSenderPn", "") or _phone(key.get("remoteJid", ""))
             brevo = BrevoService()
             contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
             if contact:
