@@ -12,6 +12,9 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 from scheduler.pipeline import run_wa_only
+from scheduler.pipeline_apporteur import run_apporteur_pipeline
+from scheduler.recap import run_daily_recap
+from services.brevo_service import BrevoService
 
 
 def init_scheduler() -> BackgroundScheduler:
@@ -43,9 +46,22 @@ def init_scheduler() -> BackgroundScheduler:
             replace_existing=True,
         )
 
-    # --- Ajouter d'autres jobs ici ---
-    # from scheduler.reporting import run_daily_report
-    # scheduler.add_job(run_daily_report, CronTrigger.from_crontab("0 8 * * *"), id="daily_report")
+    # ── Apporteur d'affaire — 9h00 lun-ven ──────────────────────────────
+    scheduler.add_job(
+        run_apporteur_pipeline,
+        CronTrigger.from_crontab("0 9 * * 1-5", timezone="Europe/Paris"),
+        kwargs={"brevo": BrevoService()},
+        id="apporteur",
+        replace_existing=True,
+    )
+
+    # ── Récap quotidien scraping — 13h00 tous les jours ──────────────────
+    scheduler.add_job(
+        run_daily_recap,
+        CronTrigger.from_crontab("0 13 * * *", timezone="Europe/Paris"),
+        id="recap_wa",
+        replace_existing=True,
+    )
 
     scheduler.start()
     return scheduler

@@ -1,0 +1,301 @@
+canal: WHATSAPP
+step: 1
+angle: INVISIBILITÉ
+niches:
+  - label: Électricien
+    key: electricien
+    punchlines:
+      hook:
+        - "Ce que peu d'électriciens réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les appels passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (pas de site, invisible, perte de clients).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup d'électriciens qui n'avaient pas de site.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers appels locaux.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Serrurier
+    key: serrurier
+    punchlines:
+      hook:
+        - "Ce que peu de serruriers réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les appels passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (pas de site, invisible, perte de clients).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup de serruriers qui n'avaient pas de site.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers appels locaux , urgences et projets planifiés.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Garage automobile
+    key: garage_auto
+    punchlines:
+      hook:
+        - "Ce que peu de garages indépendants réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les clients passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (pas de site, invisible, perte de clients).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup de garages indépendants qui n'avaient pas de site.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers contacts locaux.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    punchlines:
+      hook:
+        - "Ce que peu de cliniques dentaires réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les demandes passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (pas de site, invisible, perte de patients).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup de cliniques dentaires dans cette situation.
+      En quelques semaines, elles apparaissaient sur Google et recevaient
+      leurs premiers contacts directs , sans dépendre de Doctolib.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    punchlines:
+      hook:
+        - "Ce que peu d'architectes d'intérieur réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les demandes passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (invisible, perte de projets).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup d'architectes d'intérieur dans cette situation.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers contacts entrants , des prospects qui avaient
+      déjà vu le portfolio.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte
+    key: architecte
+    punchlines:
+      hook:
+        - "Ce que peu d'architectes réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les demandes passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (invisible, perte de projets).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup d'architectes dans cette situation.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers contacts entrants qualifiés.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Hôtel
+    key: hotel
+    punchlines:
+      hook:
+        - "Ce que peu d'hôteliers réalisent,"
+        - "Un détail qui change tout sur la marge,"
+        - "Ce que les hôtels les plus rentables ont compris,"
+        - "La vraie raison pour laquelle certains réduisent leur dépendance aux OTA,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (invisible, perte de marge via OTA).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné des hôtels dans la même situation.
+      En quelques mois, ils apparaissaient sur Google et commençaient
+      à recevoir des réservations directes , sans commission OTA.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Restaurant
+    key: restaurant
+    punchlines:
+      hook:
+        - "Ce que peu de restaurateurs réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que les restaurants les mieux remplis ont compris,"
+        - "La vraie raison pour laquelle les réservations passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (invisible, réservations captées par les plateformes).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook → corps (1-2 phrases) → closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup de restaurants dans cette situation.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premières réservations directes , sans commission plateforme.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Plombier
+    key: plombier
+    punchlines:
+      hook:
+        - "Ce que peu de plombiers réalisent,"
+        - "Un détail qui change tout,"
+        - "Ce que vos concurrents ont compris,"
+        - "La vraie raison pour laquelle les appels passent ailleurs,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose que vous souhaitez régler, je suis disponible."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème (pas de site, invisible, perte de clients).
+      J3 ne répète pas le problème, il apporte la preuve sociale et la solution.
+      Format obligatoire : hook -> corps (1-2 phrases) -> closing.
+    message: |
+      {prenom}, une dernière chose,
+
+      On a accompagné beaucoup de plombiers qui n'avaient pas de site.
+      En quelques semaines, ils apparaissaient sur Google et recevaient
+      leurs premiers appels locaux.
+
+      On s'occupe de tout : création, référencement, maintenance.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.

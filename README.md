@@ -152,7 +152,7 @@ Le script `cli.py` permet de lancer les pipelines à la demande, sans attendre l
 ### Commandes disponibles
 
 ```bash
-# Les deux pipelines en parallèle (comportement identique au cron)
+# Les deux pipelines (email + whatsapp) — comportement identique au cron
 python cli.py develly
 
 # Email uniquement
@@ -160,6 +160,9 @@ python cli.py develly --only email
 
 # WhatsApp uniquement
 python cli.py develly --only whatsapp
+
+# Pipeline apporteur uniquement (Expert-comptable → liste #30)
+python cli.py develly --only apporteur
 ```
 
 ### Mode dry run
@@ -168,7 +171,7 @@ Génère les angles, les messages GPT et les logs SQLite, **sans envoyer de mess
 Les logs apparaissent avec `status = DRY_RUN` et le message généré dans la colonne `erreur_detail`.
 
 ```bash
-# Dry run complet
+# Dry run complet (email + whatsapp)
 python cli.py develly --dry-run
 
 # Dry run email uniquement
@@ -176,7 +179,39 @@ python cli.py develly --only email --dry-run
 
 # Dry run WhatsApp uniquement
 python cli.py develly --only whatsapp --dry-run
+
+# Dry run apporteur
+python cli.py develly --only apporteur --dry-run
 ```
+
+> En dry run, les contacts restent en `STATUS=NOUVEAU` dans Brevo et ne sont pas déplacés entre les listes.
+
+### Mode test WhatsApp — envoi réel sur un numéro cible
+
+Envoie `WA_1` à un numéro de test **réel**, mais force dry-run pour tout le reste (aucune modification Brevo/Supabase).
+
+```bash
+# Numéro format français (06/07)
+python cli.py develly --test-phone 0641552699
+
+# Numéro format international
+python cli.py develly --test-phone 33641552699
+```
+
+- Force automatiquement `--only whatsapp` et `--dry-run`
+- Envoie un seul message (premier contact éligible) puis s'arrête
+- Utile pour valider les messages GPT générés sans toucher aux vraies données
+
+### Mode test liste 28
+
+Lit les contacts depuis **liste 28** (liste de test Brevo) au lieu de la source réelle, mais exécute les actions réelles (move to list, update contact, envoi WA).
+
+```bash
+python cli.py develly --test-mode
+```
+
+- Force automatiquement `--only whatsapp`
+- Peuple liste 28 manuellement dans Brevo avec des contacts de test
 
 ### Consulter les résultats d'un dry run
 
@@ -187,8 +222,6 @@ curl "http://localhost:8000/logs?status=DRY_RUN&limit=20"
 # Directement en SQLite
 sqlite3 data/develly.db "SELECT contact_email, angle, canal, erreur_detail FROM logs WHERE status='DRY_RUN' ORDER BY created_at DESC LIMIT 20;"
 ```
-
-> En dry run, les contacts restent en `STATUS=NOUVEAU` dans Brevo et ne sont pas déplacés entre les listes. Tu peux relancer autant de fois que nécessaire pour affiner les prompts.
 
 ---
 

@@ -16186,3 +16186,319 @@
 2026-05-06 02:15:09,085 INFO     [SKIP] Lead 94779 — +33428040512 | FINANCE OR - Courtier en rachat de crédits à Saint-Etienne (FIXE_SANS_EMAIL)
 2026-05-06 02:15:18,559 INFO     [SKIP] Lead 94791 — +33477221399 | Agence Immobilière Saint-Chamond (Citya Nova) (FIXE_SANS_EMAIL)
 2026-05-06 02:15:20,087 INFO     [SKIP] Lead 94794 — +33477730296 | Crédit Agricole Loire Haute-Loire (FIXE_SANS_EMAIL)
+2026-06-01 01:46:00,516 INFO     ━━━ Préchargement Brevo ━━━
+2026-06-01 01:46:01,072 INFO       1000 contacts Brevo chargés...
+2026-06-01 01:46:01,073 INFO     ✅ Préchargement OK — 13230 emails / 23488 téléphones en mémoire
+2026-06-01 01:46:01,076 INFO     ━━━ Supabase — page offset=0 ━━━
+2026-06-01 01:46:01,849 ERROR    Erreur Supabase offset=0: 400 Client Error: Bad Request for url: https://mtvalzmtksnylhckrjze.supabase.co/rest/v1/leads?select=id%2Ccompany%2Cniche%2Ccity_id%2Caddress%2Cphone%2Cemail%2Ccontact_name%2Cwebsite_url%2Cfacebook_url%2Cinstagram_url%2Caverage_rate%2Cnumber_of_rate%2Cis_archived%2Cstatus%2Cdo_not_call_before%2Canti_bot&order=id.asc&limit=1000&offset=0
+2026-06-01 01:51:51,351 INFO     ━━━ Préchargement Brevo ━━━
+2026-06-01 01:51:51,988 INFO       1000 contacts Brevo chargés...
+2026-06-01 01:51:51,989 INFO     ✅ Préchargement OK — 13230 emails / 23488 téléphones en mémoire
+2026-06-01 01:51:51,990 INFO     ━━━ Supabase — page offset=0 ━━━
+2026-06-01 01:52:18,835 INFO     ━━━ Préchargement Brevo ━━━
+2026-06-01 01:52:19,922 INFO       1000 contacts Brevo chargés...
+2026-06-01 01:52:19,922 INFO     ✅ Préchargement OK — 13230 emails / 23488 téléphones en mémoire
+2026-06-01 01:52:19,924 INFO     ━━━ Supabase — page offset=0 ━━━
+2026-06-01 01:52:21,904 INFO     [SKIP] Lead 12 — +33972165834 | CGP CONTACT (lead défiscalisation) (FIXE_SANS_EMAIL)
+2026-06-01 01:52:22,590 INFO     [SKIP] Lead 17 — +33160428742 | GP Conseil (FIXE_SANS_EMAIL)
+2026-06-01 01:52:23,323 INFO     [SKIP] Lead 22 — +33252700439 | Optimial | Chartres (FIXE_SANS_EMAIL)
+2026-06-01 01:52:24,266 INFO     [SKIP] Lead 24 — +33183643809 | Mon CGP - Plateforme SCPI (FIXE_SANS_EMAIL)
+2026-06-01 01:52:27,015 INFO     [SKIP] Lead 30 — +33186616227 | CGPI (FIXE_SANS_EMAIL)
+2026-06-01 01:52:28,647 INFO     [SKIP] Lead 34 — +33298787003 | Lopin Celine (FIXE_SANS_EMAIL)
+2026-06-01 01:52:30,065 INFO     [SKIP] Lead 39 — +33173790804 | Optimial (FIXE_SANS_EMAIL)
+2026-06-01 01:52:30,090 INFO     [SKIP] Lead 44 — +33188833519 | NUANCE CONSEIL (FIXE_SANS_EMAIL)
+2026-06-01 01:52:32,106 INFO     [SKIP] Lead 50 — +33185537340 | JBD-Gestion - Conseiller en gestion de Patrimoine (FIXE_SANS_EMAIL)
+2026-06-01 01:52:33,338 INFO     [SKIP] Lead 61 — +33237229707 | Mairie (FIXE_SANS_EMAIL)
+2026-06-01 01:52:33,346 INFO     [SKIP] Lead 63 — +33232357079 | Cerfrance Le Neubourg – Conseil et expertise comptable (FIXE_SANS_EMAIL)
+2026-06-01 01:52:33,350 INFO     [SKIP] Lead 64 — +33232351334 | AXA Assurance et Banque Henry-Burel (FIXE_SANS_EMAIL)
+2026-06-01 01:52:36,813 INFO     [SKIP] Lead 72 — +33237316066 | Mairie (FIXE_SANS_EMAIL)
+2026-06-01 01:52:36,818 INFO     [SKIP] Lead 73 — +33237224386 | Mathieu DEGROUX (FIXE_SANS_EMAIL)
+2026-06-01 01:52:42,115 INFO     [SKIP] Lead 82 — +33298985621 | Douérin Bernard (FIXE_SANS_EMAIL)
+2026-06-01 01:52:42,120 INFO     [SKIP] Lead 83 — +33298917317 | Médiathèque de Plogonnec (FIXE_SANS_EMAIL)
+2026-06-01 01:52:43,881 INFO     [SKIP] Lead 85 — +33298918520 | Ambulances Taxis du Nevet (FIXE_SANS_EMAIL)
+2026-06-01 01:52:45,343 INFO     [SKIP] Lead 88 — +33232550903 | Mairie (FIXE_SANS_EMAIL)
+2026-06-01 01:52:46,991 INFO     [SKIP] Lead 95 — +33320593240 | Ets Desmarescaux Et Fils (FIXE_SANS_EMAIL)
+2026-06-01 01:52:46,997 INFO     [SKIP] Lead 96 — +33320590207 | Sarl Prise Direct (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,740 INFO     [SKIP] Lead 104 — +33951548624 | Dziri Hamza (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,774 INFO     [SKIP] Lead 109 — +33474613514 | Serge Juenet (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,798 INFO     [SKIP] Lead 113 — +33954060146 | Elecrhone (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,804 INFO     [SKIP] Lead 114 — +33437864302 | Electricité chauffage (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,833 INFO     [SKIP] Lead 119 — +33474610727 | Juenet Louis (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,839 INFO     [SKIP] Lead 120 — +33474347516 | Charrier Guillaume Elie Camille (FIXE_SANS_EMAIL)
+2026-06-01 01:52:47,845 INFO     [SKIP] Lead 121 — +33565606229 | Sarl Michael Menu (FIXE_SANS_EMAIL)
+2026-06-01 01:52:52,599 INFO     [SKIP] Lead 128 — +33565607314 | 2AE SARL (FIXE_SANS_EMAIL)
+2026-06-01 01:52:52,606 INFO     [SKIP] Lead 129 — +33565607799 | Traver Frédéric (FIXE_SANS_EMAIL)
+2026-06-01 01:56:05,844 INFO     ━━━ Préchargement Brevo ━━━
+2026-06-01 01:56:06,450 INFO       1000 contacts Brevo chargés...
+2026-06-01 01:56:06,450 INFO     ✅ Préchargement OK — 13249 emails / 23523 téléphones en mémoire
+2026-06-01 01:56:06,453 INFO     ━━━ Supabase — page offset=0 ━━━
+2026-06-01 01:56:08,910 INFO     [SKIP] Lead 131 — +33565611630 | Martin Jose (FIXE_SANS_EMAIL)
+2026-06-01 01:56:14,965 INFO     [SKIP] Lead 139 — +33468787098 | Piton Jean-Paul (FIXE_SANS_EMAIL)
+2026-06-01 01:56:14,975 INFO     [SKIP] Lead 141 — +33468786528 | Roux Daniel (FIXE_SANS_EMAIL)
+2026-06-01 01:56:28,625 INFO     [SKIP] Lead 162 — +33467455712 | C PRO ELEC | Electricien Montpellier - Installation & Dépannage (FIXE_SANS_EMAIL)
+2026-06-01 01:56:58,023 INFO     [SKIP] Lead 197 — +33467586449 | Armand Patrick ETS (FIXE_SANS_EMAIL)
+2026-06-01 01:56:59,709 INFO     [SKIP] Lead 200 — +33973033892 | Electricien Urgence Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 01:56:59,713 INFO     [SKIP] Lead 201 — +33483439996 | Assistance Dépannage | Experts Plombiers Montpellier & Electriciens à Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 01:56:59,725 INFO     [SKIP] Lead 203 — +33467600288 | DBS ELEC (FIXE_SANS_EMAIL)
+2026-06-01 01:57:03,031 INFO     [SKIP] Lead 208 — +33973034522 | Intervention Rapide Électricité Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 01:57:11,740 INFO     [SKIP] Lead 220 — +33467602623 | EI Groupe Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 01:57:14,367 INFO     [SKIP] Lead 223 — +33456603255 | Electricien (FIXE_SANS_EMAIL)
+2026-06-01 01:57:20,260 INFO     [SKIP] Lead 231 — +33467922614 | Nurit Richard (FIXE_SANS_EMAIL)
+2026-06-01 01:57:24,880 INFO     [SKIP] Lead 242 — +33389259281 | Ellia (FIXE_SANS_EMAIL)
+2026-06-01 01:57:24,885 INFO     [SKIP] Lead 243 — +33389406190 | Electricite Ozer (FIXE_SANS_EMAIL)
+2026-06-01 01:57:24,891 INFO     [SKIP] Lead 244 — +33369633611 | SP ELEC (FIXE_SANS_EMAIL)
+2026-06-01 01:57:24,896 INFO     [SKIP] Lead 245 — +33369108001 | Eclairage Des 3 Frontieres (FIXE_SANS_EMAIL)
+2026-06-01 01:57:27,080 INFO     [SKIP] Lead 251 — +33466712362 | Breysse Serge (FIXE_SANS_EMAIL)
+2026-06-01 01:57:27,085 INFO     [SKIP] Lead 252 — +33466535476 | A.m.e. (FIXE_SANS_EMAIL)
+2026-06-01 01:57:27,090 INFO     [SKIP] Lead 253 — +33466809641 | A.m.c.c.p (FIXE_SANS_EMAIL)
+2026-06-01 01:57:30,125 INFO     [SKIP] Lead 257 — +33466880938 | Habitech (FIXE_SANS_EMAIL)
+2026-06-01 01:57:30,801 INFO     [SKIP] Lead 259 — +33467836745 | GUIDO ENERGIES (FIXE_SANS_EMAIL)
+2026-06-01 01:57:30,807 INFO     [SKIP] Lead 260 — +33466350192 | C.l.o.m (FIXE_SANS_EMAIL)
+2026-06-01 01:57:32,783 INFO     [SKIP] Lead 263 — +33458042035 | R Elec (FIXE_SANS_EMAIL)
+2026-06-01 01:57:32,789 INFO     [SKIP] Lead 264 — +33466514822 | Castillo Bernard EIRL (FIXE_SANS_EMAIL)
+2026-06-01 01:57:35,419 INFO     [SKIP] Lead 268 — +33466539919 | Weldom Aigues Mortes (FIXE_SANS_EMAIL)
+2026-06-01 01:57:41,534 INFO     [SKIP] Lead 277 — +33466537854 | Siol Kramb (FIXE_SANS_EMAIL)
+2026-06-01 01:57:47,472 INFO     [SKIP] Lead 284 — +33466532800 | Facca et Cie (FIXE_SANS_EMAIL)
+2026-06-01 01:58:03,148 INFO     [SKIP] Lead 305 — +33466887627 | Becqu'elec (FIXE_SANS_EMAIL)
+2026-06-01 01:58:03,153 INFO     [SKIP] Lead 306 — +33466778112 | Electricite Rodriguez (FIXE_SANS_EMAIL)
+2026-06-01 01:58:07,318 INFO     [SKIP] Lead 319 — +33246566666 | Agence immobilière l'Adresse Chartres (FIXE_SANS_EMAIL)
+2026-06-01 01:58:08,942 INFO     [SKIP] Lead 324 — +33298210404 | HABASQUE Immobilier Lesneven (FIXE_SANS_EMAIL)
+2026-06-01 01:58:08,946 INFO     [SKIP] Lead 325 — +33470310970 | Victoria Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 01:58:10,625 INFO     [SKIP] Lead 328 — +33470314524 | Résidence du Parc (FIXE_SANS_EMAIL)
+2026-06-01 01:58:12,576 INFO     [SKIP] Lead 332 — +33234400999 | IMMO DE FRANCE | Agence Immobilière | CHARTRES (FIXE_SANS_EMAIL)
+2026-06-01 01:58:14,612 INFO     [SKIP] Lead 335 — +33237200400 | Orpi Latouche Immobilier Chartres (FIXE_SANS_EMAIL)
+2026-06-01 01:58:21,324 INFO     ━━━ Batch 1 — 150 importés / 24 doublons / 0 erreurs ━━━
+2026-06-01 01:58:24,088 INFO     [SKIP] Lead 352 — +33470321332 | Agence immobilière Rembert - Agence du Parc (FIXE_SANS_EMAIL)
+2026-06-01 01:58:24,803 INFO     [SKIP] Lead 355 — +33237998571 | Chartres Immo (FIXE_SANS_EMAIL)
+2026-06-01 01:58:26,878 INFO     [SKIP] Lead 360 — +33237884088 | ANOU Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 01:58:28,906 INFO     [SKIP] Lead 362 — +33470594734 | TRANS'ACT - Agence immobilière Vichy Bellerive/Allier (FIXE_SANS_EMAIL)
+2026-06-01 01:58:30,228 INFO     [SKIP] Lead 365 — +33237213203 | Square Habitat CHARTRES (FIXE_SANS_EMAIL)
+2026-06-01 01:58:33,963 INFO     [SKIP] Lead 372 — +33558857272 | Orpi Legros Landes Plus Immobilier Mont-de-Marsan (FIXE_SANS_EMAIL)
+2026-06-01 01:58:38,929 INFO     [SKIP] Lead 380 — +33223271414 | Agence Blot Immobilier Thorigné-Fouillard (FIXE_SANS_EMAIL)
+2026-06-01 01:58:38,939 INFO     [SKIP] Lead 382 — +33237200055 | A La Petite Commission (FIXE_SANS_EMAIL)
+2026-06-01 01:58:38,962 INFO     [SKIP] Lead 386 — +33558752006 | Orpi Lubet Mont de Marsan Immo (FIXE_SANS_EMAIL)
+2026-06-01 01:58:40,144 INFO     [SKIP] Lead 388 — +33558755694 | IMMOBILIER LE HYARIC (FIXE_SANS_EMAIL)
+2026-06-01 01:58:40,752 INFO     [SKIP] Lead 391 — +33558069191 | Orpi Agence immo Bachere Mont-de-Marsan (FIXE_SANS_EMAIL)
+2026-06-01 01:58:42,134 INFO     [SKIP] Lead 395 — +33970700101 | Solidarimmo Chartres (FIXE_SANS_EMAIL)
+2026-06-01 01:58:43,833 INFO     [SKIP] Lead 398 — +33558752719 | Orpi Immobilier Saint Roch Mont-de-Marsan (FIXE_SANS_EMAIL)
+2026-06-01 01:58:46,929 INFO     [SKIP] Lead 403 — +33558852323 | ACI Agence immobilière, Agence Contact Immobilier ACI (FIXE_SANS_EMAIL)
+2026-06-01 01:58:46,934 INFO     [SKIP] Lead 404 — +33299830383 | Kermarrec Habitation (FIXE_SANS_EMAIL)
+2026-06-01 01:58:48,950 INFO     [SKIP] Lead 408 — +33558583000 | COURTÈS GROUPE Dax (FIXE_SANS_EMAIL)
+2026-06-01 01:58:48,966 INFO     [SKIP] Lead 411 — +33237302828 | Les Clés de l'Immobilier & Prestige (FIXE_SANS_EMAIL)
+2026-06-01 01:58:48,970 INFO     [SKIP] Lead 412 — +33299832211 | Agence Blot Immobilier Cesson-Sévigné (FIXE_SANS_EMAIL)
+2026-06-01 01:58:57,035 INFO     [SKIP] Lead 425 — +33547871048 | L'Adresse Villeneuve-de-Marsan (FIXE_SANS_EMAIL)
+2026-06-01 01:58:58,777 INFO     [SKIP] Lead 427 — +33299410808 | Kermarrec Habitation (FIXE_SANS_EMAIL)
+2026-06-01 01:59:00,527 INFO     [SKIP] Lead 430 — +33299832534 | Cesson Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 01:59:05,019 INFO     [SKIP] Lead 438 — +33972561204 | Agence Immobiliere De La Mairie (FIXE_SANS_EMAIL)
+2026-06-01 01:59:06,401 INFO     [SKIP] Lead 441 — +33214006890 | Agence O2 Illkirch - Services à domicile (FIXE_SANS_EMAIL)
+2026-06-01 01:59:22,179 INFO     [SKIP] Lead 830 — +33247295814 | Agence des Tourelles (FIXE_SANS_EMAIL)
+2026-06-01 01:59:22,186 INFO     [SKIP] Lead 848 — +33476610610 | Agence immobilière l'Adresse Grenoble (FIXE_SANS_EMAIL)
+2026-06-01 01:59:22,818 INFO     [SKIP] Lead 887 — +33243653121 | Agence TDM53 Immobilier – THE DOOR MAN Laval (FIXE_SANS_EMAIL)
+2026-06-01 01:59:24,367 INFO     [SKIP] Lead 938 — +33477573971 | Gauthier (FIXE_SANS_EMAIL)
+2026-06-01 01:59:24,373 INFO     [SKIP] Lead 954 — +33323963117 | Villers Services (FIXE_SANS_EMAIL)
+2026-06-01 01:59:29,017 INFO     [SKIP] Lead 999 — +33534500000 | Agence immobilière Era Occitanie Tournefeuille (FIXE_SANS_EMAIL)
+2026-06-01 01:59:29,676 INFO     ━━━ Supabase — page offset=1000 ━━━
+2026-06-01 01:59:30,740 INFO     [SKIP] Lead 1042 — +33466366161 | Agence Grand Nîmes (FIXE_SANS_EMAIL)
+2026-06-01 01:59:33,472 INFO     [SKIP] Lead 1084 — +33466841480 | Stéphane Plaza Immobilier Nîmes (FIXE_SANS_EMAIL)
+2026-06-01 01:59:35,618 INFO     [SKIP] Lead 1115 — +33466363232 | Agence immobilière Lamy (FIXE_SANS_EMAIL)
+2026-06-01 01:59:37,960 INFO     [SKIP] Lead 1171 — +33272540289 | Fraudin Immobilier - Agence immobilière à Laval 53 - Location et vente (FIXE_SANS_EMAIL)
+2026-06-01 01:59:39,667 INFO     [SKIP] Lead 1194 — +33438702581 | Cimm Immobilier Seyssinet (FIXE_SANS_EMAIL)
+2026-06-01 01:59:41,492 INFO     [SKIP] Lead 1224 — +33247359575 | Ethica Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 01:59:45,760 INFO     [SKIP] Lead 1250 — +33298481438 | Galvaing Immobilier Ploudalmézeau (FIXE_SANS_EMAIL)
+2026-06-01 01:59:48,579 INFO     [SKIP] Lead 1279 — +33467796908 | Les Demeures de l'Arche (FIXE_SANS_EMAIL)
+2026-06-01 01:59:50,386 INFO     [SKIP] Lead 1299 — +33241741112 | Carré de Lumière (FIXE_SANS_EMAIL)
+2026-06-01 01:59:50,399 INFO     [SKIP] Lead 1316 — +33499633290 | Formation ALUR Agent immobilier 100% en ligne (FIXE_SANS_EMAIL)
+2026-06-01 01:59:54,016 INFO     [SKIP] Lead 1353 — +33467602112 | Bochu Immobilier | Vente, estimation | Agence de Castelnau-le-lez (FIXE_SANS_EMAIL)
+2026-06-01 02:00:11,679 INFO     [SKIP] Lead 1452 — +33411281907 | Agence immobilière Orpi CPIMMO Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 02:00:15,847 INFO     [SKIP] Lead 1482 — +33467549817 | Premium Immobilier Montpellier (FIXE_SANS_EMAIL)
+2026-06-01 02:00:17,910 INFO     [SKIP] Lead 1498 — +33476670793 | CV Finance Immobilier Voiron (Transaction, investissement, défiscalisation) (FIXE_SANS_EMAIL)
+2026-06-01 02:00:37,299 INFO     [SKIP] Lead 1677 — +33476758001 | Bureaux à louer à Saint Egrève (FIXE_SANS_EMAIL)
+2026-06-01 02:00:38,078 INFO     ━━━ Batch 2 — 300 importés / 77 doublons / 0 erreurs ━━━
+2026-06-01 02:00:47,795 INFO     [SKIP] Lead 1793 — +33238736415 | ICF Novedis (FIXE_SANS_EMAIL)
+2026-06-01 02:00:47,808 INFO     [SKIP] Lead 1810 — +33238861315 | Copr les Corolles II (FIXE_SANS_EMAIL)
+2026-06-01 02:00:48,429 INFO     [SKIP] Lead 1828 — +33238540049 | Advicim (FIXE_SANS_EMAIL)
+2026-06-01 02:00:51,201 INFO     [SKIP] Lead 1851 — +33238422860 | Orpi Imhotep Saran (FIXE_SANS_EMAIL)
+2026-06-01 02:00:51,984 INFO     [SKIP] Lead 1853 — +33238241515 | Orpi Valrim Orléans Immo (FIXE_SANS_EMAIL)
+2026-06-01 02:01:00,126 INFO     [SKIP] Lead 1866 — +33238727143 | ARC IMMOBILIER Orléans-La Chapelle (FIXE_SANS_EMAIL)
+2026-06-01 02:01:02,256 INFO     [SKIP] Lead 1873 — +33467515151 | A Mèze Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:02,261 INFO     [SKIP] Lead 1874 — +33238683100 | RE/MAX Royale Transactions (FIXE_SANS_EMAIL)
+2026-06-01 02:01:02,273 INFO     [SKIP] Lead 1876 — +33422135258 | AZ Expertises Immobilières (FIXE_SANS_EMAIL)
+2026-06-01 02:01:02,280 INFO     [SKIP] Lead 1877 — +33467788536 | Agence immobilière l'Adresse Mèze (FIXE_SANS_EMAIL)
+2026-06-01 02:01:04,883 INFO     [SKIP] Lead 1884 — +33467436838 | Orpi - CAPA Immobilier Port de Mèze (FIXE_SANS_EMAIL)
+2026-06-01 02:01:04,893 INFO     [SKIP] Lead 1886 — +33467184560 | Orpi - CAPA Immobilier Rond Point de la Marianne (FIXE_SANS_EMAIL)
+2026-06-01 02:01:06,764 INFO     [SKIP] Lead 1894 — +33236861186 | Les Agents de l'Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:06,773 INFO     [SKIP] Lead 1897 — +33238245454 | Durand-Montouché (FIXE_SANS_EMAIL)
+2026-06-01 02:01:08,301 INFO     [SKIP] Lead 1903 — +33553483988 | Agence immobilière LE PASSAGE 47520 (FIXE_SANS_EMAIL)
+2026-06-01 02:01:10,865 INFO     [SKIP] Lead 1911 — +33238519002 | Orpi IMHOTEP Orléans (FIXE_SANS_EMAIL)
+2026-06-01 02:01:18,432 INFO     [SKIP] Lead 1924 — +33458479091 | Agence Immobilière Grenoble - Prestige Transaction (FIXE_SANS_EMAIL)
+2026-06-01 02:01:20,133 INFO     [SKIP] Lead 1930 — +33297818112 | Ruseff & Latruffe Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:24,863 ERROR    [ERREUR] Lead 1940 — Mon Chasseur Immo - Audrey Lejeune | canal=EMAIL | téléphone=0617934467 | email=Groupe%202209@2x.png → Invalid email address
+2026-06-01 02:01:31,723 INFO     [SKIP] Lead 1951 — +33238523838 | Madeleine Immobilier Orléans (FIXE_SANS_EMAIL)
+2026-06-01 02:01:36,612 INFO     [SKIP] Lead 1959 — +33238884086 | Cimm Immobilier Orléans (FIXE_SANS_EMAIL)
+2026-06-01 02:01:37,525 INFO     [SKIP] Lead 1962 — +33476122861 | AXA Assurance et Banque Sarl Axence (FIXE_SANS_EMAIL)
+2026-06-01 02:01:43,987 INFO     [SKIP] Lead 1973 — +33480809580 | LagHome Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:43,996 INFO     [SKIP] Lead 1975 — +33238790990 | Orpi Imhotep Immobilier La Chapelle St Mesmin (FIXE_SANS_EMAIL)
+2026-06-01 02:01:45,805 INFO     [SKIP] Lead 1986 — +33297643432 | Immobilière Plus (FIXE_SANS_EMAIL)
+2026-06-01 02:01:45,815 INFO     [SKIP] Lead 2000 — +33298397559 | Henrio Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:51,520 INFO     ━━━ Supabase — page offset=2000 ━━━
+2026-06-01 02:01:56,323 INFO     [SKIP] Lead 2014 — +33297875151 | Agence immobilière Orpi Lorient Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:01:59,737 INFO     [SKIP] Lead 2019 — +33298780080 | EXCELL Immobilier-Sandrine LAIMÉ - DREVENSEK (FIXE_SANS_EMAIL)
+2026-06-01 02:02:10,891 INFO     [SKIP] Lead 2046 — +33247235757 | Agence immobilière l'Adresse Bléré (FIXE_SANS_EMAIL)
+2026-06-01 02:02:15,911 INFO     [SKIP] Lead 2059 — +33238050387 | Immobilière du Port au Bois (FIXE_SANS_EMAIL)
+2026-06-01 02:02:15,919 INFO     [SKIP] Lead 2061 — +33467480540 | Cabinet Du Port (FIXE_SANS_EMAIL)
+2026-06-01 02:02:19,912 INFO     [SKIP] Lead 2066 — +33238672629 | Agence Immobilière Giennoise (FIXE_SANS_EMAIL)
+2026-06-01 02:02:19,923 INFO     [SKIP] Lead 2069 — +33477020714 | Agence immobilière | Bosque Transaction (FIXE_SANS_EMAIL)
+2026-06-01 02:02:19,942 INFO     [SKIP] Lead 2139 — +33180522522 | Centre d'affaires Grenoble Eybens (FIXE_SANS_EMAIL)
+2026-06-01 02:02:20,644 INFO     [SKIP] Lead 2174 — +33255590597 | Orpi Alauna Valognes (FIXE_SANS_EMAIL)
+2026-06-01 02:02:20,660 INFO     [SKIP] Lead 2197 — +33233921624 | AP'IMMO DES MARAIS (ACHAT, VENTE, ESTIMATIONS, MAISONS, APPARTEMENTS, TERRAINS) (FIXE_SANS_EMAIL)
+2026-06-01 02:02:20,672 INFO     [SKIP] Lead 2203 — +33233401579 | agence gestim valognes (FIXE_SANS_EMAIL)
+2026-06-01 02:02:26,467 INFO     [SKIP] Lead 2280 — +33467872283 | Vendargues Immo SAS (FIXE_SANS_EMAIL)
+2026-06-01 02:02:26,471 INFO     [SKIP] Lead 2284 — +33233431799 | CCI IMMOBILIER Quettehou (FIXE_SANS_EMAIL)
+2026-06-01 02:02:29,586 INFO     [SKIP] Lead 2353 — +33299512890 | Les Landelles SCI (FIXE_SANS_EMAIL)
+2026-06-01 02:02:31,463 ERROR    [ERREUR] Lead 2359 — HQ | canal=CALL | téléphone=0805543831 | email= → Please provide at least one contact identifier value(email, ext_id, EXT_ID, SMS, WHATSAPP, LANDLINE_NUMBER) to create user
+2026-06-01 02:02:31,470 INFO     [SKIP] Lead 2360 — +33493990190 | Agence Immobilière Côte d'Azur Orpi (FIXE_SANS_EMAIL)
+2026-06-01 02:02:32,514 INFO     [SKIP] Lead 2363 — +33223306290 | Foncière AALTO (FIXE_SANS_EMAIL)
+2026-06-01 02:02:33,766 INFO     [SKIP] Lead 2367 — +33467045473 | Orfevre Immobilier sur mesure (FIXE_SANS_EMAIL)
+2026-06-01 02:02:37,208 INFO     [SKIP] Lead 2378 — +33299350135 | Coop de Construction (FIXE_SANS_EMAIL)
+2026-06-01 02:02:37,863 INFO     [SKIP] Lead 2390 — +33299770077 | EfficacImmo35 (FIXE_SANS_EMAIL)
+2026-06-01 02:02:41,545 INFO     [SKIP] Lead 2422 — +33383501020 | Chauvelot Immobilier (FIXE_SANS_EMAIL)
+2026-06-01 02:02:41,550 INFO     [SKIP] Lead 2427 — +33383430132 | SEP Rothhan Losa Jacoby Pieton Vautrin (FIXE_SANS_EMAIL)
+2026-06-01 02:06:02,903 INFO     ━━━ Préchargement Brevo ━━━
+2026-06-01 02:06:03,373 INFO       1000 contacts Brevo chargés...
+2026-06-01 02:06:03,373 INFO     ✅ Préchargement OK — 13520 emails / 23954 téléphones en mémoire
+2026-06-01 02:06:03,375 INFO     ━━━ Supabase — page offset=0 ━━━
+2026-06-01 02:06:04,254 INFO     ━━━ Supabase — page offset=1000 ━━━
+2026-06-01 02:06:05,636 ERROR    [ERREUR] Lead 1940 — Mon Chasseur Immo - Audrey Lejeune | canal=EMAIL | téléphone=0617934467 | email=Groupe%202209@2x.png → Invalid email address
+2026-06-01 02:06:23,010 INFO     ━━━ Supabase — page offset=2000 ━━━
+2026-06-01 02:08:09,449 INFO     ━━━ Batch 1 — 150 importés / 77 doublons / 1 erreurs ━━━
+2026-06-01 02:10:15,886 INFO     ━━━ Batch 2 — 300 importés / 178 doublons / 1 erreurs ━━━
+2026-06-01 02:12:21,467 INFO     ━━━ Batch 3 — 450 importés / 250 doublons / 1 erreurs ━━━
+2026-06-01 02:13:07,833 INFO     ━━━ Supabase — page offset=3000 ━━━
+2026-06-01 02:14:23,291 INFO     ━━━ Batch 4 — 600 importés / 327 doublons / 1 erreurs ━━━
+2026-06-01 02:16:24,288 INFO     ━━━ Batch 5 — 750 importés / 394 doublons / 1 erreurs ━━━
+2026-06-01 02:17:51,233 INFO     ━━━ Supabase — page offset=4000 ━━━
+2026-06-01 02:18:26,378 INFO     ━━━ Batch 6 — 900 importés / 518 doublons / 1 erreurs ━━━
+2026-06-01 02:20:22,764 INFO     ━━━ Batch 7 — 1050 importés / 608 doublons / 1 erreurs ━━━
+2026-06-01 02:22:33,183 INFO     ━━━ Batch 8 — 1200 importés / 761 doublons / 1 erreurs ━━━
+2026-06-01 02:23:03,791 INFO     ━━━ Supabase — page offset=5000 ━━━
+2026-06-01 02:24:39,569 INFO     ━━━ Batch 9 — 1350 importés / 860 doublons / 1 erreurs ━━━
+2026-06-01 02:26:44,636 INFO     ━━━ Batch 10 — 1500 importés / 924 doublons / 1 erreurs ━━━
+2026-06-01 02:28:29,576 INFO     ━━━ Supabase — page offset=6000 ━━━
+2026-06-01 02:28:53,184 INFO     ━━━ Batch 11 — 1650 importés / 1134 doublons / 1 erreurs ━━━
+2026-06-01 02:31:03,337 INFO     ━━━ Batch 12 — 1800 importés / 1205 doublons / 1 erreurs ━━━
+2026-06-01 02:33:07,297 INFO     ━━━ Batch 13 — 1950 importés / 1288 doublons / 1 erreurs ━━━
+2026-06-01 02:35:10,851 INFO     ━━━ Batch 14 — 2100 importés / 1379 doublons / 1 erreurs ━━━
+2026-06-01 02:35:59,241 INFO     ━━━ Supabase — page offset=7000 ━━━
+2026-06-01 02:37:18,014 INFO     ━━━ Batch 15 — 2250 importés / 1513 doublons / 1 erreurs ━━━
+2026-06-01 02:39:21,060 INFO     ━━━ Batch 16 — 2400 importés / 1565 doublons / 1 erreurs ━━━
+2026-06-01 02:41:43,088 INFO     ━━━ Batch 17 — 2550 importés / 1626 doublons / 1 erreurs ━━━
+2026-06-01 02:42:22,513 INFO     ━━━ Supabase — page offset=8000 ━━━
+2026-06-01 02:44:15,158 INFO     ━━━ Batch 18 — 2700 importés / 1722 doublons / 1 erreurs ━━━
+2026-06-01 02:46:11,503 INFO     ━━━ Supabase — page offset=9000 ━━━
+2026-06-01 02:46:46,214 INFO     ━━━ Batch 19 — 2850 importés / 1791 doublons / 1 erreurs ━━━
+2026-06-01 02:49:15,665 INFO     ━━━ Batch 20 — 3000 importés / 1910 doublons / 1 erreurs ━━━
+2026-06-01 02:51:21,905 INFO     ━━━ Supabase — page offset=10000 ━━━
+2026-06-01 02:51:46,250 INFO     ━━━ Batch 21 — 3150 importés / 2007 doublons / 1 erreurs ━━━
+2026-06-01 02:54:22,459 INFO     ━━━ Batch 22 — 3300 importés / 2067 doublons / 1 erreurs ━━━
+2026-06-01 02:56:55,689 INFO     ━━━ Batch 23 — 3450 importés / 2182 doublons / 1 erreurs ━━━
+2026-06-01 02:59:53,028 INFO     ━━━ Batch 24 — 3600 importés / 2262 doublons / 1 erreurs ━━━
+2026-06-01 03:00:25,565 INFO     ━━━ Supabase — page offset=11000 ━━━
+2026-06-01 03:02:26,653 INFO     ━━━ Batch 25 — 3750 importés / 2315 doublons / 1 erreurs ━━━
+2026-06-01 03:04:56,520 INFO     ━━━ Batch 26 — 3900 importés / 2376 doublons / 1 erreurs ━━━
+2026-06-01 03:06:11,988 INFO     ━━━ Supabase — page offset=12000 ━━━
+2026-06-01 03:07:35,917 INFO     ━━━ Batch 27 — 4050 importés / 2447 doublons / 1 erreurs ━━━
+2026-06-01 03:10:08,254 INFO     ━━━ Batch 28 — 4200 importés / 2533 doublons / 1 erreurs ━━━
+2026-06-01 03:10:50,678 INFO     ━━━ Supabase — page offset=13000 ━━━
+2026-06-01 03:12:43,854 INFO     ━━━ Batch 29 — 4350 importés / 2613 doublons / 1 erreurs ━━━
+2026-06-01 03:12:44,689 ERROR    [ERREUR] Lead 16838 — Mon Chasseur Immo | canal=EMAIL | téléphone=0613273203 | email=Groupe%202209@2x.png → Invalid email address
+2026-06-01 03:15:26,845 INFO     ━━━ Batch 30 — 4500 importés / 2658 doublons / 2 erreurs ━━━
+2026-06-01 03:16:23,461 INFO     ━━━ Supabase — page offset=14000 ━━━
+2026-06-01 03:16:26,707 ERROR    [ERREUR] Lead 17706 — Mon Chasseur Immo - Clémence Grand | canal=EMAIL | téléphone=0625707858 | email=Groupe%202209@2x.png → Invalid email address
+2026-06-01 03:18:10,902 INFO     ━━━ Batch 31 — 4650 importés / 2752 doublons / 3 erreurs ━━━
+2026-06-01 03:20:51,781 INFO     ━━━ Batch 32 — 4800 importés / 2841 doublons / 3 erreurs ━━━
+2026-06-01 03:22:02,401 INFO     ━━━ Supabase — page offset=15000 ━━━
+2026-06-01 03:23:31,422 INFO     ━━━ Batch 33 — 4950 importés / 2894 doublons / 3 erreurs ━━━
+2026-06-01 03:26:16,672 INFO     ━━━ Batch 34 — 5100 importés / 2945 doublons / 3 erreurs ━━━
+2026-06-01 03:28:50,256 INFO     ━━━ Supabase — page offset=16000 ━━━
+2026-06-01 03:29:11,312 INFO     ━━━ Batch 35 — 5250 importés / 3026 doublons / 3 erreurs ━━━
+2026-06-01 03:31:59,521 INFO     ━━━ Batch 36 — 5400 importés / 3079 doublons / 3 erreurs ━━━
+2026-06-01 03:34:51,740 INFO     ━━━ Batch 37 — 5550 importés / 3148 doublons / 3 erreurs ━━━
+2026-06-01 03:35:08,364 INFO     ━━━ Supabase — page offset=17000 ━━━
+2026-06-01 03:37:42,953 INFO     ━━━ Batch 38 — 5700 importés / 3231 doublons / 3 erreurs ━━━
+2026-06-01 03:39:46,197 INFO     ━━━ Supabase — page offset=18000 ━━━
+2026-06-01 03:40:17,561 INFO     ━━━ Batch 39 — 5850 importés / 3321 doublons / 3 erreurs ━━━
+2026-06-01 03:42:52,663 INFO     ━━━ Batch 40 — 6000 importés / 3378 doublons / 3 erreurs ━━━
+2026-06-01 03:44:52,871 INFO     ━━━ Supabase — page offset=19000 ━━━
+2026-06-01 03:45:35,873 INFO     ━━━ Batch 41 — 6150 importés / 3467 doublons / 3 erreurs ━━━
+2026-06-01 03:48:11,181 INFO     ━━━ Batch 42 — 6300 importés / 3544 doublons / 3 erreurs ━━━
+2026-06-01 03:50:49,056 INFO     ━━━ Batch 43 — 6450 importés / 3692 doublons / 3 erreurs ━━━
+2026-06-01 03:51:06,181 INFO     ━━━ Supabase — page offset=20000 ━━━
+2026-06-01 03:53:11,614 ERROR    [ERREUR] Lead 27002 — Painvin Expertise Comptable et Audit Montpellier | canal=EMAIL | téléphone=0467960814 | email=%20contact@painvin-eca.fr → Invalid email address
+2026-06-01 03:53:22,877 INFO     ━━━ Batch 44 — 6600 importés / 3785 doublons / 4 erreurs ━━━
+2026-06-01 03:56:03,677 INFO     ━━━ Batch 45 — 6750 importés / 3893 doublons / 4 erreurs ━━━
+2026-06-01 03:56:14,117 INFO     ━━━ Supabase — page offset=21000 ━━━
+2026-06-01 03:58:42,669 INFO     ━━━ Batch 46 — 6900 importés / 3990 doublons / 4 erreurs ━━━
+2026-06-01 04:01:12,495 INFO     ━━━ Supabase — page offset=22000 ━━━
+2026-06-01 04:01:22,924 INFO     ━━━ Batch 47 — 7050 importés / 4148 doublons / 4 erreurs ━━━
+2026-06-01 04:02:32,842 ERROR    [ERREUR] Lead 30805 — FD METAL - Escalier, Métallerie, Serrurerie, Vendée | canal=EMAIL | téléphone=0251463580 | email=%20contact@fd-metal.com → Invalid email address
+2026-06-01 04:03:53,332 INFO     ━━━ Batch 48 — 7200 importés / 4314 doublons / 5 erreurs ━━━
+2026-06-01 04:06:23,569 INFO     ━━━ Supabase — page offset=23000 ━━━
+2026-06-01 04:06:25,565 INFO     ━━━ Batch 49 — 7350 importés / 4409 doublons / 5 erreurs ━━━
+2026-06-01 04:08:52,792 INFO     ━━━ Supabase — page offset=24000 ━━━
+2026-06-01 04:09:14,093 INFO     ━━━ Batch 50 — 7500 importés / 4795 doublons / 5 erreurs ━━━
+2026-06-01 04:11:53,450 INFO     ━━━ Batch 51 — 7650 importés / 5036 doublons / 5 erreurs ━━━
+2026-06-01 04:12:23,639 INFO     ━━━ Supabase — page offset=25000 ━━━
+2026-06-01 04:14:37,505 INFO     ━━━ Batch 52 — 7800 importés / 5288 doublons / 5 erreurs ━━━
+2026-06-01 04:17:08,302 INFO     ━━━ Batch 53 — 7950 importés / 5374 doublons / 5 erreurs ━━━
+2026-06-01 04:18:35,252 ERROR    [ERREUR] Lead 37449 — Fauché Ouest Industrie - Centre de Travaux de Quimperlé | canal=EMAIL | téléphone=0298065999 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 04:19:44,419 INFO     ━━━ Batch 54 — 8100 importés / 5435 doublons / 6 erreurs ━━━
+2026-06-01 04:20:04,428 INFO     ━━━ Supabase — page offset=26000 ━━━
+2026-06-01 04:22:21,698 INFO     ━━━ Batch 55 — 8250 importés / 5471 doublons / 6 erreurs ━━━
+2026-06-01 04:24:59,085 INFO     ━━━ Batch 56 — 8400 importés / 5500 doublons / 6 erreurs ━━━
+2026-06-01 04:27:50,056 INFO     ━━━ Batch 57 — 8550 importés / 5521 doublons / 6 erreurs ━━━
+2026-06-01 04:30:21,195 INFO     ━━━ Supabase — page offset=27000 ━━━
+2026-06-01 04:30:28,730 INFO     ━━━ Batch 58 — 8700 importés / 5602 doublons / 6 erreurs ━━━
+2026-06-01 04:31:36,157 ERROR    [ERREUR] Lead 39798 — InoRenov | canal=EMAIL | téléphone=0635520507 | email=%20contact@inorenov.fr → Invalid email address
+2026-06-01 04:33:06,678 INFO     ━━━ Batch 59 — 8850 importés / 5652 doublons / 7 erreurs ━━━
+2026-06-01 04:35:47,412 INFO     ━━━ Batch 60 — 9000 importés / 5704 doublons / 7 erreurs ━━━
+2026-06-01 04:36:50,525 INFO     ━━━ Supabase — page offset=28000 ━━━
+2026-06-01 04:38:04,126 ERROR    [ERREUR] Lead 41286 — Agence de Fleurance - Fauché | canal=EMAIL | téléphone=0562060909 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 04:38:29,134 INFO     ━━━ Batch 61 — 9150 importés / 5758 doublons / 8 erreurs ━━━
+2026-06-01 04:38:33,577 ERROR    [ERREUR] Lead 41394 — Centre de travaux d'Auch - Fauché | canal=EMAIL | téléphone=0562052845 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 04:41:16,213 INFO     ━━━ Batch 62 — 9300 importés / 5998 doublons / 9 erreurs ━━━
+2026-06-01 04:41:59,620 INFO     ━━━ Supabase — page offset=29000 ━━━
+2026-06-01 04:43:54,331 INFO     ━━━ Batch 63 — 9450 importés / 6122 doublons / 9 erreurs ━━━
+2026-06-01 04:44:01,712 ERROR    [ERREUR] Lead 42939 — Agence de Bordeaux - Fauché | canal=EMAIL | téléphone=0557266780 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 04:44:25,987 ERROR    [ERREUR] Lead 43048 — MCE RODRIGUES | canal=EMAIL | téléphone=0630801589 | email=%20contact@mce-rodrigues.fr → Invalid email address
+2026-06-01 04:45:23,394 ERROR    [ERREUR] Lead 43294 — Agence Fauché Cuny | canal=EMAIL | téléphone=0557266782 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 04:46:33,638 INFO     ━━━ Batch 64 — 9600 importés / 6224 doublons / 12 erreurs ━━━
+2026-06-01 04:48:12,975 INFO     ━━━ Supabase — page offset=30000 ━━━
+2026-06-01 04:49:06,505 INFO     ━━━ Batch 65 — 9750 importés / 6252 doublons / 12 erreurs ━━━
+2026-06-01 04:51:49,008 INFO     ━━━ Batch 66 — 9900 importés / 6289 doublons / 12 erreurs ━━━
+2026-06-01 04:54:03,644 INFO     ━━━ Supabase — page offset=31000 ━━━
+2026-06-01 04:54:28,618 INFO     ━━━ Batch 67 — 10050 importés / 6380 doublons / 12 erreurs ━━━
+2026-06-01 04:56:58,004 INFO     ━━━ Batch 68 — 10200 importés / 6422 doublons / 12 erreurs ━━━
+2026-06-01 04:58:49,476 INFO     ━━━ Supabase — page offset=32000 ━━━
+2026-06-01 04:59:28,850 INFO     ━━━ Batch 69 — 10350 importés / 6459 doublons / 12 erreurs ━━━
+2026-06-01 05:01:52,474 INFO     ━━━ Batch 70 — 10500 importés / 6490 doublons / 12 erreurs ━━━
+2026-06-01 05:04:19,639 INFO     ━━━ Batch 71 — 10650 importés / 6519 doublons / 12 erreurs ━━━
+2026-06-01 05:06:52,815 INFO     ━━━ Batch 72 — 10800 importés / 6612 doublons / 12 erreurs ━━━
+2026-06-01 05:08:40,727 INFO     ━━━ Supabase — page offset=33000 ━━━
+2026-06-01 05:09:34,796 INFO     ━━━ Batch 73 — 10950 importés / 6668 doublons / 12 erreurs ━━━
+2026-06-01 05:10:08,344 ERROR    [ERREUR] Lead 49375 — Agence Fauché Sud Aquitaine | canal=EMAIL | téléphone=0558907980 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 05:11:11,226 ERROR    [ERREUR] Lead 49825 — BONNAIRE Groupe VELKIA - Electricité industrielle - Automatisme - Maintenance | canal=EMAIL | téléphone=0477418972 | email=contact@.velkia.fr → Invalid email address
+2026-06-01 05:11:45,638 ERROR    [ERREUR] Lead 49905 — Fauché Projets Tertiaire | canal=EMAIL | téléphone=0477909077 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 05:12:11,665 INFO     ━━━ Batch 74 — 11100 importés / 6817 doublons / 15 erreurs ━━━
+2026-06-01 05:14:49,777 INFO     ━━━ Batch 75 — 11250 importés / 6856 doublons / 15 erreurs ━━━
+2026-06-01 05:15:00,824 ERROR    [ERREUR] Lead 50401 — Fauché Roanne | canal=EMAIL | téléphone=0477682511 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 05:16:07,591 INFO     ━━━ Supabase — page offset=34000 ━━━
+2026-06-01 05:17:28,888 INFO     ━━━ Batch 76 — 11400 importés / 6888 doublons / 16 erreurs ━━━
+2026-06-01 05:18:18,710 ERROR    [ERREUR] Lead 51279 — Borne de recharge Borne-Elec.fr | canal=EMAIL | téléphone=0465031006 | email=%20contact@borne-elec.fr → Invalid email address
+2026-06-01 05:18:50,974 ERROR    [ERREUR] Lead 51458 — Centre de Travaux de NANTES - JPF Industries | canal=EMAIL | téléphone=0240451035 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 05:20:07,875 INFO     ━━━ Batch 77 — 11550 importés / 6909 doublons / 18 erreurs ━━━
+2026-06-01 05:20:57,208 INFO     ━━━ Supabase — page offset=35000 ━━━
+2026-06-01 05:22:39,185 INFO     ━━━ Batch 78 — 11700 importés / 6993 doublons / 18 erreurs ━━━
+2026-06-01 05:25:14,913 INFO     ━━━ Batch 79 — 11850 importés / 7039 doublons / 18 erreurs ━━━
+2026-06-01 05:25:31,947 INFO     ━━━ Supabase — page offset=36000 ━━━
+2026-06-01 05:25:42,255 ERROR    [ERREUR] Lead 54021 — Agence Fauché Narbonne | canal=EMAIL | téléphone=0534528133 | email=%20contact@fauche.com → Invalid email address
+2026-06-01 05:27:00,373 ERROR    [ERREUR] Lead 54516 — FAUCHE TERTIAIRE LOT ET GARONNE CT MARMANDE | canal=EMAIL | téléphone= | email=%20contact@fauche.com → Invalid email address

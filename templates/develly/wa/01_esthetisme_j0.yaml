@@ -1,0 +1,200 @@
+canal: WHATSAPP
+step: 0
+angle: ESTHÉTISME
+niches:
+  - label: Électricien
+    key: electricien
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Un site plus soigné, c'est souvent ce qui fait pencher
+      un client hésitant avant d'appeler son électricien.
+
+      Je retravaille ça pour des électriciens : des sites qui reflètent
+      vraiment votre sérieux, vos certifications et vos chantiers.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Serrurier
+    key: serrurier
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Sur un marché où la confiance est clé, un site plus soigné,
+      c'est souvent ce qui fait pencher un client hésitant avant d'appeler.
+
+      Je retravaille ça pour des serruriers : des sites qui rassurent,
+      affichent les tarifs et reflètent vraiment votre sérieux.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Garage automobile
+    key: garage_auto
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Avant de confier sa voiture, un client passe toujours par le site.
+      Un site plus soigné, c'est souvent ce qui fait pencher
+      un client hésitant avant d'appeler.
+
+      Je retravaille ça pour des garages indépendants : des sites qui
+      reflètent vraiment votre sérieux et votre expertise.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      En dentisterie, le site est souvent la première chose que voit
+      un nouveau patient. Un site plus soigné, c'est souvent ce qui
+      déclenche la prise de RDV.
+
+      Je retravaille ça pour des cliniques dentaires : des sites qui
+      mettent en avant l'équipe, les soins et les avis patients.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Dans votre métier, le site vitrine est votre première réalisation
+      aux yeux du prospect. Un site qui reflète vraiment votre style,
+      c'est souvent ce qui fait pencher un client hésitant.
+
+      Je retravaille ça pour des architectes d'intérieur : des sites qui
+      mettent en valeur les réalisations et positionnent clairement
+      l'identité créative.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Architecte
+    key: architecte
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Un cabinet d'architecture est jugé sur son site avant même le
+      premier rendez-vous. Un portfolio soigné et un positionnement clair,
+      c'est ce qui fait pencher un client vers vous plutôt qu'un concurrent.
+
+      Je retravaille ça pour des architectes : des sites qui filtrent
+      les bons projets et qui reflètent vraiment votre niveau.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Hôtel
+    key: hotel
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Dans l'hôtellerie haut de gamme, le site web est le premier filtre :
+      un visiteur qui ne ressent pas immédiatement l'expérience passe
+      sur Booking plutôt que de réserver en direct.
+
+      Je retravaille ça pour des hôtels premium : des sites qui vendent
+      l'expérience, augmentent la valeur perçue et réduisent la
+      dépendance aux OTA.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Restaurant
+    key: restaurant
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Un client qui cherche où réserver un repas ou un événement
+      passe d'abord par le site. Un site qui vend l'expérience avant
+      l'assiette, c'est souvent ce qui fait pencher la décision.
+
+      Je retravaille ça pour des restaurants : des sites qui donnent
+      envie, affichent la carte et facilitent la réservation directe.
+
+      C'est quelque chose que vous cherchez à améliorer ?
+
+  - label: Plombier
+    key: plombier
+    punchlines:
+      closing:
+        - "C'est quelque chose que vous cherchez à améliorer ?"
+        - "Vous seriez partant pour qu'on en parle rapidement ?"
+        - "C'est quelque chose qui vous a déjà traversé l'esprit ?"
+    message: |
+      Bonjour {prenom},
+
+      Petite observation en passant : j'ai regardé le site de {company}
+      à côté de {concurrent_1_nom} et {concurrent_2_nom} à {ville}.
+
+      Un site plus soigné, c'est souvent ce qui fait pencher
+      un client hésitant avant d'appeler son plombier.
+
+      Je retravaille ça pour des plombiers : des sites qui reflètent
+      vraiment votre sérieux, vos certifications et vos chantiers.
+
+      C'est quelque chose que vous cherchez à améliorer ?

@@ -1,0 +1,300 @@
+canal: WHATSAPP
+step: 1
+angle: ESTHÉTISME
+niches:
+  - label: Électricien
+    key: electricien
+    punchlines:
+      hook:
+        - "Ce que les meilleurs électriciens ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains convertissent mieux,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le client
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un visiteur qui hésite ne vous appelle pas.
+      Il revient en arrière et choisit l'électricien dont le site l'a convaincu.
+
+      On retravaille exactement ça : certifications visibles, chantiers
+      mis en avant, formulaire de devis simple. Un site qui reflète
+      votre niveau et qui pousse le visiteur à agir.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Serrurier
+    key: serrurier
+    punchlines:
+      hook:
+        - "Ce que les meilleurs serruriers ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains convertissent mieux,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le client
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un visiteur qui hésite ne vous appelle pas , surtout dans votre
+      secteur où les arnaques ont terni la réputation du métier.
+      Il revient en arrière et choisit le serrurier dont le site l'a convaincu.
+
+      On retravaille exactement ça : tarifs clairs, certifications visibles,
+      avis clients. Un site qui inspire confiance et qui pousse à appeler.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Garage automobile
+    key: garage_auto
+    punchlines:
+      hook:
+        - "Ce que les meilleurs garages indépendants ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains fidélisent mieux,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le client
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un client qui compare ne choisit pas le moins cher.
+      Il choisit celui en qui il a confiance.
+      Et cette confiance, elle commence sur le site.
+
+      On retravaille exactement ça : équipe visible, services clairs,
+      avis clients mis en avant. Un site qui reflète votre niveau
+      et qui pousse à prendre RDV.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    punchlines:
+      hook:
+        - "Ce que les meilleures cliniques dentaires ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains ont plus de nouveaux patients,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le patient
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un patient qui hésite ne prend pas RDV.
+      Il revient en arrière et choisit la clinique dont le site l'a rassuré :
+      équipe visible, avis patients, soins expliqués clairement.
+
+      On retravaille exactement ça. Un site qui reflète votre niveau
+      et qui pousse le visiteur à agir.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    punchlines:
+      hook:
+        - "Ce que les meilleurs architectes d'intérieur ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains attirent de meilleurs projets,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le prospect
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un prospect qui hésite ne vous contacte pas.
+      Il revient en arrière et choisit l'architecte d'intérieur dont le site
+      l'a séduit : portfolio soigné, univers cohérent, promesse claire.
+
+      On retravaille exactement ça. Un site qui reflète votre singularité
+      et qui convertit les visiteurs en clients qualifiés.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte
+    key: architecte
+    punchlines:
+      hook:
+        - "Ce que les meilleurs cabinets d'architecture ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains décrochent de meilleurs projets,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le prospect
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un prospect qui hésite ne vous appelle pas.
+      Il revient en arrière et choisit l'architecte dont le site a montré
+      clairement son style, ses projets et sa méthode.
+
+      On retravaille exactement ça. Un site qui filtre les bons projets
+      et qui pousse le visiteur à passer à l'action.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Hôtel
+    key: hotel
+    punchlines:
+      hook:
+        - "Ce que les hôtels les plus rentables ont compris,"
+        - "Un point que peu de directions réalisent,"
+        - "Ce que ça change concrètement sur la marge,"
+        - "La vraie raison pour laquelle certains réduisent leur dépendance aux OTA,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le visiteur
+      bascule vers les OTA, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un voyageur qui hésite ne réserve pas en direct.
+      Il va sur Booking , et vous payez 15 à 20% de commission.
+
+      On retravaille exactement ça : un site qui vend l'expérience
+      avant la chambre et qui convertit en réservations directes.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Restaurant
+    key: restaurant
+    punchlines:
+      hook:
+        - "Ce que les restaurants les plus complets ont compris,"
+        - "Un point que peu de restaurateurs réalisent,"
+        - "Ce que ça change sur les réservations directes,"
+        - "La vraie raison pour laquelle certains remplissent mieux leur salle,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le client
+      bascule vers TheFork, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un client qui hésite ne réserve pas.
+      Il va sur TheFork , et vous payez une commission à chaque couvert.
+
+      On retravaille exactement ça : photos qui donnent faim, carte lisible,
+      réservation directe fluide. Un site qui vend l'expérience
+      avant même que le client arrive.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Plombier
+    key: plombier
+    punchlines:
+      hook:
+        - "Ce que les meilleurs plombiers ont compris,"
+        - "Un point que peu réalisent,"
+        - "Ce que ça change concrètement,"
+        - "La vraie raison pour laquelle certains convertissent mieux,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Je suis disponible si vous voulez qu'on regarde ça ensemble."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a posé le problème visuel. J3 montre le moment précis où le client
+      est perdu, puis décrit ce que fait Develly et laisse une sortie courtoise.
+    message: |
+      {prenom}, une dernière chose,
+
+      Un visiteur qui hésite ne vous appelle pas.
+      Il revient en arrière et choisit le plombier dont le site l'a convaincu.
+
+      On retravaille exactement ça : certifications visibles, chantiers
+      mis en avant, formulaire de devis simple. Un site qui reflète
+      votre niveau et qui pousse le visiteur à agir.
+
+      Vous voulez qu'on en parle 10 minutes ?
+      Et si ce n'est pas le bon moment, aucun problème,
+      revenez vers moi quand vous le souhaitez.

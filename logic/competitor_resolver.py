@@ -1,10 +1,41 @@
 from __future__ import annotations
 
 import math
+import unicodedata
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from services.supabase_service import SupabaseService
+
+# Brevo CATEGORIE label → Supabase niche key
+_LABEL_TO_KEY: dict[str, str] = {
+    "electricien":           "electricien",
+    "serrurier":             "serrurier",
+    "garage automobile":     "garage_auto",
+    "clinique dentaire":     "clinique_dentaire",
+    "architecte d'interieur": "architecte_interieur",
+    "architecte d interieur": "architecte_interieur",
+    "architecte":            "architecte",
+    "hotel 5 etoiles":       "hotel",
+    "hotel":                 "hotel",
+    "cgp":                   "cgp",
+    "expert-comptable":      "comptable",
+    "expert comptable":      "comptable",
+    "restaurant":            "restaurant",
+    "iad":                   "iad",
+    "agent immobilier":      "agent_immo",
+}
+
+
+_UNCATEGORIZED: frozenset[str] = frozenset({"non_categorise", "non categorise"})
+
+
+def _normalize_niche(label: str) -> str:
+    """Convert Brevo CATEGORIE label to Supabase niche key."""
+    s = label.lower().strip()
+    s = unicodedata.normalize("NFD", s)
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return _LABEL_TO_KEY.get(s, s)
 
 
 class CompetitorResolver:
@@ -21,21 +52,23 @@ class CompetitorResolver:
         lead_avis: int = 0,
     ) -> dict:
         empty = {"nom": "", "note": 0.0, "nb_avis": 0, "site": ""}
+        niche_raw = niche
+        niche = _normalize_niche(niche)
+        print(f"  [Resolver] niche brevo={niche_raw!r} → normalized={niche!r} | city_id={city_id!r}")
 
         # Enrich from Supabase if Brevo is missing city_id or has a generic niche
-        if lead_email and (not city_id or not niche or niche == "non_categorise"):
+        if lead_email and (not city_id or not niche or niche in _UNCATEGORIZED):
             lead_row = self._lookup_lead(lead_email)
             if lead_row:
                 if not city_id:
                     city_id = lead_row.get("city_id", "")
-                if not niche or niche == "non_categorise":
+                if not niche or niche in _UNCATEGORIZED:
                     niche = lead_row.get("niche", "") or niche
                 if not lead_note:
                     lead_note = float(lead_row.get("average_rate") or 0)
                 if not lead_avis:
                     lead_avis = int(lead_row.get("number_of_rate") or 0)
-            print(f"       [Supabase] enrichissement lead : city_id={city_id!r}  niche={niche!r}  note={lead_note}  avis={lead_avis}")
-
+                print(f"  [Resolver] Supabase enrichment → niche={niche!r} city_id={city_id!r}")
         # City name from cities table
         ville_nom = ""
         if city_id:
@@ -49,7 +82,6 @@ class CompetitorResolver:
             ville_nom = city_result.data[0]["name"] if city_result.data else city_id
 
         if not city_id or not niche:
-            print(f"       [Supabase] aucun concurrent trouvé (city_id={city_id!r} niche={niche!r})")
             return {
                 "mode": "NORMAL",
                 "ville_nom": ville_nom,
@@ -79,6 +111,9 @@ class CompetitorResolver:
         else:  # ESTHÉTISME, fallback
             rows = self._query(city_id, niche, lead_email, with_site=True, order_by="average_rate")
             mode = "NORMAL"
+
+        names = [r.get("company", "?") for r in rows]
+        print(f"  [Resolver] {angle} | {len(rows)} concurrent(s) : {names or '—'}")
 
         def to_c(row: dict) -> dict:
             return {
@@ -113,6 +148,7 @@ class CompetitorResolver:
         lead_email: str,
         lead_note: float,
     ) -> list[dict]:
+        niche = _normalize_niche(niche)
         if not city_id or not niche:
             return []
         rows = self._query_reputation(city_id, niche, lead_email, lead_note, min_avis=0)
@@ -159,6 +195,7 @@ class CompetitorResolver:
             q = q.neq("email", lead_email)
         if with_site:
             q = q.not_.is_("website_url", "null")
+        q = q.lt("number_of_rate", 1500)
         return q.execute().data or []
 
     def _query_reputation(
@@ -183,6 +220,7 @@ class CompetitorResolver:
             q = q.neq("email", lead_email)
         if min_avis > 0:
             q = q.gte("number_of_rate", min_avis)
+        q = q.lt("number_of_rate", 1500)
         return q.execute().data or []
 
     @staticmethod

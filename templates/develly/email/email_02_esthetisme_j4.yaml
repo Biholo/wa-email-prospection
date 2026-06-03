@@ -1,0 +1,369 @@
+canal: EMAIL
+step: 1
+sequence: 2/3
+angle: ESTHÉTISME
+note: >
+  Deuxième email de la séquence, envoyé à J+4 sans réponse au premier.
+  Objectif : apporter de la valeur concrète, montrer ce que ça change
+  en pratique. On ne répète pas le problème visuel de J0, on montre
+  le mécanisme et la preuve sociale. Toujours sans pression.
+
+niches:
+
+  - label: Électricien
+    key: electricien
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains électriciens convertissent mieux en ligne"
+      - "Un point que peu d'électriciens travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les électriciens avec qui on travaille avaient souvent le même profil
+      au départ : un bon carnet d'adresses, du bouche-à-oreille solide,
+      mais un site qui ne reflétait pas vraiment leur niveau.
+
+      Ce qu'on observe systématiquement après la refonte :
+      moins de négociation sur les prix, parce que la valeur perçue
+      est plus haute dès le départ. Les prospects arrivent mieux
+      informés, mieux qualifiés, et moins enclins à comparer
+      uniquement sur le tarif.
+
+      Ce n'est pas de la magie, c'est simplement ce qui se passe
+      quand un site fait vraiment le travail de conviction en amont.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Serrurier
+    key: serrurier
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains serruriers convertissent mieux en ligne"
+      - "Un point que peu de serruriers travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Dans votre secteur, la confiance est tout. Les serruriers
+      avec qui on travaille avaient souvent un vrai savoir-faire,
+      mais un site qui ne le prouvait pas assez clairement.
+
+      Résultat : trop de temps passé à convaincre au téléphone
+      des clients qui auraient pu arriver déjà décidés.
+
+      Après la refonte, ce qu'on observe : les prospects appellent
+      avec un niveau de confiance plus élevé dès le départ.
+      Tarifs, certifications, avis clients bien mis en avant,
+      le site fait le travail de conviction avant l'appel.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Garage automobile
+    key: garage_auto
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains garages indépendants fidélisent mieux"
+      - "Un point que peu de garages indépendants travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les garages indépendants avec qui on travaille faisaient face
+      au même défi : tenir tête aux réseaux nationaux (Midas, Speedy,
+      Norauto) qui ont des sites léchés et des budgets pub importants.
+
+      La réponse n'est pas d'imiter, c'est de jouer la carte du local
+      et de l'humain. Équipe visible, spécialités claires, avis clients
+      mis en avant : un site qui raconte votre histoire plutôt que
+      de ressembler à tout le monde.
+
+      Après la refonte, ce qu'on observe : plus de clients réguliers,
+      moins de pression sur les prix, et une vraie différenciation
+      face aux franchises.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certaines cliniques dentaires attirent plus de nouveaux patients"
+      - "Un point que peu de cliniques travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les cliniques dentaires avec qui on travaille avaient souvent
+      le même frein : une forte dépendance à Doctolib pour les
+      nouveaux patients, avec la data qui reste dans les mains
+      de la plateforme.
+
+      Un site bien construit change l'équation : les patients
+      arrivent via Google, voient l'équipe, lisent les avis,
+      comprennent les soins proposés, et prennent RDV directement.
+      Moins de dépendance, meilleure relation dès le départ.
+
+      On observe aussi une hausse des demandes pour les actes
+      à forte valeur (implants, esthétique) quand ils sont
+      bien mis en avant sur le site.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains architectes d'intérieur attirent de meilleurs projets"
+      - "Un point que peu d'architectes d'intérieur travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les architectes d'intérieur avec qui on travaille avaient
+      souvent un portfolio impressionnant, mais un site qui ne
+      le valorisait pas à sa juste hauteur.
+
+      Ce qu'on observe après la refonte : les projets entrants
+      sont mieux qualifiés. Les prospects ont déjà vu le style,
+      compris le positionnement, et arrivent avec un projet
+      sérieux plutôt qu'une simple demande de devis à comparer.
+
+      Le site fait le travail de filtre que vous faisiez
+      jusqu'ici lors des premiers appels.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Architecte
+    key: architecte
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains cabinets décrochent de meilleurs projets"
+      - "Un point que peu d'architectes travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les architectes avec qui on travaille avaient souvent
+      le même constat : beaucoup de projets ne correspondaient
+      pas vraiment à leur positionnement, et les honoraires
+      étaient régulièrement mis en question.
+
+      Un site qui positionne clairement le cabinet change ça.
+      Style, méthode, types de projets traités, gamme de budget :
+      ces informations filtrent en amont et attirent des clients
+      qui arrivent déjà convaincus de la valeur.
+
+      Après la refonte, ce qu'on observe : moins de temps perdu
+      en réunions exploratoires, plus de projets alignés,
+      et une capacité à défendre des honoraires plus élevés.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Hôtel
+    key: hotel
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Moins de commissions OTA : comment certains hôtels y arrivent"
+      - "Un point que peu d'hôteliers travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les hôtels avec qui on travaille avaient souvent le même
+      problème : un site institutionnel qui n'inspirait pas vraiment
+      le désir, et une dépendance forte aux OTA qui captaient
+      l'essentiel des réservations.
+
+      Un site qui vend l'expérience avant la chambre change
+      la dynamique. Le visiteur ressent quelque chose, il imagine
+      son séjour, et il réserve en direct plutôt que de chercher
+      le meilleur prix sur Booking.
+
+      Ce qu'on observe après la refonte : une hausse des réservations
+      directes, une meilleure marge, et une valeur perçue plus haute
+      qui soutient les tarifs.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Restaurant
+    key: restaurant
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Moins de commissions TheFork : comment certains restaurateurs y arrivent"
+      - "Un point que peu de restaurateurs travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les restaurants avec qui on travaille avaient souvent le même
+      constat : un site peu engageant, et des réservations qui
+      transitaient quasi systématiquement par TheFork ou Google,
+      avec une commission à chaque fois.
+
+      Un site qui donne envie change ça. Photos soignées,
+      carte lisible, réservation directe fluide : le client
+      réserve sans intermédiaire, et la marge reste entière.
+
+      On observe aussi une hausse des privatisations et des
+      formules groupes quand elles sont bien mises en avant,
+      un segment souvent sous-exploité.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,
+      
+
+  - label: Plombier
+    key: plombier
+    variables:
+      - "{prenom}"
+    objet:
+      - "Ce que ça change concrètement"
+      - "Pourquoi certains plombiers convertissent mieux en ligne"
+      - "Un point que peu de plombiers travaillent"
+    context: |
+      Email précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ne pas répéter la comparaison avec les concurrents.
+      J4 apporte la valeur et la preuve sociale sans ressasser J0.
+    message: |
+      Bonjour {prenom},
+
+      Je reviens vers vous avec un point concret.
+
+      Les plombiers avec qui on travaille avaient souvent le même profil
+      au départ : un bon bouche-à-oreille, mais un site qui ne reflétait
+      pas vraiment leur niveau ni leur sérieux.
+
+      Ce qu'on observe systématiquement après la refonte :
+      moins de négociation sur les prix, parce que la valeur perçue
+      est plus haute dès le départ. Les prospects arrivent mieux
+      informés, avec un projet concret, et moins enclins à comparer
+      uniquement sur le tarif.
+
+      Ce n'est pas de la magie, c'est simplement ce qui se passe
+      quand un site fait vraiment le travail de conviction en amont.
+
+      Si vous souhaitez qu'on en parle 15 minutes, je suis disponible.
+      Et si ce n'est pas le bon moment, aucun problème.
+
+      Bonne journée,

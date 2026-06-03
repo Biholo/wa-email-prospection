@@ -16,11 +16,11 @@ workflow:
   email:
     source_list_id: 20   # ATTENTE ENVOI EMAIL
     target_list_id: 21   # AUTOMATISATION EMAIL
-    max_per_day:    200
+    max_per_day:    15
   whatsapp:
     source_list_id: 22   # WORKFLOW WHATSAPP
     cold_list_id:   25   # À APPELER (fallback when max messages reached)
-    max_per_day:    2
+    max_per_day:    5
 
 rules:
   send_delay: 0        # seconds between each contact (shared email + WA)

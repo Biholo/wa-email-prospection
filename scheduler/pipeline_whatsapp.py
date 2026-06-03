@@ -5,12 +5,20 @@ from pathlib import Path
 
 import yaml
 
+def _str_presenter(dumper, data):
+    if '\n' in data:
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
+
+yaml.add_representer(str, _str_presenter)
+
 from core.db import log_entry, save_wa_message
 from core.holidays import is_sending_day
 from core.state import increment_errors, increment_processed
 from logic.angle_detector import AngleDetector
 from logic.competitor_resolver import CompetitorResolver
 from logic.message_builder import MessageBuilder
+from core.mailer import RecapTracker
 from services.brevo_service import BrevoService
 from services.wasender_service import WasenderService
 from services.pagespeed_service import PageSpeedService
@@ -47,6 +55,7 @@ def run_whatsapp_pipeline(
     today = date.today()
     today_str = today.isoformat()
     tag = "[TEST] " if test_mode else ("[DRY RUN] " if dry_run else "")
+    tracker = RecapTracker("WA", config_name, dry_run)
 
     if not is_sending_day(today):
         print(f"{tag}WA — {today_str} non ouvrable (week-end ou jour férié) — pipeline annulé")
@@ -112,6 +121,7 @@ def run_whatsapp_pipeline(
                 break
 
             attrs = contact.get("attributes", {})
+            contact_id = contact.get("id")
             email: str = contact.get("email", "") or attrs.get("EMAIL", "") or ""
             sms: str = attrs.get("SMS", "") or ""
             company: str = attrs.get("COMPANY", "")
@@ -150,6 +160,7 @@ def run_whatsapp_pipeline(
                     log_entry(log_record)
                     increment_processed()
                     sent += 1
+                    tracker.record("DRY_RUN", f"{company} ({email}) | RELANCE")
                     time.sleep(1)
                     continue
 
@@ -160,7 +171,7 @@ def run_whatsapp_pipeline(
                 save_wa_message(sms, email, "wa_2")
 
                 brevo.update_contact(
-                    email,
+                    contact_id,
                     {
                         "CANAL_PRINCIPAL": "WHATSAPP",
                         "TOTAL_MESSAGE_ENVOYE": total_sent + 1,
@@ -175,6 +186,7 @@ def run_whatsapp_pipeline(
                 log_entry(log_record)
                 increment_processed()
                 sent += 1
+                tracker.record("ENVOYÉ", f"{company} ({email}) | RELANCE")
                 time.sleep(delai)
 
             except Exception as exc:
@@ -183,6 +195,7 @@ def run_whatsapp_pipeline(
                 log_entry(log_record)
                 increment_errors()
                 increment_processed()
+                tracker.record("ERREUR")
 
     # ── ÉTAPE 2 : NOUVEAUX ──────────────────────────────────
     if mode not in ("all", "nouveaux"):
@@ -203,6 +216,7 @@ def run_whatsapp_pipeline(
             break
 
         attrs = contact.get("attributes", {})
+        contact_id = contact.get("id")
         email: str = contact.get("email", "") or attrs.get("EMAIL", "") or ""
         sms: str = attrs.get("SMS", "") or ""
         company: str = attrs.get("COMPANY", "")
@@ -210,7 +224,7 @@ def run_whatsapp_pipeline(
         niche: str = attrs.get("CATEGORIE", "")
         site_url: str = attrs.get("WEBSITE_URL", "") or ""
 
-        if niche == "Expert-comptable":
+        if "comptable" in niche.lower():
             continue
 
         log_record: dict = {
@@ -302,7 +316,7 @@ def run_whatsapp_pipeline(
                 lead_avis=int(attrs.get("NUMBER_OF_RATE") or 0),
             )
 
-            if angle != "INVISIBILITÉ" and not concurrent_data["concurrent_1"]["nom"]:
+            if angle == "RÉPUTATION" and not concurrent_data["concurrent_1"]["nom"]:
                 brevo.move_to_list(email, source_list_id, 27)
                 reason = f"Aucun concurrent trouvé pour l'angle {angle}"
                 print(f"{tag}  {company} ({email}) → HORS SCOPE | {reason}")
@@ -345,23 +359,38 @@ def run_whatsapp_pipeline(
                 increment_processed()
                 continue
 
+            if not messages.get("wa_1"):
+                niche_resolved = concurrent_data.get("niche", niche)
+                print(f"{tag}  {company} ({email}) → HORS SCOPE | aucun message WA pour niche={niche_resolved!r} angle={angle}")
+                log_record.update(status="HORS SCOPE", erreur_detail=f"Aucun message WA — niche={niche_resolved!r} angle={angle}")
+                log_entry(log_record)
+                increment_processed()
+                continue
+
             wa_1: str = messages["wa_1"]["corps"]
             wa_2: str = messages["wa_2"]["corps"]
 
             print(f"{tag}  ── Messages générés ──────────────────────────────────")
-            print(f"{tag}  Message 1 (WA_1) : {wa_1[:300]}")
-            print(f"{tag}  Message 2 (WA_2) : {wa_2[:300]}")
+            print(f"{tag}  Message 1 (WA_1) :\n{wa_1}")
+            print(f"{tag}  ---")
+            print(f"{tag}  Message 2 (WA_2) :\n{wa_2}")
             print(f"{tag}  ─────────────────────────────────────────────────────")
 
             if test_phone:
                 print(f"{tag}  {company} ({email}) | {angle} → TEST SEND → {test_phone}")
+                contact_name = f"{firstname} {lastname}".strip() or company
+                wasender.add_contact(test_phone, contact_name)
+                wait_sec = random.randint(300, 600)
+                print(f"{tag}  [TEST] contact ajouté — attente {wait_sec}s avant envoi…")
+                time.sleep(wait_sec)
                 wasender.send_whatsapp(test_phone, wa_1)
                 print(f"{tag}  [TEST] WA_1 envoyé à {test_phone} ✓")
                 log_record.update(status="TEST", erreur_detail=f"[TEST → {test_phone}] {wa_1[:200]}")
                 log_entry(log_record)
                 increment_processed()
                 sent += 1
-                break  # un seul envoi test
+                tracker.record("TEST", f"{company} | {niche} | {concurrent_data.get('ville_nom', city_id)} | {angle}")
+                # break  # un seul envoi test
 
             if dry_run:
                 print(f"{tag}  {company} ({email}) | {angle} → DRY_RUN")
@@ -380,14 +409,30 @@ def run_whatsapp_pipeline(
                     "wa_1": wa_1,
                     "wa_2": wa_2,
                 })
+                brevo.update_contact(
+                    contact_id,
+                    {
+                        "ANGLE": angle,
+                        "WA_1": wa_1,
+                        "WA_2": wa_2,
+                        "COMMENTAIRE": f"Messages pré-générés le {today_str} | Angle: {angle}",
+                    },
+                )
                 log_entry(log_record)
                 increment_processed()
                 sent += 1
+                tracker.record("DRY_RUN", f"{company} | {niche} | {concurrent_data.get('ville_nom', city_id)} | {angle}")
                 time.sleep(1)
                 continue
 
             if not sms:
                 raise ValueError("Champ SMS vide — impossible d'envoyer WhatsApp")
+
+            contact_name = f"{firstname} {lastname}".strip() or company
+            wasender.add_contact(sms, contact_name)
+            wait_sec = random.randint(300, 600)
+            print(f"  {company} ({email}) — contact ajouté, attente {wait_sec}s…")
+            time.sleep(wait_sec)
 
             wasender.send_whatsapp(sms, wa_1)
             save_wa_message(sms, email, "wa_1")
@@ -395,7 +440,7 @@ def run_whatsapp_pipeline(
             prochaine_relance = (today + timedelta(days=3)).isoformat()
 
             brevo.update_contact(
-                email,
+                contact_id,
                 {
                     "ANGLE": angle,
                     "CANAL_PRINCIPAL": "WHATSAPP",
@@ -413,6 +458,7 @@ def run_whatsapp_pipeline(
             log_entry(log_record)
             increment_processed()
             sent += 1
+            tracker.record("ENVOYÉ", f"{company} | {niche} | {concurrent_data.get('ville_nom', city_id)} | {angle}")
             time.sleep(delai)
 
         except Exception as exc:
@@ -421,6 +467,7 @@ def run_whatsapp_pipeline(
             log_entry(log_record)
             increment_errors()
             increment_processed()
+            tracker.record("ERREUR")
 
     if dry_run and dry_run_records:
         output_path = Path(f"output/dry_run_wa_{config_name}_{today_str}.yaml")
@@ -429,3 +476,4 @@ def run_whatsapp_pipeline(
         print(f"{tag}WA — résultats écrits dans {output_path}")
 
     print(f"{tag}WA — terminé. {sent} message(s) envoyé(s).")
+    tracker.send(len(relances) + len(nouveaux))

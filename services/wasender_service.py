@@ -1,5 +1,6 @@
 import os
 import re
+import time
 
 import httpx
 
@@ -42,18 +43,51 @@ class WasenderService:
     def check_whatsapp(self, numero: str) -> bool:
         normalized = self._normalize(numero)
         url = f"{WASENDER_API_BASE}/on-whatsapp/{normalized}"
+        last_exc: Exception | None = None
+        for attempt in range(3):
+            try:
+                with httpx.Client(headers=self.headers, timeout=15) as client:
+                    resp = client.get(url)
+                    resp.raise_for_status()
+                    data = resp.json()
+                    exists = bool(data.get("data", {}).get("exists", False))
+                    print(f"       [Wasender] check {normalized} → {'OUI' if exists else 'NON'} | {data}")
+                    return exists
+            except httpx.HTTPStatusError as exc:
+                last_exc = exc
+                if self._is_session_error(exc):
+                    self._notify_disconnect()
+                if exc.response.status_code == 422:
+                    print(f"       [Wasender] check {normalized} → NON (422 numéro invalide)")
+                    return False
+                if attempt < 2:
+                    wait = 5 * (attempt + 1)  # 5s, 10s
+                    print(f"       [Wasender] check {normalized} → 408 retry {attempt + 1}/3 (attente {wait}s)")
+                    time.sleep(wait)
+                    continue
+            except Exception as exc:
+                last_exc = exc
+                if attempt < 2:
+                    time.sleep(5 * (attempt + 1))
+                    continue
+        print(f"       [Wasender] check {normalized} → ERREUR : {last_exc}")
+        raise last_exc
+
+    def add_contact(self, numero: str, full_name: str) -> bool:
+        url = f"{WASENDER_API_BASE}/contacts"
+        digits = re.sub(r"\D", "", numero)
+        jid = f"{digits}@s.whatsapp.net"
+        payload = {"jid": jid, "fullName": full_name, "saveOnPrimaryAddressbook": False}
         try:
             with httpx.Client(headers=self.headers, timeout=15) as client:
-                resp = client.get(url)
+                resp = client.put(url, json=payload)
                 resp.raise_for_status()
-                data = resp.json()
-                exists = bool(data.get("data", {}).get("exists", False))
-                print(f"       [Wasender] check {normalized} → {'OUI' if exists else 'NON'} | {data}")
-                return exists
+                print(f"       [Wasender] contact ajouté : {jid} / {full_name}")
+                return True
         except Exception as exc:
             if self._is_session_error(exc):
                 self._notify_disconnect()
-            print(f"       [Wasender] check {normalized} → ERREUR : {exc}")
+            print(f"       [Wasender] add_contact {jid} → ERREUR : {exc}")
             return False
 
     def send_whatsapp(self, numero: str, message: str):
@@ -67,4 +101,17 @@ class WasenderService:
         except httpx.HTTPStatusError as exc:
             if self._is_session_error(exc):
                 self._notify_disconnect()
+            raise
+
+    def send_group_whatsapp(self, group_id: str, message: str):
+        url = f"{WASENDER_API_BASE}/send-message"
+        payload = {"to": group_id, "text": message}
+        try:
+            with httpx.Client(headers=self.headers, timeout=30) as client:
+                resp = client.post(url, json=payload)
+                resp.raise_for_status()
+                return resp.json()
+        except httpx.HTTPStatusError as exc:
+            if self._is_session_error(exc):
+                print("[Wasender] ⚠️ Session expirée")
             raise

@@ -1,0 +1,286 @@
+canal: EMAIL
+step: 2
+sequence: 3/3
+angle: ESTHÉTISME
+note: >
+  Troisième et dernier email de la séquence, envoyé à J+9 sans réponse.
+  Objectif : closing court et sans pression. On ne ressasse pas les emails
+  précédents. On laisse une porte ouverte proprement et on sort de la
+  séquence avec élégance. Ton très sobre, aucune insistance.
+
+niches:
+
+  - label: Électricien
+    key: electricien
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui reflète mieux votre niveau
+      revient sur la table dans les prochains mois, n'hésitez pas
+      à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Serrurier
+    key: serrurier
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui inspire davantage confiance
+      revient sur la table, n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Garage automobile
+    key: garage_auto
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui différencie vraiment
+      votre garage des réseaux nationaux revient sur la table,
+      n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui attire plus de nouveaux patients
+      en direct revient sur la table, n'hésitez pas à me contacter.
+
+      Bonne continuation,
+      
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui reflète vraiment votre
+      univers créatif et attire de meilleurs projets revient sur
+      la table, n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Architecte
+    key: architecte
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui filtre les bons projets
+      et soutient vos honoraires revient sur la table,
+      n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Hôtel
+    key: hotel
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question de réduire la dépendance aux OTA
+      et d'augmenter les réservations directes revient sur la table,
+      n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Restaurant
+    key: restaurant
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression. On laisse une porte ouverte
+      et on sort proprement de la séquence.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui génère des réservations
+      directes sans commission revient sur la table,
+      n'hésitez pas à me contacter directement.
+
+      Bonne continuation,
+      
+
+  - label: Plombier
+    key: plombier
+    variables:
+      - "{prenom}"
+      - "{company}"
+    objet:
+      - "Dernier message de ma part"
+      - "Je ferme le dossier {company}"
+      - "Une dernière chose avant de partir"
+    context: |
+      Emails précédents envoyés à ce prospect :
+      {message_j0} / {message_j4}
+
+      Ne pas répéter les arguments des emails précédents.
+      Email court, sobre, sans pression.
+    message: |
+      Bonjour {prenom},
+
+      Je ne vais pas vous relancer au-delà de ce message.
+
+      Si le sujet n'est pas une priorité pour {company} en ce moment,
+      c'est tout à fait normal, et je comprends.
+
+      Si jamais la question d'un site qui reflète mieux votre niveau
+      et capte plus d'appels entrants revient sur la table,
+      n'hésitez pas à me contacter directement.
+
+      Bonne continuation,

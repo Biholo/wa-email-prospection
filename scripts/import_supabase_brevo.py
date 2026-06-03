@@ -12,7 +12,7 @@ import time
 import sqlite3
 import unicodedata
 import logging
-from datetime import datetime, date, timezone
+from datetime import date
 from dotenv import load_dotenv
 import requests
 
@@ -30,10 +30,11 @@ PAGE_SIZE        = 1_000   # leads par page Supabase
 BATCH_SIZE       = 150     # imports avant sleep
 SLEEP_AFTER_BATCH = 0.2   # secondes
 
-BREVO_BASE    = "https://api.brevo.com/v3"
-LIST_EMAIL    = 20   # ATTENTE ENVOI EMAIL
-LIST_WHATSAPP = 22
-LIST_CALL     = 25
+BREVO_BASE        = "https://api.brevo.com/v3"
+LIST_EMAIL        = 20   # ATTENTE ENVOI EMAIL
+LIST_WHATSAPP     = 22
+LIST_CALL         = 25
+LIST_NO_WHATSAPP  = 26   # mobile vérifié sans WhatsApp
 
 # ── Initialisation dossier data + logging ─────────────────────────────────
 os.makedirs("data", exist_ok=True)
@@ -62,24 +63,19 @@ def _normalize(s: str) -> str:
 
 
 # Niche DB (normalisée, sans accents) → Label unifié Brevo
-_NICHE_MAP: dict[str, str] = {
-    "agent immobilier":                     "Agent immobilier",
-    "iad":                                  "IAD",
-    "conseiller en gestion de patrimoine":  "CGP",
-    "architecte":                           "Architecte",
-    "architecte d'interieur":               "Architecte d'intérieur",
-    "asiatique a volonte":                  "Restaurant",
-    "restaurant a volonte":                 "Restaurant",
-    "restaurant asiatique":                 "Restaurant",
-    "cliniques dentaires":                  "Clinique dentaire",
-    "comptable":                            "Expert-comptable",
-    "expert comptable":                     "Expert-comptable",
-    "experts-comptables":                   "Expert-comptable",
-    "electricien":                          "Electricien",
-    "garage auto":                          "Garage auto",
-    "hotel 5 etoiles":                      "Hôtel",
-    "plombier":                             "Plombier",
-    "serrurier":                            "Serrurier",
+_NICHE_MAP: dict[str, dict] = {
+    "electricien":          {"label": "Électricien"},
+    "serrurier":            {"label": "Serrurier"},
+    "garage_auto":          {"label": "Garage automobile"},
+    "clinique_dentaire":    {"label": "Clinique dentaire"},
+    "architecte_interieur": {"label": "Architecte d'intérieur"},
+    "architecte":           {"label": "Architecte"},
+    "hotel":                {"label": "Hôtel 5 étoiles"},
+    "cgp":                  {"label": "CGP"},
+    "comptable":            {"label": "Expert-comptable"},
+    "restaurant":           {"label": "Restaurant"},
+    "iad":                  {"label": "IAD"},
+    "agent_immo":           {"label": "Agent immobilier"},
 }
 
 # Label unifié → PROPRIETAIRE
@@ -91,7 +87,8 @@ _PROPRIETAIRE_MAP: dict[str, str] = {
 
 
 def map_categorie(niche_raw: str) -> str:
-    return _NICHE_MAP.get(_normalize(niche_raw), "Non catégorisé")
+    entry = _NICHE_MAP.get(_normalize(niche_raw))
+    return entry["label"] if entry else "Non catégorisé"
 
 
 def map_proprietaire(categorie: str) -> str:
@@ -151,15 +148,18 @@ def is_valid_email(email: str) -> bool:
 # CANAL / LISTE
 # ═══════════════════════════════════════════════════════════════════════════
 
-def determine_canal(email: str, phone: str) -> tuple[str, int]:
+def determine_canal(email: str, phone: str, has_whatsapp) -> tuple[str, int]:
     """
-    Email valide                     → EMAIL  (21)
-    Pas email valide + mobile 06/07  → WHATSAPP (22)
-    Sinon                            → CALL   (25)
+    Email valide                           → EMAIL       (20)
+    Mobile + has_whatsapp=True ou None     → WHATSAPP    (22)
+    Mobile + has_whatsapp=False (vérifié)  → NO_WHATSAPP (26)
+    Sinon                                  → CALL        (25)
     """
     if is_valid_email(email):
         return "EMAIL", LIST_EMAIL
     if phone_type(phone) == "mobile":
+        if has_whatsapp is False:
+            return "NO_WHATSAPP", LIST_NO_WHATSAPP
         return "WHATSAPP", LIST_WHATSAPP
     return "CALL", LIST_CALL
 
@@ -168,20 +168,6 @@ def determine_canal(email: str, phone: str) -> tuple[str, int]:
 # RÈGLES DE SKIP
 # ═══════════════════════════════════════════════════════════════════════════
 
-def _is_future_date(dnc) -> bool:
-    if not dnc:
-        return False
-    try:
-        s = str(dnc)
-        if "T" in s or "Z" in s:
-            s = s.replace("Z", "+00:00")
-            dt = datetime.fromisoformat(s)
-            now = datetime.now(timezone.utc) if dt.tzinfo else datetime.now()
-            return dt > now
-        return date.fromisoformat(s[:10]) > date.today()
-    except (ValueError, TypeError):
-        return False
-
 
 def should_skip(lead: dict) -> tuple[bool, str]:
     """Retourne (skip, raison)."""
@@ -189,10 +175,6 @@ def should_skip(lead: dict) -> tuple[bool, str]:
         return True, "SKIP_ARCHIVED"
     if (lead.get("status") or "").upper() != "NEW":
         return True, "SKIP_STATUS"
-    if lead.get("anti_bot"):
-        return True, "SKIP_ANTIBOT"
-    if _is_future_date(lead.get("do_not_call_before")):
-        return True, "SKIP_DNC"
     company = (lead.get("company") or "").strip()
     email   = (lead.get("email")   or "").strip()
     phone   = (lead.get("phone")   or "").strip()
@@ -255,10 +237,10 @@ def log_row(conn: sqlite3.Connection, **kw) -> None:
 # ═══════════════════════════════════════════════════════════════════════════
 
 _SB_COLS = ",".join([
-    "id", "company", "niche", "city_id", "address", "phone", "email",
+    "id", "company", "niche", "google_category", "city_id", "address", "phone", "email",
     "contact_name", "website_url", "facebook_url", "instagram_url",
     "average_rate", "number_of_rate", "is_archived", "status",
-    "do_not_call_before", "anti_bot",
+    "is_mobile_phone", "has_whatsapp",
 ])
 
 
@@ -274,6 +256,7 @@ def fetch_sb_page(offset: int) -> list[dict]:
         "order":  "id.asc",
         "limit":  PAGE_SIZE,
         "offset": offset,
+        "or":     "(email.not.is.null,phone.ilike.06*,phone.ilike.07*,phone.ilike.+336*,phone.ilike.+337*)",
     }
     resp = requests.get(url, headers=headers, params=params, timeout=30)
     resp.raise_for_status()
@@ -378,7 +361,7 @@ def build_payload(
         "AVERAGE_RATE":      lead.get("average_rate"),
         "NUMBER_OF_RATE":    lead.get("number_of_rate"),
         "CITY_ID":           lead.get("city_id"),
-        "JOB_TITLE":         categorie,
+        "JOB_TITLE":         (lead.get("google_category") or "") or None,
         "CATEGORIE":         categorie,
         "PROPRIETAIRE":      proprietaire,
         "CANAL_PRINCIPAL":   canal,
@@ -438,6 +421,7 @@ Total leads traités    : {stats['total']}
 ─────────────────────────────────
 ✅ Importés email      : {stats['imp_email']} (id=20)
 ✅ Importés WhatsApp   : {stats['imp_wa']} (id=22)
+🚫 Sans WhatsApp       : {stats['imp_nowa']} (id=26)
 📞 À appeler           : {stats['imp_call']} (id=25)
 ─────────────────────────────────
 Par propriétaire :
@@ -476,6 +460,7 @@ def main() -> None:
         "total":     0,
         "imp_email": 0,
         "imp_wa":    0,
+        "imp_nowa":  0,
         "imp_call":  0,
         "skip_dup":  0,
         "skip_arch": 0,
@@ -538,7 +523,7 @@ def main() -> None:
                 email_raw    = (lead.get("email") or "").strip()
                 phone_raw    = (lead.get("phone") or "").strip()
                 phone_clean  = clean_phone(phone_raw)
-                canal, liste_id = determine_canal(email_raw, phone_raw)
+                canal, liste_id = determine_canal(email_raw, phone_raw, lead.get("has_whatsapp"))
 
                 # ── Doublons (sets en mémoire) ─────────────────────────
                 if is_valid_email(email_raw) and email_raw.lower() in existing_emails:
@@ -632,6 +617,8 @@ def main() -> None:
                         stats["imp_email"] += 1
                     elif liste_id == LIST_WHATSAPP:
                         stats["imp_wa"] += 1
+                    elif liste_id == LIST_NO_WHATSAPP:
+                        stats["imp_nowa"] += 1
                     else:
                         stats["imp_call"] += 1
                 else:

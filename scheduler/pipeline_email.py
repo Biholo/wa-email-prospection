@@ -11,6 +11,7 @@ from core.state import increment_errors, increment_processed
 from logic.angle_detector import AngleDetector
 from logic.competitor_resolver import CompetitorResolver
 from logic.message_builder import MessageBuilder
+from core.mailer import RecapTracker
 from services.brevo_service import BrevoService
 from services.pagespeed_service import PageSpeedService
 
@@ -35,6 +36,7 @@ def run_email_pipeline(
     proprietaire: str = company_cfg.get("owner", "")
 
     tag = "[DRY RUN] " if dry_run else ""
+    tracker = RecapTracker("EMAIL", config_name, dry_run)
 
     today_date = date.today()
     if not is_sending_day(today_date):
@@ -81,7 +83,7 @@ def run_email_pipeline(
         niche: str = attrs.get("CATEGORIE", "")
         site_url: str = attrs.get("WEBSITE_URL", "") or ""
 
-        if niche == "Expert-comptable":
+        if "comptable" in niche.lower() or niche == "Expert-comptable":
             continue
 
         log_record: dict = {
@@ -91,6 +93,13 @@ def run_email_pipeline(
             "contact_company": company,
             "canal": "EMAIL",
         }
+
+        if not niche or niche == "Non catégorisé":
+            print(f"{tag}  {company} ({email}) → SKIPPÉ (niche non catégorisée : {niche!r})")
+            log_record.update(status="SKIPPÉ", erreur_detail=f"Niche non catégorisée : {niche!r}")
+            log_entry(log_record)
+            increment_processed()
+            continue
 
         try:
             if city_id and (city_id in blocked_cities or city_id in seen_cities_this_run):
@@ -119,8 +128,6 @@ def run_email_pipeline(
                 lead_email=email,
                 lead_note=lead_note,
             )
-            print(f"{tag}  {company} ({email}) — {len(rep_candidates)} candidat(s) réputation | note lead={lead_note}")
-
             if is_facebook:
                 angle = "INVISIBILITÉ"
             else:
@@ -152,6 +159,15 @@ def run_email_pipeline(
                 lead_note=float(attrs.get("AVERAGE_RATE") or 0),
                 lead_avis=int(attrs.get("NUMBER_OF_RATE") or 0),
             )
+            if not concurrent_data["concurrent_1"]["nom"] and angle == "RÉPUTATION":
+                brevo.move_to_list(email, source_list_id, 27)
+                reason = f"Aucun concurrent trouvé pour l'angle {angle}"
+                print(f"{tag}  {company} ({email}) → HORS SCOPE | {reason}")
+                log_record.update(status="HORS SCOPE", erreur_detail=reason)
+                log_entry(log_record)
+                increment_processed()
+                continue
+
             log_record["concurrent_1"] = concurrent_data["concurrent_1"]["nom"]
             log_record["concurrent_2"] = concurrent_data["concurrent_2"]["nom"]
 
@@ -172,10 +188,34 @@ def run_email_pipeline(
                 increment_processed()
                 continue
 
+            if not messages.get("email_1"):
+                niche_resolved = concurrent_data.get("niche", niche)
+                print(f"{tag}  {company} ({email}) → HORS SCOPE | aucun template pour niche={niche_resolved!r} angle={angle}")
+                log_record.update(status="HORS SCOPE", erreur_detail=f"Aucun template — niche={niche_resolved!r} angle={angle}")
+                log_entry(log_record)
+                increment_processed()
+                continue
+
+            c1 = concurrent_data["concurrent_1"]
+            c2 = concurrent_data["concurrent_2"]
+            note = attrs.get("AVERAGE_RATE") or ""
+            nb_avis = attrs.get("NUMBER_OF_RATE") or ""
+            ville = concurrent_data.get("ville_nom") or city_id
+            sep = "─" * 53
+            print(f"  ── {company} {'─' * max(0, 49 - len(company))}")
+            print(f"  Niche: {niche} | Ville: {ville} | Note: {note}/5 ({nb_avis} avis)")
+            print(f"  C1: {c1['nom']} | {c1['note']}/5 | {c1['nb_avis']} avis")
+            print(f"  C2: {c2['nom']} | {c2['note']}/5 | {c2['nb_avis']} avis")
+            print(f"  Angle: {angle}")
+            for i, key in enumerate(["email_1", "email_2", "email_3"], start=1):
+                msg = messages.get(key, {})
+                print(f"\n  [EMAIL {i}] {msg.get('objet', '')}")
+                print(f"  {msg.get('corps', '')}")
+            print(f"  {sep}")
+
             if dry_run:
                 e1 = messages["email_1"]
                 preview = f"EMAIL_1: {e1['objet']} || {e1['corps'][:200]}"
-                print(f"{tag}  {company} ({email}) | {angle} → DRY_RUN")
                 log_record.update(status="DRY_RUN", erreur_detail=preview)
                 dry_run_records.append({
                     "email": email,
@@ -194,6 +234,7 @@ def run_email_pipeline(
                 log_entry(log_record)
                 increment_processed()
                 sent += 1
+                tracker.record("DRY_RUN", f"{company} | {niche} | {ville} | {angle}")
                 time.sleep(1)
                 continue
 
@@ -220,11 +261,11 @@ def run_email_pipeline(
 
             brevo.move_to_list(email, source_list_id, target_list_id)
 
-            print(f"  {company} ({email}) → OK | {angle} | PageSpeed={pagespeed_score}")
             log_record["status"] = "ENVOYÉ"
             log_entry(log_record)
             increment_processed()
             sent += 1
+            tracker.record("ENVOYÉ", f"{company} | {niche} | {ville} | {angle}")
             time.sleep(delai)
 
         except Exception as exc:
@@ -233,6 +274,7 @@ def run_email_pipeline(
             log_entry(log_record)
             increment_errors()
             increment_processed()
+            tracker.record("ERREUR")
 
     if dry_run and dry_run_records:
         output_path = Path(f"output/dry_run_email_{config_name}_{date.today().isoformat()}.yaml")
@@ -241,3 +283,4 @@ def run_email_pipeline(
         print(f"{tag}EMAIL — résultats écrits dans {output_path}")
 
     print(f"{tag}EMAIL — terminé. {sent} traité(s).")
+    tracker.send(len(contacts))

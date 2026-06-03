@@ -65,7 +65,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--only",
-        choices=["email", "whatsapp"],
+        choices=["email", "whatsapp", "apporteur"],
         default=None,
         help="Run only one pipeline (default: both)",
     )
@@ -121,6 +121,7 @@ def main() -> None:
 
     run_email = args.only in (None, "email")
     run_wa = args.only in (None, "whatsapp")
+    run_apporteur = args.only == "apporteur"
 
     if run_email:
         from scheduler.pipeline_email import run_email_pipeline
@@ -136,6 +137,10 @@ def main() -> None:
             test_phone=test_phone,
             test_mode=args.test_mode,
         )
+
+    if run_apporteur:
+        from scheduler.pipeline_apporteur import run_apporteur_pipeline
+        run_apporteur_pipeline(brevo=svc["brevo"], dry_run=args.dry_run)
 
     print("Done.")
 

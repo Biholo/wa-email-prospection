@@ -1,0 +1,291 @@
+canal: WHATSAPP
+step: 1
+angle: RÉPUTATION
+niches:
+  - label: Électricien
+    key: electricien
+    punchlines:
+      hook:
+        - "Ce que peu d'électriciens réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains décrochent plus d'appels,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des électriciens qui étaient dans la même situation,
+      quelques mois plus tard ils recevaient plus d'appels.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Serrurier
+    key: serrurier
+    punchlines:
+      hook:
+        - "Ce que peu de serruriers réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains décrochent plus d'appels,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des serruriers qui étaient dans la même situation,
+      quelques mois plus tard ils décrochaient plus d'appels qualifiés.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Garage automobile
+    key: garage_auto
+    punchlines:
+      hook:
+        - "Ce que peu de garages réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains fidélisent mieux,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des garages indépendants qui étaient dans la même situation,
+      quelques mois plus tard ils attiraient plus de clients réguliers.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    punchlines:
+      hook:
+        - "Ce que peu de cliniques dentaires réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notées ont fait,"
+        - "La vraie raison pour laquelle certains attirent plus de nouveaux patients,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des cliniques dentaires qui étaient dans la même situation,
+      quelques mois plus tard elles attiraient plus de nouveaux patients.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    punchlines:
+      hook:
+        - "Ce que peu d'architectes d'intérieur réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains attirent de meilleurs clients,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des architectes d'intérieur qui étaient dans la même situation,
+      quelques mois plus tard ils attiraient des projets mieux qualifiés.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Architecte
+    key: architecte
+    punchlines:
+      hook:
+        - "Ce que peu d'architectes réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains décrochent de meilleurs contrats,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des architectes qui étaient dans la même situation,
+      quelques mois plus tard ils recevaient des demandes mieux qualifiées.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Hôtel
+    key: hotel
+    punchlines:
+      hook:
+        - "Ce que peu d'hôteliers réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains remplissent mieux leur planning,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des hôtels qui étaient dans la même situation,
+      quelques mois plus tard leur taux d'occupation avait progressé.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Restaurant
+    key: restaurant
+    punchlines:
+      hook:
+        - "Ce que peu de restaurateurs réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains remplissent mieux leur planning,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des restaurants qui étaient dans la même situation,
+      quelques mois plus tard ils remplissaient mieux leur salle en semaine.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.
+
+  - label: Plombier
+    key: plombier
+    punchlines:
+      hook:
+        - "Ce que peu de plombiers réalisent,"
+        - "Un point que beaucoup négligent,"
+        - "Ce que les mieux notés ont fait,"
+        - "La vraie raison pour laquelle certains décrochent plus d'appels,"
+      closing:
+        - "Vous voulez qu'on en parle 10 minutes ?"
+        - "Si c'est quelque chose qui vous parle, n'hésitez pas à me le faire savoir."
+        - "Et si le timing ne s'y prête pas, pas de souci, revenez vers moi quand vous le souhaitez."
+    context: |
+      Message précédent envoyé à ce prospect :
+      {message_j0}
+
+      Ce message doit en être la suite logique, pas un nouveau départ.
+      J0 a montré l'écart de notation. J3 prouve que c'est rattrapable
+      avec un cas concret et laisse une sortie courtoise.
+      Ne pas répéter : la comparaison concurrents, la note,
+      ni "fiche Google, avis, présentation".
+    message: |
+      {prenom}, une dernière chose,
+
+      Ce genre d'écart se rattrape plus vite qu'on ne le pense.
+      On a accompagné des plombiers qui étaient dans la même situation,
+      quelques mois plus tard ils recevaient plus d'appels.
+
+      Si vous voulez qu'on regarde ça ensemble, je suis disponible 10 minutes.
+      Et si le timing ne s'y prête pas, pas de souci,
+      revenez vers moi quand vous le souhaitez.

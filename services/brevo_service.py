@@ -156,10 +156,11 @@ class BrevoService:
 
         return contacts
 
-    def update_contact(self, email: str, fields: dict) -> None:
-        if not email:
+    def update_contact(self, identifier, fields: dict) -> None:
+        if not identifier:
             return
-        url = f"{BREVO_API_BASE}/contacts/{quote(email, safe='')}"
+        encoded = quote(str(identifier), safe='') if isinstance(identifier, str) else str(identifier)
+        url = f"{BREVO_API_BASE}/contacts/{encoded}"
         with httpx.Client(headers=self.headers, timeout=30) as client:
             resp = client.put(url, json={"attributes": fields})
             resp.raise_for_status()

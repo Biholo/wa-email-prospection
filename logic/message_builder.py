@@ -1,25 +1,12 @@
+import random
 import re
 import unicodedata
 from pathlib import Path
 
-import openai
+import anthropic
 import yaml
 
-from services.openai_service import OpenAIService
-
-_OWNER_WA = "33641552699"  # Kilian — alertes critiques
-
-
-def _notify_openai_quota() -> None:
-    try:
-        from services.wasender_service import WasenderService
-        WasenderService().send_whatsapp(
-            _OWNER_WA,
-            "⚠️ Develly: plus de crédits OpenAI — pipeline arrêté. Rechargez sur platform.openai.com.",
-        )
-        print("[OpenAI] Notification quota envoyée → WA perso")
-    except Exception as e:
-        print(f"[OpenAI] Erreur envoi notification quota : {e}")
+from services.claude_service import ClaudeService
 
 
 # ---------------------------------------------------------------------------
@@ -123,12 +110,18 @@ _SYSTEM_BASE = """
 Tu prospectes en B2B pour Develly (agence web, visibilité, conversion).
 Canal : {canal} — Angle : {angle}
 
+Tu écris AU NOM de Develly pour prospecter {company} ({niche}, {ville}).
+Develly est l'expéditeur. {company} est le destinataire. Ne confonds pas les deux.
+
+Les templates ci-dessous contiennent déjà toutes les vraies données du prospect.
+Toutes les variables sont substituées — génère directement sans demander d'information.
+
 Règles :
 - Conserve sens et structure du template
-- N'invente rien, utilise uniquement les variables fournies
+- N'invente rien, toutes les données réelles sont déjà dans les templates
 - Pas d'emoji, pas de "—"
 - Respecte les sauts de ligne du template
-- Sans prénom : adapte la salutation sans laisser de vide
+- Pas de prénom : normal. "Bonjour," ou "une dernière chose," sans nom sont des formulations finales — génère directement sans demander le prénom
 - Noms de concurrents/entreprises : raccourcis-les dans cet ordre :
   1. Coupe après "|", "–", "-", ":", ","
   2. Retire : société, entreprise, agence, services, sarl, sas, eurl, groupe
@@ -141,6 +134,7 @@ Règles :
 - La variable {niche} est au singulier. Dans les phrases où elle désigne
   un groupe ("les {niche}", "beaucoup de {niche}"), accorde-la au pluriel
   et applique l'élision si nécessaire (ex: "les Électriciens", "d'Électriciens")
+- Note 0/5, 0 avis, ou écart de note vide : donnée non disponible, reformule sans la mentionner
 - Si le nom est entièrement en majuscules sans être un acronyme connu
   (ex: "ENTREPRISE CALVET"), convertis en capitalisation normale : "Calvet"
   après application du short_name
@@ -166,8 +160,8 @@ WhatsApp :
 _SYSTEM_EMAIL = """
 Email :
 - Ligne 1 : OBJET: (court, factuel, non commercial)
-- Signature {expediteur} en fin de message
 - Paragraphes courts, ton professionnel mais accessible
+- Pas de signature après la formule de politesse
 """.strip()
 
 _SYSTEM_NO_CONCURRENT = """
@@ -196,12 +190,17 @@ def _system_format(n: int) -> str:
 def _build_system_prompt(
     canal: str,
     angle: str,
-    expediteur: str,
     no_concurrent: bool,
     templates: list[tuple[int, str, dict]],
+    company: str = "",
+    niche: str = "",
 ) -> str:
     parts = [
-        _SYSTEM_BASE.replace("{canal}", canal).replace("{angle}", angle)
+        _SYSTEM_BASE
+        .replace("{canal}", canal)
+        .replace("{angle}", angle)
+        .replace("{company}", company)
+        .replace("{niche}", niche)
     ]
 
     if canal == "WHATSAPP":
@@ -209,9 +208,9 @@ def _build_system_prompt(
         if len(templates) > 1:
             parts.append(_SYSTEM_WA_SEQUENCE)
     elif canal == "EMAIL":
-        parts.append(_SYSTEM_EMAIL.replace("{expediteur}", expediteur))
+        parts.append(_SYSTEM_EMAIL)
 
-    if no_concurrent and angle == "INVISIBILITÉ":
+    if no_concurrent:
         parts.append(_SYSTEM_NO_CONCURRENT)
 
     tpl_blocks = []
@@ -247,6 +246,36 @@ def _clean_placeholders(text: str) -> str:
     return re.sub(r'\{[a-zA-Z_][a-zA-Z0-9_]*\}', '', text).strip()
 
 
+def _find_niche_entry(niches: list[dict], niche_val: str) -> dict | None:
+    """Match niche_val to the best entry in a per-niche template list.
+
+    Scoring: exact normalized match > longest partial word match > no match.
+    'Partial' means every key word is a substring of some niche word
+    (handles 'auto' ⊂ 'automobile', 'interieur' ⊂ "d'interieur", etc.)
+    Most-specific key (most words) wins on ties.
+    """
+    def _norm_key(s: str) -> str:
+        return _normalize(s.replace("_", " "))
+
+    n_norm = _norm_key(niche_val)
+    n_words = n_norm.split()
+
+    def score(entry: dict) -> int:
+        k_norm = _norm_key(entry.get("key", ""))
+        k_words = k_norm.split()
+        if k_norm == n_norm:
+            return len(k_words) + 100  # exact match bonus
+        if all(any(kw in nw for nw in n_words) for kw in k_words):
+            return len(k_words)
+        return -1
+
+    scored = [(score(e), e) for e in niches]
+    valid = [(s, e) for s, e in scored if s >= 0]
+    if not valid:
+        return None
+    return max(valid, key=lambda x: x[0])[1]
+
+
 def _parse_multi_response(raw: str, canal: str) -> list[dict]:
     blocks = re.split(r'===MESSAGE_\d+===', raw)
     blocks = [b.strip() for b in blocks if b.strip()]
@@ -274,13 +303,26 @@ class MessageBuilder:
     def __init__(self, config_name: str, config: dict):
         self._config_name   = config_name
         self._config        = config
-        self._openai        = OpenAIService()
+        self._claude        = ClaudeService()
         self._templates_dir = Path(f"templates/{config_name}")
 
     def _template_path(self, angle: str, canal: str, step: int) -> Path:
         a = _ANGLE_SLUG.get(angle, angle.lower())
         c = _CANAL_SLUG.get(canal, canal.lower())
         s = _STEP_SLUG.get(step, f"j{step}")
+        if canal == "WHATSAPP":
+            wa_dir = self._templates_dir / "wa"
+            if wa_dir.exists():
+                matches = sorted(wa_dir.glob(f"*_{a}_{s}.yaml"))
+                if matches:
+                    return matches[0]
+        elif canal == "EMAIL":
+            email_dir = self._templates_dir / "email"
+            if email_dir.exists():
+                # Positional match: step 0→1st file, 1→2nd, 2→3rd (sorted alpha)
+                matches = sorted(email_dir.glob(f"*_{a}_*.yaml"))
+                if step < len(matches):
+                    return matches[step]
         return self._templates_dir / f"{a}_{c}_{s}.yaml"
 
     def _build_variables(self, contact: dict, concurrent_data: dict) -> dict[str, str]:
@@ -296,7 +338,7 @@ class MessageBuilder:
         avis_val = attrs.get("NUMBER_OF_RATE") or concurrent_data.get("lead_avis")
 
         return {
-            "prenom":               str(attrs.get("PRENOM") or ""),
+            "prenom":               str(attrs.get("PRENOM") or attrs.get("FIRSTNAME") or ""),
             "company":              str(attrs.get("COMPANY") or ""),
             "niche":                niche,
             "ville":                concurrent_data.get("ville_nom") or str(attrs.get("CITY_ID") or ""),
@@ -306,11 +348,11 @@ class MessageBuilder:
             "expediteur":           str(company_cfg.get("sender") or ""),
             "calendly":             str(company_cfg.get("calendly") or ""),
             "concurrent_1_nom":     str(c1.get("nom") or ""),
-            "concurrent_1_note":    _note(c1.get("note")),
-            "concurrent_1_nb_avis": str(c1.get("nb_avis") or ""),
+            "concurrent_1_note":    _note(c1.get("note")) or "0",
+            "concurrent_1_nb_avis": str(c1.get("nb_avis") or "0"),
             "concurrent_2_nom":     str(c2.get("nom") or ""),
-            "concurrent_2_note":    _note(c2.get("note")),
-            "concurrent_2_nb_avis": str(c2.get("nb_avis") or ""),
+            "concurrent_2_note":    _note(c2.get("note")) or "0",
+            "concurrent_2_nb_avis": str(c2.get("nb_avis") or "0"),
             "ecart_note":           _note(concurrent_data.get("ecart_note")),
             "ecart_avis":           str(concurrent_data.get("ecart_avis") or "0"),
         }
@@ -332,15 +374,35 @@ class MessageBuilder:
         for step in steps:
             tpl_path = self._template_path(angle, canal, step)
             if not tpl_path.exists():
-                print(f"  [SKIP] template introuvable : {tpl_path.name}")
                 continue
-            tpl    = yaml.safe_load(tpl_path.read_text(encoding="utf-8"))
-            filled = subst(tpl.get("message", ""))
-            if canal == "EMAIL" and tpl.get("objet"):
-                filled = f"OBJET: {subst(tpl['objet'])}\n\n{filled}"
-            punchlines = tpl.get("punchlines", {}) if canal == "WHATSAPP" else {}
+            tpl = yaml.safe_load(tpl_path.read_text(encoding="utf-8"))
+
+            if "niches" in tpl:
+                niche_val = variables.get("niche", "")
+                entry = _find_niche_entry(tpl["niches"], niche_val)
+                if entry is None:
+                    continue
+                filled = subst(entry.get("message", ""))
+                if canal == "EMAIL":
+                    raw_objet = entry.get("objet", "")
+                    if isinstance(raw_objet, list):
+                        raw_objet = random.choice(raw_objet) if raw_objet else ""
+                    if raw_objet:
+                        filled = f"OBJET: {subst(raw_objet)}\n\n{filled}"
+                punchlines = entry.get("punchlines", {}) if canal == "WHATSAPP" else {}
+            else:
+                filled = subst(tpl.get("message", ""))
+                if canal == "EMAIL":
+                    raw_objet = tpl.get("objet", "")
+                    if isinstance(raw_objet, list):
+                        raw_objet = random.choice(raw_objet) if raw_objet else ""
+                    if raw_objet:
+                        filled = f"OBJET: {subst(raw_objet)}\n\n{filled}"
+                punchlines = tpl.get("punchlines", {}) if canal == "WHATSAPP" else {}
+
+            filled = re.sub(r'Bonjour\s+,', 'Bonjour,', filled)
+            filled = re.sub(r'(?m)^, ', '', filled)  # "{prenom}, texte" → ", texte" when prenom empty
             loaded.append((step, filled, punchlines))
-            print(f"  [LOAD] {tpl_path.name} → step {step}")
 
         return loaded
 
@@ -362,41 +424,49 @@ class MessageBuilder:
         system_prompt = _build_system_prompt(
             canal=canal,
             angle=angle,
-            expediteur=variables["expediteur"],
             no_concurrent=variables.get("_no_concurrent", False),
             templates=loaded,
+            company=variables.get("company", ""),
+            niche=variables.get("niche", ""),
         )
 
-        filled_vars = {k: v for k, v in variables.items() if v and not k.startswith("_")}
-        empty_vars  = [k for k, v in variables.items() if not v and not k.startswith("_")]
-        print(f"\n  [{canal}] appel OpenAI — {len(loaded)} template(s)")
-        print(f"  → variables remplies  : {filled_vars}")
-        print(f"  → variables vides     : {empty_vars}")
-        print(f"  → system prompt :\n{system_prompt}")
-
         try:
-            response = self._openai._client.chat.completions.create(
-                model=self._openai.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user",   "content": "Génère les messages."},
-                ],
-                temperature=0.7,
+            prenom_note = (
+                " Pas de prénom — normal, les salutations sont déjà adaptées."
+                if not variables.get("prenom") else ""
+            )
+            raw, _ = self._claude.complete(
+                system=system_prompt,
+                user=(
+                    f"Prospect : {variables.get('company')} ({variables.get('ville')}).{prenom_note}\n"
+                    "Génère directement au format ===MESSAGE_N===."
+                ),
                 max_tokens=1200,
             )
-        except openai.RateLimitError as exc:
-            if "insufficient_quota" in str(exc):
-                _notify_openai_quota()
+        except anthropic.RateLimitError as exc:
+            print(f"  [Claude] RateLimitError : {exc}")
             raise
-        raw   = response.choices[0].message.content.strip()
-        usage = response.usage
-        print(f"  ← réponse :\n{raw}")
-        print(f"  ← {usage.prompt_tokens}p + {usage.completion_tokens}c tokens")
 
         # Filet de sécurité : SKIP retourné par le LLM
         if raw.strip().upper() == "SKIP":
             print(f"  ← SKIP LLM — {canal} non généré (prospect hors niche)")
             return {"__skip__": True}
+
+        # Détection réponse hors format (LLM confus / demande de variables)
+        if "===MESSAGE_" not in raw:
+            print(f"  [Claude] Réponse hors format ({canal} {angle}) — ignoré")
+            print(f"  [Claude] Début réponse : {raw[:120]!r}")
+            remaining = set()
+            for _, content, _ in loaded:
+                remaining.update(re.findall(r'\{([a-zA-Z_][a-zA-Z0-9_]*)\}', content))
+            if remaining:
+                print(f"  [Claude] Placeholders NON substitués dans templates : {sorted(remaining)}")
+            else:
+                print("  [Claude] Templates complets (aucun placeholder non substitué)")
+            for i, (step, content, _) in enumerate(loaded, start=1):
+                preview = content[:300].replace("\n", "↵")
+                print(f"  [Claude] Template {i} (step={step}) → {preview!r}")
+            return {}
 
         parsed  = _parse_multi_response(raw, canal)
         results = {}

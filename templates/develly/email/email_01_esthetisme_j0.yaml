@@ -1,0 +1,287 @@
+canal: EMAIL
+step: 0
+sequence: 1/3
+angle: ESTHÉTISME
+note: >
+  Premier email de la séquence. Objectif : créer la curiosité et planter
+  le problème visuel sans agressivité commerciale. Pas de lien, pas de CTA
+  forcé. On observe, on constate, on ouvre une porte.
+
+niches:
+
+  - label: Électricien
+    key: electricien
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "{company} vs les électriciens de {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les électriciens de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Ce qui m'a frappé : un client qui hésite entre deux électriciens
+      ne choisit pas forcément le meilleur technicien.
+      Il choisit celui dont le site lui a inspiré le plus confiance.
+
+      Certifications visibles, chantiers mis en avant, formulaire de devis clair :
+      ce sont des détails qui font basculer la décision avant même le premier appel.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Serrurier
+    key: serrurier
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "{company} vs les serruriers de {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les serruriers de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Dans votre secteur, la confiance est le premier critère de choix.
+      Un client qui tombe sur votre nom en situation d'urgence va décider
+      en quelques secondes : tarifs affichés, certifications visibles,
+      avis clients accessibles.
+
+      Sans ces éléments en place, le doute l'envoie vers le concurrent suivant.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Garage automobile
+    key: garage_auto
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "{company} vs les garages de {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les garages indépendants de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Avant de confier sa voiture, un client compare toujours.
+      Il cherche l'équipe, les services proposés, les avis.
+      Ce n'est pas le garage le moins cher qui gagne, c'est celui
+      qui inspire le plus confiance avant le premier appel.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Clinique dentaire
+    key: clinique_dentaire
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "{company} vs les cliniques de {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les cliniques dentaires de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Un patient anxieux prend sa décision en ligne avant même de décrocher
+      son téléphone. Il cherche l'équipe, les soins proposés, les avis,
+      et une raison de faire confiance.
+
+      Un site qui met ces éléments en avant déclenche la prise de RDV.
+      Un site qui ne le fait pas pousse le patient vers la clinique suivante.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Architecte d'intérieur
+    key: architecte_interieur
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "Votre vitrine digitale à {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les architectes d'intérieur de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Dans votre métier, le site est votre première réalisation
+      aux yeux d'un prospect. Avant même de vous contacter,
+      il juge votre style, votre univers, votre niveau.
+
+      Un portfolio soigné et un positionnement clair font pencher
+      la décision vers vous. Un site générique ou sous-exploité
+      laisse le projet partir ailleurs.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Architecte
+    key: architecte
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "Votre vitrine digitale à {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les cabinets d'architecture de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Un client qui cherche un architecte juge le cabinet sur son site
+      avant le premier rendez-vous. Style, méthode, types de projets :
+      ces éléments filtrent les bons projets et justifient des honoraires
+      plus élevés.
+
+      Sans un site qui reflète vraiment votre niveau, vous restez
+      un prestataire parmi d'autres dans la comparaison.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Hôtel
+    key: hotel
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "Réservations directes : {company} vs {concurrent_1_nom}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les hôtels de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Un voyageur qui hésite entre deux établissements ne réserve pas
+      forcément par Booking. Si votre site lui vend l'expérience avant
+      la chambre, il réserve en direct, et vous économisez la commission.
+
+      Un site qui ne crée pas ce désir laisse filer la réservation
+      vers les OTA, à chaque fois.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Restaurant
+    key: restaurant
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "Réservations directes : {company} vs {concurrent_1_nom}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les restaurants de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Un client qui cherche où réserver passe d'abord par le site.
+      Des photos qui donnent envie, une carte lisible, une réservation
+      directe fluide : ce sont les éléments qui captent le couvert
+      sans passer par TheFork et sa commission.
+
+      Sans ça, chaque réservation en ligne a un coût silencieux.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,
+      
+
+  - label: Plombier
+    key: plombier
+    variables:
+      - "{prenom}"
+      - "{company}"
+      - "{ville}"
+      - "{concurrent_1_nom}"
+      - "{concurrent_2_nom}"
+    objet:
+      - "Une observation rapide sur {company}"
+      - "J'ai regardé votre site ce matin"
+      - "{company} vs les plombiers de {ville}"
+    message: |
+      Bonjour {prenom},
+
+      En faisant une veille sur les plombiers de {ville},
+      j'ai comparé le site de {company} avec ceux de
+      {concurrent_1_nom} et {concurrent_2_nom}.
+
+      Un client qui cherche un plombier en urgence ou pour un projet
+      prend sa décision en quelques secondes. Un site qui affiche
+      clairement les certifications, les types d'intervention et
+      une demande de devis simple, c'est souvent ce qui fait pencher
+      la décision avant le premier appel.
+
+      C'est quelque chose que vous avez déjà eu l'occasion de travailler ?
+
+      Bonne journée,

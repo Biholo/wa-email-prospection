@@ -1,8 +1,8 @@
 import math
+import re
 from datetime import datetime
 
 import httpx
-import whois as whois_mod
 from bs4 import BeautifulSoup
 
 
@@ -26,43 +26,31 @@ class AngleDetector:
 
         for angle in self.priorite:
             if angle in excluded:
-                print(f"       [Angle] {angle} → exclu")
                 continue
 
             if angle == "INVISIBILITÉ":
                 site = attrs.get("WEBSITE_URL") or ""
                 if not site.strip():
-                    print(f"       [Angle] INVISIBILITÉ → DÉCLENCHÉ (pas de site)")
                     return "INVISIBILITÉ"
-                print(f"       [Angle] INVISIBILITÉ → skip (site: {site.strip()})")
 
             elif angle == "RÉPUTATION":
                 note_raw = attrs.get("AVERAGE_RATE")
-                if note_raw in (None, ""):
-                    print(f"       [Angle] RÉPUTATION → skip (note absente)")
-                else:
+                if note_raw not in (None, ""):
                     try:
                         lead_note = float(note_raw)
-                        triggered, reason = self._can_trigger_reputation(lead_note, candidates)
+                        triggered, _ = self._can_trigger_reputation(lead_note, candidates)
                         if triggered:
-                            print(f"       [Angle] RÉPUTATION → DÉCLENCHÉ ({reason})")
                             return "RÉPUTATION"
-                        print(f"       [Angle] RÉPUTATION → skip ({reason})")
                     except (ValueError, TypeError):
-                        print(f"       [Angle] RÉPUTATION → skip (note invalide: {note_raw!r})")
+                        pass
 
             elif angle == "ESTHÉTISME":
                 site = attrs.get("WEBSITE_URL") or ""
-                if not site.strip():
-                    print(f"       [Angle] ESTHÉTISME → skip (pas de site)")
-                else:
+                if site.strip():
                     score = self._score_esthetisme(site.strip(), pagespeed_score)
                     if score < 50:
-                        print(f"       [Angle] ESTHÉTISME → DÉCLENCHÉ (score {score} < 50)")
                         return "ESTHÉTISME"
-                    print(f"       [Angle] ESTHÉTISME → skip (score {score} >= 50)")
 
-        print(f"       [Angle] aucun angle déclenché")
         return None
 
     def explain_skip(
@@ -147,14 +135,7 @@ class AngleDetector:
         if not url.startswith(("http://", "https://")):
             url = f"https://{url}"
 
-        print(f"       [Esthétisme] URL: {url}")
-
-        annee = self._get_annee_domaine(url)
         ps_pts = self._pagespeed_to_points(pagespeed_score)
-        age_pts = self._annee_to_points(annee)
-
-        print(f"       [Esthétisme] PageSpeed brut={pagespeed_score} → {ps_pts}pts")
-        print(f"       [Esthétisme] Domaine création={annee} → {age_pts}pts")
 
         try:
             resp = httpx.get(
@@ -164,20 +145,18 @@ class AngleDetector:
                 headers={"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1)"},
             )
             html = resp.text
-            print(f"       [Esthétisme] HTTP {resp.status_code} ({len(html)} chars)")
-        except Exception as e:
-            print(f"       [Esthétisme] HTTP erreur: {e}")
+        except Exception:
             html = ""
 
-        resp_pts, resp_detail = self._check_responsive(html)
-        fw_pts, fw_detail = self._detect_framework(html)
+        if html:
+            red_flags = self._check_red_flags(html)
+            if red_flags:
+                return 0
 
-        print(f"       [Esthétisme] Responsive → {resp_pts}pts ({resp_detail})")
-        print(f"       [Esthétisme] Framework   → {fw_pts}pts ({fw_detail})")
+        resp_pts, _ = self._check_responsive(html)
+        fw_pts, _ = self._detect_framework(html)
 
-        score = round(ps_pts * 0.40 + age_pts * 0.20 + resp_pts * 0.20 + fw_pts * 0.20)
-        print(f"       [Esthétisme] Score final = {ps_pts}×0.4 + {age_pts}×0.2 + {resp_pts}×0.2 + {fw_pts}×0.2 = {score}/100")
-
+        score = round(ps_pts * 0.50 + resp_pts * 0.25 + fw_pts * 0.25)
         return score
 
     @staticmethod
@@ -193,28 +172,48 @@ class AngleDetector:
         return 100
 
     @staticmethod
-    def _get_annee_domaine(url: str) -> int | None:
+    def _check_red_flags(html: str) -> list[str]:
+        flags = []
         try:
-            domain = whois_mod.whois(url)
-            creation = domain.creation_date
-            if isinstance(creation, list):
-                creation = creation[0]
-            return creation.year if creation else None
-        except Exception:
-            return None
+            soup = BeautifulSoup(html, "html.parser")
+            now_year = datetime.now().year
 
-    @staticmethod
-    def _annee_to_points(annee: int | None) -> int:
-        if annee is None:
-            return 50
-        age = datetime.now().year - annee
-        if age > 8:
-            return 0
-        if age > 5:
-            return 30
-        if age > 2:
-            return 60
-        return 100
+            # 1. Copyright year in footer > 2 ans
+            footer = soup.find("footer")
+            copyright_area = footer.get_text(" ", strip=True) if footer else html[-3000:]
+            copyright_blocks = re.findall(r'(?:©|copyright).{0,80}', copyright_area.lower())
+            most_recent_year = None
+            for block in copyright_blocks:
+                years = [int(y) for y in re.findall(r'\d{4}', block) if 2000 <= int(y) <= now_year]
+                if years:
+                    most_recent_year = max(most_recent_year or 0, max(years))
+            if most_recent_year and (now_year - most_recent_year) > 2:
+                flags.append(f"copyright {most_recent_year} (+{now_year - most_recent_year} ans)")
+
+            # 2. Pas de mentions légales
+            full_lower = html.lower()
+            legal_kw = [
+                "mentions légales", "mentions-légales", "mentions_légales",
+                "politique de confidentialité", "données personnelles",
+                "cgu", "cgv",
+            ]
+            if not any(kw in full_lower for kw in legal_kw):
+                flags.append("pas de mentions légales")
+
+            # 3a. Plusieurs H1
+            h1s = soup.find_all("h1")
+            if len(h1s) > 1:
+                flags.append(f"{len(h1s)} balises H1")
+
+            # 3b. Pas de balise Title
+            title = soup.find("title")
+            if not title or not title.get_text(strip=True):
+                flags.append("pas de balise Title")
+
+        except Exception:
+            pass
+
+        return flags
 
     @staticmethod
     def _check_responsive(html: str) -> tuple[int, str]:
