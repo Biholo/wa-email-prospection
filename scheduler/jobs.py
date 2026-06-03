@@ -11,7 +11,7 @@ import yaml
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from scheduler.pipeline import run_wa_only
+from scheduler.pipeline import run_email_only, run_wa_only
 from scheduler.pipeline_apporteur import run_apporteur_pipeline
 from scheduler.recap import run_daily_recap
 from services.brevo_service import BrevoService
@@ -26,8 +26,18 @@ def init_scheduler() -> BackgroundScheduler:
         sched_cfg = config.get("scheduler", {})
         tz: str = sched_cfg.get("timezone", "Europe/Paris")
 
-        # ── WA nouveaux (wa_1) — 12h00 lun-ven ───────────────────────
-        cron_wa1: str = sched_cfg.get("cron_wa1", "0 12 * * 1-5")
+        # ── Email matin — 10h00 lun-ven ──────────────────────────────
+        cron_email1: str = sched_cfg.get("cron_email1", "0 10 * * 1-5")
+        scheduler.add_job(
+            run_email_only,
+            CronTrigger.from_crontab(cron_email1, timezone=tz),
+            args=[config_name],
+            id=f"email1_{config_name}",
+            replace_existing=True,
+        )
+
+        # ── WA nouveaux — 11h00 lun-ven ──────────────────────────────
+        cron_wa1: str = sched_cfg.get("cron_wa1", "0 11 * * 1-5")
         scheduler.add_job(
             run_wa_only,
             CronTrigger.from_crontab(cron_wa1, timezone=tz),
@@ -36,12 +46,22 @@ def init_scheduler() -> BackgroundScheduler:
             replace_existing=True,
         )
 
-        # ── WA relances (wa_2) — 17h00 lun-ven ───────────────────────
-        cron_wa2: str = sched_cfg.get("cron_wa2", "0 17 * * 1-5")
+        # ── Email après-midi — 14h00 lun-ven ─────────────────────────
+        cron_email2: str = sched_cfg.get("cron_email2", "0 14 * * 1-5")
+        scheduler.add_job(
+            run_email_only,
+            CronTrigger.from_crontab(cron_email2, timezone=tz),
+            args=[config_name],
+            id=f"email2_{config_name}",
+            replace_existing=True,
+        )
+
+        # ── WA tous (nouveaux + relances) — 17h30 lun-ven ────────────
+        cron_wa2: str = sched_cfg.get("cron_wa2", "30 17 * * 1-5")
         scheduler.add_job(
             run_wa_only,
             CronTrigger.from_crontab(cron_wa2, timezone=tz),
-            args=[config_name, "relances"],
+            args=[config_name, "all"],
             id=f"wa2_{config_name}",
             replace_existing=True,
         )

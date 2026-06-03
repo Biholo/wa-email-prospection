@@ -6,10 +6,11 @@ company:
   owner:    "Develly"   # filters contacts by the PROPRIETAIRE Brevo field
 
 scheduler:
-  cron:     "0 9 * * 1-5"   # email pipeline
-  cron_wa1: "0 12 * * 1-5"  # WA nouveaux (wa_1)
-  cron_wa2: "0 17 * * 1-5"  # WA relances (wa_2)
-  timezone: "Europe/Paris"
+  cron_email1: 0 10 * * 1-5    # email matin
+  cron_wa1:    0 11 * * 1-5    # WA nouveaux
+  cron_email2: 0 14 * * 1-5    # email après-midi
+  cron_wa2:    30 17 * * 1-5   # WA tous (nouveaux + relances)
+  timezone:    Europe/Paris
 
 # Brevo lists used by each pipeline
 workflow:
@@ -20,7 +21,7 @@ workflow:
   whatsapp:
     source_list_id: 22   # WORKFLOW WHATSAPP
     cold_list_id:   25   # À APPELER (fallback when max messages reached)
-    max_per_day:    5
+    max_per_day:    8
 
 rules:
   send_delay: 0        # seconds between each contact (shared email + WA)
