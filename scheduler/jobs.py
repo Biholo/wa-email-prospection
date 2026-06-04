@@ -66,12 +66,20 @@ def init_scheduler() -> BackgroundScheduler:
             replace_existing=True,
         )
 
-    # ── Apporteur d'affaire — 9h00 lun-ven ──────────────────────────────
+    # ── Apporteur d'affaire — 9h00 et 13h00 lun-ven ─────────────────────
+    brevo_apporteur = BrevoService()
     scheduler.add_job(
         run_apporteur_pipeline,
         CronTrigger.from_crontab("0 9 * * 1-5", timezone="Europe/Paris"),
-        kwargs={"brevo": BrevoService()},
-        id="apporteur",
+        kwargs={"brevo": brevo_apporteur},
+        id="apporteur_matin",
+        replace_existing=True,
+    )
+    scheduler.add_job(
+        run_apporteur_pipeline,
+        CronTrigger.from_crontab("0 13 * * 1-5", timezone="Europe/Paris"),
+        kwargs={"brevo": brevo_apporteur},
+        id="apporteur_midi",
         replace_existing=True,
     )
 

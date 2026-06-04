@@ -9,7 +9,7 @@ from services.brevo_service import BrevoService
 
 SOURCE_LIST_ID = 20
 TARGET_LIST_ID = 30
-MAX_PAR_JOUR = 20
+MAX_PAR_JOUR = 15
 
 
 def run_apporteur_pipeline(

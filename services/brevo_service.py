@@ -51,7 +51,7 @@ class BrevoService:
             params: dict = {"limit": _PAGE_SIZE, "offset": offset, "listIds": liste_id}
             if brevo_filter:
                 params["filter"] = brevo_filter
-            with httpx.Client(headers=self.headers, timeout=30) as client:
+            with httpx.Client(headers=self.headers, timeout=90) as client:
                 resp = client.get(url, params=params)
                 resp.raise_for_status()
                 data = resp.json()
