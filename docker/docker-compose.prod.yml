@@ -1,0 +1,29 @@
+name: develly-prod
+
+services:
+  server:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: develly-server
+    expose:
+      - "8000"
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+      - ../config:/app/config
+      - ../output:/app/output
+    restart: unless-stopped
+    networks:
+      - develly-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.develly.rule=Host(`api.develly.io`)"
+      - "traefik.http.routers.develly.entrypoints=websecure"
+      - "traefik.http.routers.develly.tls.certresolver=letsencrypt"
+      - "traefik.http.services.develly.loadbalancer.server.port=8000"
+
+networks:
+  develly-network:
+    driver: bridge
