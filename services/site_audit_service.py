@@ -701,7 +701,7 @@ class SiteAuditService:
 
         (
             html_res, sitemap_res, robots_res, llms_res,
-            redirect_res, mob_res, desk_res,
+            redirect_res, mob_res, desk_res, not_found_res,
         ) = await asyncio.gather(
             self._fetch_html_rendered(url, _OUTPUT_SCREENSHOTS_DIR),
             self._fetch_with_text(root + "/sitemap.xml"),
@@ -710,6 +710,7 @@ class SiteAuditService:
             self._check_redirect(domain),
             self.psi.analyse_full_async(url, "mobile"),
             self.psi.analyse_full_async(url, "desktop"),
+            self._fetch_with_text(root + "/develly-audit-404-probe"),
             return_exceptions=True,
         )
 
@@ -724,16 +725,27 @@ class SiteAuditService:
         redirect_ok, redirect_code = redirect_res if isinstance(redirect_res, tuple) else (False, 0)
         mob = mob_res if isinstance(mob_res, dict) else {}
         desk = desk_res if isinstance(desk_res, dict) else {}
+        not_found_status = not_found_res[0] if isinstance(not_found_res, tuple) else 0
+        custom_404_ok = not_found_status == 404
 
         internal_links = self._extract_internal_links(soup, domain)[:10]
-        link_statuses = await asyncio.gather(
+        abs_img_urls = [
+            img.get("src", "") for img in soup.find_all("img")
+            if (img.get("src") or "").startswith("http")
+        ][:5]
+        all_url_statuses = await asyncio.gather(
             *[self._fetch_status(lnk) for lnk in internal_links],
+            *[self._fetch_status(img) for img in abs_img_urls],
             return_exceptions=True,
         )
+        link_statuses = all_url_statuses[:len(internal_links)]
+        img_statuses = all_url_statuses[len(internal_links):]
         broken_count = sum(1 for s in link_statuses if isinstance(s, int) and s == 404)
+        broken_img_count = sum(1 for s in img_statuses if isinstance(s, int) and s >= 400)
 
         perf = self._block_perf(mob, desk)
-        seo = self._block_seo(soup, url, domain, sitemap_ok, robots_ok, redirect_ok, redirect_code, internal_links, broken_count)
+        seo = self._block_seo(soup, url, domain, sitemap_ok, robots_ok, redirect_ok, redirect_code,
+                              internal_links, broken_count, custom_404_ok, broken_img_count, len(abs_img_urls))
         legal = self._block_legal(soup)
         conv = self._block_conv(soup, html)
         mobile = self._block_mobile(soup, mob)
@@ -888,6 +900,17 @@ class SiteAuditService:
             "Maintenir Referrer-Policy." if rp
                 else "Ajouter Referrer-Policy: strict-origin-when-cross-origin"))
 
+        cc = h.get("cache-control", "")
+        cc_ok = bool(cc) and any(kw in cc.lower() for kw in ["max-age", "s-maxage", "public", "private", "no-store"])
+        checks.append(_c("cache_control", "Cache-Control présent",
+            "pass" if cc_ok else "warning",
+            cc[:60] if cc else "-",
+            2 if cc_ok else 0, 2, "medium",
+            f"Cache-Control configuré - réduit les rechargements inutiles pour les visites répétées." if cc_ok
+                else "Cache-Control absent - les navigateurs re-téléchargent les ressources à chaque visite.",
+            "Maintenir Cache-Control." if cc_ok
+                else "Configurer Cache-Control: public, max-age=31536000 sur les ressources statiques."))
+
         security_max = sum(c["maxPoints"] for c in checks)
         security_earned = sum(c["points"] for c in checks)
         security_score = round(security_earned / security_max * 100) if security_max else 0
@@ -1036,8 +1059,22 @@ class SiteAuditService:
     # ------------------------------------------------------------------
 
     def _block_seo(self, soup, url, domain, sitemap_ok, robots_ok,
-                   redirect_ok, redirect_code, internal_links, broken_count):
+                   redirect_ok, redirect_code, internal_links, broken_count,
+                   custom_404_ok=False, broken_img_count=0, img_count_checked=0):
         checks = []
+
+        # meta robots noindex
+        robots_meta = soup.find("meta", attrs={"name": re.compile("^robots$", re.I)})
+        robots_content = (robots_meta.get("content", "") if robots_meta else "").lower()
+        is_noindex = "noindex" in robots_content
+        checks.append(_c("meta_noindex", "Page indexable (pas de noindex)",
+            "fail" if is_noindex else "pass",
+            robots_content if robots_meta else "index, follow (défaut)",
+            0 if is_noindex else 3, 3, "critical",
+            "meta robots noindex détecté - ta page est exclue des résultats Google." if is_noindex
+                else "Page indexable - aucun noindex détecté, Google peut indexer cette page.",
+            "Supprimer noindex sauf pour les pages intentionnellement exclues (admin, doublons)." if is_noindex
+                else "Maintenir l'indexation."))
 
         # title
         title_tag = soup.find("title")
@@ -1260,6 +1297,18 @@ class SiteAuditService:
                     f"La majorité des images ({len(imgs)-with_alt}/{len(imgs)}) n'ont pas d'alt  -  mauvais signal SEO.",
                     "Ajouter des attributs alt descriptifs sur toutes les images."))
 
+        # broken images
+        if img_count_checked > 0:
+            bi_status = "pass" if broken_img_count == 0 else ("warning" if broken_img_count <= 1 else "fail")
+            checks.append(_c("broken_images", "Images accessibles (src valides)",
+                bi_status,
+                f"{broken_img_count} cassée(s) sur {img_count_checked} vérifiée(s)",
+                1 if broken_img_count == 0 else 0, 1, "medium",
+                "Toutes les images vérifiées sont accessibles." if broken_img_count == 0
+                    else f"{broken_img_count} image(s) inaccessible(s) - mauvaise UX et perte de contenu indexé.",
+                "Continuer à surveiller les images après chaque mise à jour." if broken_img_count == 0
+                    else "Corriger les URLs des images qui retournent une erreur (404 / 403)."))
+
         # broken links
         if not internal_links:
             checks.append(_c("no_broken_links", "Pas de liens cassés (10 premiers)", "pass",
@@ -1276,6 +1325,16 @@ class SiteAuditService:
                 f"{broken_count} lien(s) cassé(s) sur {len(internal_links)}", 0, 1, "medium",
                 f"{broken_count} lien(s) cassé(s)  -  mauvaise expérience et perte de PageRank.",
                 "Identifier et corriger les liens qui retournent une erreur 404."))
+
+        # custom 404
+        checks.append(_c("custom_404", "Page 404 personnalisée",
+            "pass" if custom_404_ok else "warning",
+            "Retourne HTTP 404" if custom_404_ok else "Ne retourne pas 404",
+            2 if custom_404_ok else 0, 2, "medium",
+            "Le serveur retourne bien 404 sur les pages inexistantes - les crawlers ne gaspillent pas leur budget." if custom_404_ok
+                else "Les pages inexistantes ne retournent pas 404 - Google peut crawler des erreurs inutilement.",
+            "Maintenir la page 404." if custom_404_ok
+                else "Configurer une page 404 personnalisée qui retourne bien le code HTTP 404."))
 
         # Open Graph image (2 pts)
         og_image = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "og:image"})
@@ -1300,6 +1359,18 @@ class SiteAuditService:
                 else "Twitter Card absente - partages sur X sans apercu visuel.",
             "Maintenir twitter:card." if tc_ok
                 else "Ajouter <meta name=\"twitter:card\" content=\"summary_large_image\">."))
+
+        # favicon
+        favicon_tag = soup.find("link", rel=lambda r: r and "icon" in (" ".join(r) if isinstance(r, list) else str(r)).lower())
+        favicon_ok = favicon_tag is not None
+        checks.append(_c("favicon", "Favicon présent",
+            "pass" if favicon_ok else "warning",
+            favicon_tag.get("href", "-")[:60] if favicon_ok else "-",
+            1 if favicon_ok else 0, 1, "low",
+            "Favicon présent - renforce l'identité visuelle dans les onglets navigateur." if favicon_ok
+                else "Aucun favicon - mauvaise impression dans les onglets et bookmarks.",
+            "Maintenir le favicon." if favicon_ok
+                else "Ajouter <link rel=\"icon\" href=\"/favicon.ico\"> dans le <head>."))
 
         # Word count (informatif, 0 pts)
         body = soup.find("body")

@@ -15,6 +15,7 @@ router = APIRouter(tags=["audit"])
 class AuditRequest(BaseModel):
     url: str
     max_pages: int = 1
+    top_checks: int | None = None
 
 
 class EmailCaptureRequest(BaseModel):
@@ -48,6 +49,16 @@ async def run_audit(body: AuditRequest, request: Request, _: str = Depends(requi
             service.run(url, utm_source=utm_source, utm_campaign=utm_campaign, max_pages=min(body.max_pages, 5)),
             timeout=60.0,
         )
+        if body.top_checks is not None:
+            n = max(1, body.top_checks)
+            for block in report.get("blocks", {}).values():
+                checks = block.get("checks", [])
+                filtered = sorted(
+                    (c for c in checks if c["status"] != "unavailable"),
+                    key=lambda c: c["maxPoints"],
+                    reverse=True,
+                )[:n]
+                block["checks"] = filtered
         return report
     except asyncio.TimeoutError:
         raise HTTPException(status_code=504, detail="L'audit a dépassé le délai de 60 secondes. Veuillez réessayer.") from None
