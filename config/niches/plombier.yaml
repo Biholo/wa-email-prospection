@@ -1,0 +1,14 @@
+label: "plombier"
+
+# bad-gmb / slide_4 + slide_5
+gmb_contenu: "Vos interventions d'urgence, photos de salles de bain rénovées et certifications RGE ou Qualibat affichées sur votre fiche Google. Le client qui cherche un plombier en urgence choisit la fiche la plus complète et la mieux notée."
+valeur_gmb_bloc1: "LA DÉCISION EST PRISE AVANT L'APPEL/Un client avec une fuite ou une panne chauffe-eau n'a pas le temps de comparer. Une fiche avec 60 avis à 4,8/5 lui suffit — il appelle directement, sans regarder la concurrence."
+valeur_gmb_bloc2: "VOS CLIENTS TRAVAILLENT POUR VOUS/Chaque avis positif est un commercial qui tourne 24h/24. Un client soulagé après une urgence est celui qui laisse l'avis le plus convaincant — et en convainc en moyenne 8 autres."
+valeur_gmb_bloc3: "CAPTER LES URGENCES ET LES PROJETS DE RÉNOVATION/Un particulier avec une fuite cherche immédiatement sur Google Maps. Le premier plombier avec une fiche solide est celui qui décroche le chantier — et souvent aussi la rénovation complète qui suit."
+
+# bad-site + no-site / slide_4 + slide_5
+refonte_contenu: "Vos spécialités (urgences, rénovation salle de bain, installation chauffe-eau), zones d'intervention et certifications mis en avant dès la première page. Un bouton d'appel direct bien visible et un formulaire de devis rapide optimisé mobile."
+valeur_bloc1: "LE CLIENT ARRIVE DÉJÀ CONVAINCU/Il a vu vos réalisations, lu vos avis et vérifié vos certifications avant d'appeler. Il ne cherche plus à négocier — il veut une date d'intervention."
+valeur_bloc2: "VOUS JUSTIFIEZ VOS TARIFS SANS NÉGOCIER/Vos certifications RGE et photos de chantiers expliquent naturellement la différence entre vous et le moins cher du coin. Le client comprend la valeur et choisit la qualité."
+valeur_bloc3: "CAPTER LES PROJETS SALLE DE BAIN ET CHAUFFE-EAU/Les particuliers qui planifient une rénovation cherchent un plombier sur Google avant de demander autour d'eux. Sans site professionnel, ce marché vous échappe presque entièrement."
+site_contenu: "Vos spécialités plomberie et certifications affichées dès la page d'accueil. Des photos de vos installations, un formulaire de devis en ligne, vos zones d'intervention et un bouton d'appel d'urgence — tout ce qu'un client vérifie avant d'appeler."

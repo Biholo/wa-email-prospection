@@ -1,0 +1,74 @@
+{
+  "urls": [
+    "https://www.develly.io",
+    "https://www.gemeosagency.com/fr"
+  ],
+  "results": [
+    {
+      "url": "https://www.develly.io",
+      "domain": "www.develly.io",
+      "isClient": true,
+      "globalScore": 43,
+      "grade": "FAIR",
+      "cms": "Next.js",
+      "blocks": {
+        "performance": {
+          "score": 0,
+          "maxScore": 25
+        },
+        "seo": {
+          "score": 24,
+          "maxScore": 25
+        },
+        "legal": {
+          "score": 10,
+          "maxScore": 20
+        },
+        "conversion": {
+          "score": 5,
+          "maxScore": 20
+        },
+        "mobile": {
+          "score": 4,
+          "maxScore": 10
+        },
+        "geo": {
+          "geoScore": 81
+        }
+      }
+    },
+    {
+      "url": "https://www.gemeosagency.com/fr",
+      "domain": "www.gemeosagency.com",
+      "isClient": false,
+      "globalScore": 49,
+      "grade": "FAIR",
+      "cms": "Webflow",
+      "blocks": {
+        "performance": {
+          "score": 0,
+          "maxScore": 25
+        },
+        "seo": {
+          "score": 25,
+          "maxScore": 25
+        },
+        "legal": {
+          "score": 11,
+          "maxScore": 20
+        },
+        "conversion": {
+          "score": 9,
+          "maxScore": 20
+        },
+        "mobile": {
+          "score": 4,
+          "maxScore": 10
+        },
+        "geo": {
+          "geoScore": 42
+        }
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import os
+
 import httpx
 
 PAGESPEED_API_URL = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
@@ -7,6 +8,19 @@ PAGESPEED_API_URL = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
 class PageSpeedService:
     def __init__(self):
         self.api_key = os.getenv("PAGESPEED_API_KEY")
+
+    async def analyse_full_async(self, url: str, strategy: str = "mobile") -> dict:
+        """Returns raw PageSpeed Insights JSON for audit engine (mobile or desktop)."""
+        if not self.api_key:
+            return {"error": "PAGESPEED_API_KEY not set — skipping PSI"}
+        params = {"url": url, "strategy": strategy, "category": "performance", "key": self.api_key}
+        try:
+            async with httpx.AsyncClient(timeout=20) as client:
+                resp = await client.get(PAGESPEED_API_URL, params=params)
+                resp.raise_for_status()
+                return resp.json()
+        except Exception as exc:
+            return {"error": str(exc)}
 
     def analyse(self, url: str) -> dict:
         if not url:

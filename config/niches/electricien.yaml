@@ -1,0 +1,14 @@
+label: "électricien"
+
+# bad-gmb / slide_4 + slide_5
+gmb_contenu: "Vos habilitations B2V, certifications QUALIFELEC et photos de tableaux électriques rénovés affichés sur votre fiche Google rassurent immédiatement. Le client qui cherche un électricien en urgence choisit la fiche la plus complète."
+valeur_gmb_bloc1: "LA DÉCISION EST PRISE AVANT L'APPEL/Un client qui voit une fiche avec 80 avis à 4,8/5 n'a plus de doutes. Il ne vous compare plus, il n'attend plus un deuxième avis — il appelle, et il le fait avec confiance."
+valeur_gmb_bloc2: "VOS CLIENTS TRAVAILLENT POUR VOUS/Chaque avis positif est un commercial gratuit qui tourne 24h/24. Un client satisfait qui laisse un avis en convainc en moyenne 8 autres. C'est le seul levier qui se renforce automatiquement."
+valeur_gmb_bloc3: "CAPTER LES PROJETS AVANT LA CONCURRENCE/Un particulier qui lance une rénovation électrique cherche sur Google Maps avant de demander autour de lui. Le premier électricien avec une fiche solide est celui qu'il appelle en premier."
+
+# bad-site + no-site / slide_4 + slide_5
+refonte_contenu: "Vos habilitations électriques, photos de tableaux rénovés et certifications QUALIFELEC mis en avant dès la première page. Un formulaire de devis rapide et un bouton d'appel direct bien visible sur mobile."
+valeur_bloc1: "LE CLIENT ARRIVE DÉJÀ CONVAINCU/Il a vu vos réalisations, lu vos avis et vérifié vos habilitations avant d'appeler. Il ne cherche plus à négocier — il veut une date d'intervention."
+valeur_bloc2: "VOUS JUSTIFIEZ VOS TARIFS SANS NÉGOCIER/Vos certifications affichées expliquent naturellement la différence entre vous et le moins cher du coin. Le client comprend la valeur et choisit la qualité."
+valeur_bloc3: "CAPTER LES CHANTIERS DE RÉNOVATION/Les particuliers qui lancent une rénovation cherchent un électricien sur Google avant même de demander autour d'eux. Sans site professionnel, ce marché vous est presque entièrement fermé."
+site_contenu: "Vos habilitations B2V et certifications QUALIFELEC affichées dès la page d'accueil. Des photos de vos installations, un formulaire de devis en ligne et vos zones d'intervention — tout ce qu'un client vérifie avant d'appeler."

@@ -11,11 +11,8 @@ import yaml
 from core.state import get_state, update_state
 from logic.angle_detector import AngleDetector
 from logic.competitor_resolver import CompetitorResolver
-from logic.message_builder import MessageBuilder
-from scheduler.pipeline_email import run_email_pipeline
-from scheduler.pipeline_whatsapp import run_whatsapp_pipeline
+from services.audit_service import AuditService
 from services.brevo_service import BrevoService
-from services.wasender_service import WasenderService
 from services.pagespeed_service import PageSpeedService
 from services.supabase_service import SupabaseService
 
@@ -28,7 +25,6 @@ def _load_config(config_name: str) -> dict | None:
 
 
 def _acquire(config_name: str) -> bool:
-    """Marks pipeline as running. Returns False if already running."""
     if get_state()["running"]:
         return False
     update_state(
@@ -49,18 +45,20 @@ def _build_shared(config_name: str, config: dict, dry_run: bool) -> dict:
         config=config,
         angle_detector=AngleDetector(config),
         competitor_resolver=CompetitorResolver(supabase),
-        message_builder=MessageBuilder(config_name, config),
+        audit_service=AuditService(supabase),
         dry_run=dry_run,
     )
 
 
 def run_email_only(config_name: str, dry_run: bool = False) -> None:
+    from scheduler.pipeline_email import run_email_pipeline
+    from services.resend_service import ResendService
     config = _load_config(config_name)
     if config is None or not _acquire(config_name):
         return
     shared = _build_shared(config_name, config, dry_run)
     try:
-        run_email_pipeline(**shared, brevo=BrevoService(), pagespeed=PageSpeedService())
+        run_email_pipeline(**shared, brevo=BrevoService(), resend=ResendService(), pagespeed=PageSpeedService())
     finally:
         update_state(running=False)
 
@@ -71,6 +69,8 @@ def run_wa_only(
     dry_run: bool = False,
     test_mode: bool = False,
 ) -> None:
+    from scheduler.pipeline_whatsapp import run_whatsapp_pipeline
+    from services.wasender_service import WasenderService
     config = _load_config(config_name)
     if config is None or not _acquire(config_name):
         return
@@ -89,26 +89,29 @@ def run_wa_only(
 
 
 def run_prospecting(config_name: str, dry_run: bool = False) -> None:
-    """Runs email + WA pipelines in parallel (manual / API trigger)."""
+    """Lance email + WA en parallèle (déclenchement manuel / API)."""
+    from scheduler.pipeline_email import run_email_pipeline
+    from scheduler.pipeline_whatsapp import run_whatsapp_pipeline
+    from services.resend_service import ResendService
+    from services.wasender_service import WasenderService
+
     config = _load_config(config_name)
     if config is None or not _acquire(config_name):
         return
 
     shared = _build_shared(config_name, config, dry_run)
     brevo = BrevoService()
-    wasender = WasenderService()
     pagespeed = PageSpeedService()
 
     email_thread = threading.Thread(
         target=run_email_pipeline,
-        kwargs={**shared, "brevo": brevo, "pagespeed": pagespeed},
+        kwargs={**shared, "brevo": brevo, "resend": ResendService(), "pagespeed": pagespeed},
         daemon=True,
         name=f"email-{config_name}",
     )
-
     whatsapp_thread = threading.Thread(
         target=run_whatsapp_pipeline,
-        kwargs={**shared, "brevo": brevo, "wasender": wasender, "pagespeed": pagespeed},
+        kwargs={**shared, "brevo": brevo, "wasender": WasenderService(), "pagespeed": pagespeed},
         daemon=True,
         name=f"whatsapp-{config_name}",
     )

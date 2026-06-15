@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 6 - CTA Transition</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 5 - Overrides */
+        body {
+            background-color: var(--brand-red);
+        }
+
+        .slide-container {
+            background-color: var(--brand-red);
+            padding: 8vh 6.25vw;
+        }
+
+        .bg-typography {
+            opacity: 0.05;
+        }
+
+        .bg-word {
+            font-size: 21.875vw;
+            letter-spacing: -0.39vw;
+            color: #ffffff;
+        }
+
+        .header {
+            margin-bottom: 6.25vh;
+        }
+
+        .logo-area {
+            gap: 0.94vw;
+        }
+
+        .develly-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+            color: white;
+        }
+
+        .develly-pill img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        .ceo-compact {
+            display: flex;
+            align-items: center;
+            gap: 1.17vw;
+        }
+
+        .ceo-img {
+            width: 3.9vw;
+            height: 3.9vw;
+            margin-left: 6px;
+            border-radius: 50%;
+            background: url('https://www.develly.io/assets/team/kilian-trouet.webp') center/cover;
+            border: 2px solid #ffffff;
+        }
+
+        .ceo-details h5 {
+            margin: 0;
+            font-size: 1.1vw;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .ceo-details p {
+            margin: 0;
+            font-size: 0.9vw;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .slide-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5vw;
+            color: #ffffff;
+            opacity: 0.25;
+        }
+
+        /* Timeline / Steps Layout */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+            margin-top: 5vh;
+            z-index: 10;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            gap: 2.5vw;
+            padding-bottom: 3.5vh;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-badge {
+            width: 3.2vw;
+            height: 3.2vw;
+            background-color: #ffffff;
+            color: var(--text-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4vw;
+            font-weight: 800;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 1.6vw; /* half of 3.2vw */
+            top: 3.2vw;
+            bottom: -1vh;
+            width: 2px;
+            border-left: 2px dashed rgba(255, 255, 255, 0.6);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vh;
+            color: #ffffff;
+            padding-top: 0.4vh;
+        }
+
+        .step-title {
+            font-size: 1.6vw;
+            font-weight: 800;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8vw;
+            text-transform: uppercase;
+            letter-spacing: 0.03vw;
+        }
+
+        .step-icons-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4vw;
+        }
+
+        .step-title-icon {
+            width: 1.3vw;
+            height: 1.3vw;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .step-desc {
+            font-size: 1.35vw;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            max-width: 70vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">SOLUTION</div>
+            <div class="bg-word">SITE WEB</div>
+            <div class="bg-word">CREATION</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="develly-pill">
+                    <img src="/images/develly.png" alt="">
+                    <span>Develly</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2vh;">
+            <div class="title-section">
+                <h1 class="main-headline" style="color: white; font-family: 'Oswald', sans-serif; font-size: 2.8vw; text-transform: uppercase; margin: 0; line-height: 1.1; letter-spacing: -0.05vw;">CE QU'ON REFOND POUR {{PROSPECT.company}}</h1>
+                <p class="subtitle-weeks" style="color: white; margin: 1.5vh 0 0 0; font-size: 1.2vw; opacity: 0.9;">En 2 semaines :</p>
+            </div>
+
+            <div style="display: flex; align-items: flex-end; gap: 5vh;">
+                <div class="ceo-compact">
+                    <div class="ceo-img"></div>
+                    <div class="ceo-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-badge">1</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </span>
+                        UN DESIGN QUI INSPIRE CONFIANCE
+                    </h3>
+                    <p class="step-desc">{{NICHE.refonte_contenu}}</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-badge">2</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </span>
+                        UN CONTENU QUI CONVERTIT
+                    </h3>
+                    <p class="step-desc">
+                        Vos meilleures réalisations photographiées, vos avis Google intégrés directement, vos tarifs indicatifs affichés clairement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-badge">3</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L13 10l-4-4Z"></path><path d="m12 5 9-3-3 9-9-6Z"></path><path d="M9 15 4.5 19.5"></path><path d="M15 9 19.5 4.5"></path></svg>
+                        </span>
+                        UN SITE QUI PERFORME
+                    </h3>
+                    <p class="step-desc">
+                        Rapide, mobile, référencé sur "{{NICHE.label}} {{PROSPECT.ville}}".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

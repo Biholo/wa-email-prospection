@@ -1,14 +1,25 @@
+name: develly-prod
+
 services:
   server:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    container_name: develly-server
+    expose:
+      - "8000"
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     env_file:
       - ../.env
     volumes:
       - ../data:/app/data
       - ../config:/app/config
-      - ../prompts:/app/prompts
+      - ../output:/app/output
     restart: unless-stopped
+    networks:
+      - develly-network
+
+networks:
+  develly-network:
+    driver: bridge

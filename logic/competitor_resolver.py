@@ -9,21 +9,17 @@ if TYPE_CHECKING:
 
 # Brevo CATEGORIE label → Supabase niche key
 _LABEL_TO_KEY: dict[str, str] = {
-    "electricien":           "electricien",
-    "serrurier":             "serrurier",
-    "garage automobile":     "garage_auto",
-    "clinique dentaire":     "clinique_dentaire",
+    "electricien":            "electricien",
+    "serrurier":              "serrurier",
+    "garage automobile":      "garage_auto",
+    "clinique dentaire":      "clinique_dentaire",
     "architecte d'interieur": "architecte_interieur",
     "architecte d interieur": "architecte_interieur",
-    "architecte":            "architecte",
-    "hotel 5 etoiles":       "hotel",
-    "hotel":                 "hotel",
-    "cgp":                   "cgp",
-    "expert-comptable":      "comptable",
-    "expert comptable":      "comptable",
-    "restaurant":            "restaurant",
-    "iad":                   "iad",
-    "agent immobilier":      "agent_immo",
+    "architecte":             "architecte",
+    "hotel 5 etoiles":        "hotel",
+    "hotel":                  "hotel",
+    "restaurant":             "restaurant",
+    "plombier":               "plombier",
 }
 
 
@@ -42,6 +38,17 @@ class CompetitorResolver:
     def __init__(self, supabase: "SupabaseService"):
         self._client = supabase._client
 
+    def get_lead_data(self, email: str) -> dict:
+        """Returns photos_count and is_google_verified for a lead email."""
+        result = (
+            self._client.table("leads")
+            .select("photos_count, is_google_verified")
+            .eq("email", email)
+            .limit(1)
+            .execute()
+        )
+        return result.data[0] if result.data else {}
+
     def get_concurrents(
         self,
         angle: str,
@@ -51,7 +58,7 @@ class CompetitorResolver:
         lead_note: float = 0.0,
         lead_avis: int = 0,
     ) -> dict:
-        empty = {"nom": "", "note": 0.0, "nb_avis": 0, "site": ""}
+        empty = {"nom": "", "note": 0.0, "nb_avis": 0, "site": "", "photos_count": None, "has_website": False, "is_google_verified": False}
         niche_raw = niche
         niche = _normalize_niche(niche)
         print(f"  [Resolver] niche brevo={niche_raw!r} → normalized={niche!r} | city_id={city_id!r}")
@@ -121,10 +128,14 @@ class CompetitorResolver:
                 "note": float(row.get("average_rate") or 0),
                 "nb_avis": int(row.get("number_of_rate") or 0),
                 "site": row.get("website_url") or "",
+                "photos_count": row.get("photos_count"),
+                "has_website": bool(row.get("has_website") or row.get("website_url")),
+                "is_google_verified": bool(row.get("is_google_verified")),
             }
 
         c1 = to_c(rows[0]) if len(rows) > 0 else empty.copy()
-        c2 = to_c(rows[1]) if len(rows) > 1 else c1.copy()
+        c2 = to_c(rows[1]) if len(rows) > 1 else empty.copy()
+        c3 = to_c(rows[2]) if len(rows) > 2 else empty.copy()
 
         best_note = max(c1["note"], c2["note"])
         best_avis = max(c1["nb_avis"], c2["nb_avis"])
@@ -137,6 +148,7 @@ class CompetitorResolver:
             "lead_avis": lead_avis,
             "concurrent_1": c1,
             "concurrent_2": c2,
+            "concurrent_3": c3,
             "ecart_note": round(best_note - lead_note, 1),
             "ecart_avis": best_avis - lead_avis,
         }
@@ -167,7 +179,7 @@ class CompetitorResolver:
     def _lookup_lead(self, email: str) -> dict:
         result = (
             self._client.table("leads")
-            .select("city_id, niche, average_rate, number_of_rate")
+            .select("city_id, niche, average_rate, number_of_rate, photos_count, is_google_verified")
             .eq("email", email)
             .limit(1)
             .execute()
@@ -184,12 +196,12 @@ class CompetitorResolver:
     ) -> list[dict]:
         q = (
             self._client.table("leads")
-            .select("company, average_rate, number_of_rate, website_url")
+            .select("company, average_rate, number_of_rate, website_url, photos_count, has_website, is_google_verified")
             .eq("city_id", city_id)
             .eq("niche", niche)
             .eq("is_archived", False)
             .order(order_by, desc=True)
-            .limit(2)
+            .limit(3)
         )
         if lead_email:
             q = q.neq("email", lead_email)
@@ -208,7 +220,7 @@ class CompetitorResolver:
     ) -> list[dict]:
         q = (
             self._client.table("leads")
-            .select("company, average_rate, number_of_rate, website_url")
+            .select("company, average_rate, number_of_rate, website_url, photos_count, has_website, is_google_verified")
             .eq("city_id", city_id)
             .eq("niche", niche)
             .eq("is_archived", False)
@@ -235,4 +247,4 @@ class CompetitorResolver:
 
     @staticmethod
     def _pick_top_reputation(rows: list[dict]) -> list[dict]:
-        return sorted(rows, key=CompetitorResolver._score_reputation, reverse=True)[:2]
+        return sorted(rows, key=CompetitorResolver._score_reputation, reverse=True)[:3]

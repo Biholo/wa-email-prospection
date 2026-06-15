@@ -42,3 +42,14 @@ def is_french_holiday(d: date) -> bool:
 def is_sending_day(d: date) -> bool:
     """Returns False on weekends and French public holidays."""
     return d.weekday() < 5 and not is_french_holiday(d)
+
+
+def add_business_days(d: date, n: int) -> date:
+    """Returns d + n business days (skips weekends and French holidays)."""
+    current = d
+    added = 0
+    while added < n:
+        current += timedelta(days=1)
+        if is_sending_day(current):
+            added += 1
+    return current

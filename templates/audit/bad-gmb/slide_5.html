@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 5</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 5 - Overrides */
+        body {
+            background-color: var(--brand-red);
+        }
+
+        .slide-container {
+            background-color: var(--brand-red);
+            padding: 8vh 6.25vw;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .bg-typography {
+            opacity: 0.05;
+        }
+
+        .bg-word {
+            font-size: 21.875vw;
+            letter-spacing: -0.39vw;
+            color: #ffffff;
+        }
+
+        .header {
+            margin-bottom: 5vh;
+        }
+
+        .logo-area {
+            gap: 0.94vw;
+        }
+
+        .develly-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+            color: white;
+        }
+
+        .develly-pill img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        .ceo-compact {
+            display: flex;
+            align-items: center;
+            gap: 1.17vw;
+        }
+
+        .ceo-img {
+            width: 3.9vw;
+            height: 3.9vw;
+            margin-left: 6px;
+            border-radius: 50%;
+            background: url('https://www.develly.io/assets/team/kilian-trouet.webp') center/cover;
+            border: 2px solid #ffffff;
+        }
+
+        .ceo-details h5 {
+            margin: 0;
+            font-size: 1.1vw;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .ceo-details p {
+            margin: 0;
+            font-size: 0.9vw;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .slide-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5vw;
+            color: #ffffff;
+            opacity: 0.25;
+        }
+
+        /* Timeline / Steps Layout */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+            margin-top: 3vh;
+            z-index: 10;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            gap: 2.5vw;
+            padding-bottom: 3.5vh;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-badge {
+            width: 3.2vw;
+            height: 3.2vw;
+            background-color: #ffffff;
+            color: var(--text-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4vw;
+            font-weight: 800;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 1.6vw; /* half of 3.2vw */
+            top: 3.2vw;
+            bottom: -1vh;
+            width: 2px;
+            border-left: 2px dashed rgba(255, 255, 255, 0.6);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vh;
+            color: #ffffff;
+            padding-top: 0.4vh;
+        }
+
+        .step-title {
+            font-size: 1.6vw;
+            font-weight: 800;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8vw;
+            text-transform: uppercase;
+            letter-spacing: 0.03vw;
+        }
+
+        .step-icons-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4vw;
+        }
+
+        .step-title-icon {
+            width: 1.5vw;
+            height: 1.5vw;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .step-title-icon.fill-icon {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .step-desc {
+            font-size: 1.35vw;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            max-width: 70vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">DOMINATION</div>
+            <div class="bg-word">SOLUTION</div>
+            <div class="bg-word">VISIBILITÉ</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="develly-pill">
+                    <img src="/images/develly.png" alt="">
+                    <span>Develly</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2vh; margin-bottom: 2vh;">
+            <div class="title-section">
+                <h1 class="main-headline" style="color: white; font-family: 'Oswald', sans-serif; font-size: 2.8vw; text-transform: uppercase; margin: 0; line-height: 1.1; letter-spacing: -0.05vw;">CE QU'ON FAIT POUR {{PROSPECT.company}} SUR GOOGLE</h1>
+                <p class="subtitle-weeks" style="color: white; margin: 1.5vh 0 0 0; font-size: 1.2vw; opacity: 0.9;">En 2 à 3 semaines :</p>
+            </div>
+
+            <div style="display: flex; align-items: flex-end; gap: 5vh;">
+                <div class="ceo-compact">
+                    <div class="ceo-img"></div>
+                    <div class="ceo-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-badge">1</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon fill-icon" viewBox="0 0 24 24">
+                                <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.859-3.578-7.859-8s3.53-8 7.859-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.923 1 1 5.923 1 12s4.923 11 11.24 11c6.59 0 10.98-4.637 10.98-11.177 0-.751-.08-1.327-.175-1.897H12.24z"/>
+                            </svg>
+                        </span>
+                        FICHE GOOGLE MAITRISEE
+                    </h3>
+                    <p class="step-desc">{{NICHE.gmb_contenu}}</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-badge">2</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon" viewBox="0 0 24 24">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </span>
+                        STRATEGIE AVIS CLIENTS
+                    </h3>
+                    <p class="step-desc">
+                        Système simple pour collecter des avis après chaque intervention, sans relancer manuellement chaque client.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-badge">3</div>
+                <div class="timeline-content">
+                    <h3 class="step-title">
+                        <span class="step-icons-wrapper">
+                            <svg class="step-title-icon" viewBox="0 0 24 24">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        SEO LOCAL GOOGLE MAPS
+                    </h3>
+                    <p class="step-desc">
+                        Positionnement sur : "{{NICHE.label}} {{PROSPECT.ville}}" - "{{NICHE.label}} urgence {{PROSPECT.ville}}"<br>
+                        Objectif Top 3 Google Maps en 60 à 90 jours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

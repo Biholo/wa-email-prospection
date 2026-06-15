@@ -1,10 +1,48 @@
 import os
 import secrets
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Header, HTTPException, Request
 
 from core.db import find_contact_by_jid, log_entry
 from services.brevo_service import BrevoService
+
+
+def _supa_update_wa_status(msg_id: str | None, status_code: int) -> None:
+    """Update Supabase wa_messages row for audit leads — silent, non-blocking."""
+    if not msg_id:
+        return
+    try:
+        from services.supabase_service import SupabaseService
+        supa = SupabaseService()
+        row = supa.find_wa_by_msg_id(msg_id)
+        if not row:
+            return
+        now = datetime.now(timezone.utc).isoformat()
+        if status_code == 3:
+            supa.update_wa_by_id(row["id"], {"status": "delivered", "delivered_at": now})
+        elif status_code == 4:
+            supa.update_wa_by_id(row["id"], {"status": "read", "read_at": now})
+    except Exception:
+        pass
+
+
+def _supa_update_wa_reply(phone: str, text: str) -> None:
+    """Update Supabase wa_messages reply for audit leads — silent, non-blocking."""
+    try:
+        from services.supabase_service import SupabaseService
+        supa = SupabaseService()
+        row = supa.find_wa_by_phone(phone)
+        if not row:
+            return
+        now = datetime.now(timezone.utc).isoformat()
+        supa.update_wa_by_id(row["id"], {
+            "status": "replied",
+            "replied_at": now,
+            "reply_text": text[:500],
+        })
+    except Exception:
+        pass
 
 router = APIRouter(tags=["webhook"])
 
@@ -69,6 +107,9 @@ async def whatsapp_webhook(
             print(f"[WA UPDATE] fromMe=False — ignoré")
             return {"ok": True}
 
+        # Audit WA tracking (Supabase) — avant le filtre _STATUS_MAP
+        _supa_update_wa_status(key.get("id"), status_code)
+
         if status_code not in _STATUS_MAP:
             print(f"[WA UPDATE] status_code={status_code} hors _STATUS_MAP — ignoré")
             return {"ok": True}
@@ -117,6 +158,9 @@ async def whatsapp_webhook(
         sender_jid = key.get("remoteJid", "")
         phone = _phone(sender_jid)
         text = msg.get("messageBody", "")
+
+        # Audit WA tracking (Supabase)
+        _supa_update_wa_reply(phone, text)
 
         brevo = BrevoService()
         contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
@@ -193,6 +237,7 @@ async def whatsapp_webhook(
 
         if not from_me:
             phone = key.get("cleanedSenderPn", "") or _phone(key.get("remoteJid", ""))
+            _supa_update_wa_reply(phone, text)
             brevo = BrevoService()
             contact = _find_contact(brevo, phone, _WA_LIST_ID, _WA_TEST_LIST_ID, _WA_READ_TARGET)
             if contact:

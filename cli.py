@@ -3,10 +3,10 @@ CLI for manually running pipelines without the cron scheduler.
 
 Usage:
   python cli.py develly                              # run both email + whatsapp
-  python cli.py develly --dry-run                    # simulate without touching Brevo
+  python cli.py develly --dry-run                    # simulate, generate PDFs locally, do not send/update Brevo
   python cli.py develly --only email                 # email pipeline only
   python cli.py develly --only whatsapp              # WhatsApp pipeline only
-  python cli.py develly --test-phone 0641552699      # dry-run + envoie wa_1 à ce numéro
+  python cli.py develly --only whatsapp --dry-run    # dry-run WA only
 """
 import argparse
 import sys
@@ -22,20 +22,22 @@ from core.db import init_db  # noqa: E402 (after load_dotenv)
 def _build_services(config_name: str, config: dict) -> dict:
     from logic.angle_detector import AngleDetector
     from logic.competitor_resolver import CompetitorResolver
-    from logic.message_builder import MessageBuilder
+    from services.audit_service import AuditService
     from services.brevo_service import BrevoService
-    from services.wasender_service import WasenderService
     from services.pagespeed_service import PageSpeedService
+    from services.resend_service import ResendService
     from services.supabase_service import SupabaseService
+    from services.wasender_service import WasenderService
 
     supabase = SupabaseService()
     return {
         "brevo":               BrevoService(),
         "wasender":            WasenderService(),
+        "resend":              ResendService(),
         "pagespeed":           PageSpeedService(),
         "angle_detector":      AngleDetector(config),
         "competitor_resolver": CompetitorResolver(supabase),
-        "message_builder":     MessageBuilder(config_name, config),
+        "audit_service":       AuditService(supabase),
     }
 
 
@@ -95,7 +97,6 @@ def main() -> None:
 
     test_phone = _normalize_phone(args.test_phone)
     if test_phone:
-        args.dry_run = True
         args.only = "whatsapp"
     if args.test_mode:
         args.only = "whatsapp"
@@ -115,7 +116,7 @@ def main() -> None:
         "config":              config,
         "angle_detector":      svc["angle_detector"],
         "competitor_resolver": svc["competitor_resolver"],
-        "message_builder":     svc["message_builder"],
+        "audit_service":       svc["audit_service"],
         "dry_run":             args.dry_run,
     }
 
@@ -125,7 +126,12 @@ def main() -> None:
 
     if run_email:
         from scheduler.pipeline_email import run_email_pipeline
-        run_email_pipeline(**shared, brevo=svc["brevo"], pagespeed=svc["pagespeed"])
+        run_email_pipeline(
+            **shared,
+            brevo=svc["brevo"],
+            resend=svc["resend"],
+            pagespeed=svc["pagespeed"],
+        )
 
     if run_wa:
         from scheduler.pipeline_whatsapp import run_whatsapp_pipeline

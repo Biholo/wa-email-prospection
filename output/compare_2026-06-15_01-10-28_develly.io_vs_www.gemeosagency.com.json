@@ -1,0 +1,2626 @@
+{
+  "urls": [
+    "https://develly.io",
+    "https://www.gemeosagency.com/fr"
+  ],
+  "results": [
+    {
+      "url": "https://develly.io",
+      "domain": "develly.io",
+      "isClient": true,
+      "globalScore": 60,
+      "grade": "FAIR",
+      "cms": "Next.js",
+      "techStack": {
+        "Serveur": [
+          "Vercel"
+        ],
+        "Framework JS": [
+          "Next.js"
+        ],
+        "Analytics": [
+          "Google Analytics 4",
+          "Microsoft Clarity"
+        ],
+        "Gestionnaire de balises": [
+          "Google Tag Manager"
+        ],
+        "Interface & Graphiques": [
+          "Open Graph",
+          "Twitter Card"
+        ]
+      },
+      "messaging": {
+        "h1": "Des sites quigénèrent des clients.",
+        "metaDescription": "Agence web à Paris spécialisée en création de sites internet performants, optimisés SEO et pensés pour convertir vos visiteurs en clients. Devis gratuit en 24h.",
+        "lang": "fr"
+      },
+      "freshness": {
+        "lastModified": null,
+        "copyrightYear": null,
+        "hasBlog": true,
+        "recentArticleCount": 0
+      },
+      "acquisitionProfile": {
+        "channels": [
+          "SEO"
+        ],
+        "channelCount": 1,
+        "level": "basique"
+      },
+      "marketingBudget": {
+        "level": "minimal",
+        "score": 0,
+        "signals": []
+      },
+      "internationalisation": {
+        "hreflang": [],
+        "i18nTools": [],
+        "isMultilingual": false
+      },
+      "socialPresence": {
+        "linkedin": "https://www.linkedin.com/company/develly/",
+        "facebook": null,
+        "instagram": "https://www.instagram.com/develly.io/",
+        "tiktok": null,
+        "youtube": null,
+        "twitter": null,
+        "pinterest": null,
+        "score": 2,
+        "total": 7
+      },
+      "targetKeyword": "Des sites quigénèrent des clients.",
+      "screenshots": {
+        "desktop": "C:\\Users\\Kilian\\Documents\\tech\\develly\\AA-Tools\\develly-server\\services\\..\\output\\screenshots\\desktop_develly.io_20260614_230959.png",
+        "mobile": "C:\\Users\\Kilian\\Documents\\tech\\develly\\AA-Tools\\develly-server\\services\\..\\output\\screenshots\\mobile_develly.io_20260614_230959.png"
+      },
+      "blocks": {
+        "performance": {
+          "score": 0,
+          "maxScore": 25,
+          "checks": [
+            {
+              "id": "score_mobile",
+              "label": "Score performance mobile",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Impossible de récupérer le score mobile depuis Google PageSpeed.",
+              "fix": "Vérifier que la page est accessible publiquement."
+            },
+            {
+              "id": "score_desktop",
+              "label": "Score performance desktop",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Impossible de récupérer le score desktop depuis Google PageSpeed.",
+              "fix": "Vérifier que la page est accessible publiquement."
+            },
+            {
+              "id": "lcp",
+              "label": "Largest Contentful Paint (LCP)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "critical",
+              "impact": "LCP non disponible  -  donnée PageSpeed manquante.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "cls",
+              "label": "Cumulative Layout Shift (CLS)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "CLS non disponible.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "inp",
+              "label": "Interaction to Next Paint (INP)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "INP non disponible.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "fetchpriority_hero",
+              "label": "fetchpriority sur l'image principale (LCP)",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "L'image principale n'est pas priorisée  -  elle est chargée avec un retard inutile.",
+              "fix": "Ajouter fetchpriority=\"high\" sur la balise <img> du hero."
+            },
+            {
+              "id": "font_display",
+              "label": "Attribut font-display sur les polices",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Les polices bloquent le rendu  -  les visiteurs voient du texte invisible pendant le chargement.",
+              "fix": "Ajouter font-display: swap dans vos déclarations @font-face."
+            },
+            {
+              "id": "preconnect",
+              "label": "Préconnexion aux domaines tiers",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Absence de préconnexion aux ressources tierces  -  ralentit le chargement.",
+              "fix": "Ajouter <link rel=\"preconnect\" href=\"...\"> pour les domaines tiers critiques."
+            }
+          ]
+        },
+        "seo": {
+          "score": 25,
+          "maxScore": 25,
+          "checks": [
+            {
+              "id": "title_present",
+              "label": "Balise <title> présente",
+              "status": "pass",
+              "value": "Création de site internet générateur de leads",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "critical",
+              "impact": "La balise title est présente  -  bon signal pour les moteurs de recherche.",
+              "fix": "Maintenir une balise title pertinente et unique sur chaque page."
+            },
+            {
+              "id": "title_length",
+              "label": "Longueur balise title (50-60 car.)",
+              "status": "warning",
+              "value": "45 caractères",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Title trop court (45 car.)  -  tu n'exploites pas tout l'espace disponible dans Google.",
+              "fix": "Enrichir le title pour atteindre 50-60 caractères."
+            },
+            {
+              "id": "meta_desc_present",
+              "label": "Meta description présente",
+              "status": "pass",
+              "value": "Agence web à Paris spécialisée en création de sites internet performants, optimisés SEO et pensés po…",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "La meta description est présente  -  elle s'affiche dans les résultats Google.",
+              "fix": "Maintenir une meta description pertinente sur chaque page."
+            },
+            {
+              "id": "meta_desc_length",
+              "label": "Longueur meta description (150-160 car.)",
+              "status": "pass",
+              "value": "160 caractères",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Longueur idéale  -  la meta description s'affichera complètement dans Google.",
+              "fix": "Maintenir cette longueur."
+            },
+            {
+              "id": "h1_unique",
+              "label": "H1 unique présent",
+              "status": "pass",
+              "value": "Des sites quigénèrent des clients.",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Un seul H1  -  structure correcte pour les moteurs de recherche.",
+              "fix": "Continuer à utiliser un seul H1 par page."
+            },
+            {
+              "id": "hn_hierarchy",
+              "label": "Hiérarchie des titres (H1 > H2 > H3)",
+              "status": "warning",
+              "value": "Hiérarchie incorrecte",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Hiérarchie des titres incorrecte  -  un H2 apparaît avant H1, ou un H3 sans H2 parent.",
+              "fix": "Respecter l'ordre H1 > H2 > H3 sans sauter de niveau."
+            },
+            {
+              "id": "sitemap_accessible",
+              "label": "Sitemap XML accessible",
+              "status": "pass",
+              "value": "/sitemap.xml trouvé",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Le sitemap est accessible  -  Google peut découvrir toutes tes pages facilement.",
+              "fix": "Maintenir et soumettre le sitemap dans Google Search Console."
+            },
+            {
+              "id": "robots_accessible",
+              "label": "robots.txt accessible",
+              "status": "pass",
+              "value": "/robots.txt trouvé",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "robots.txt présent  -  les crawlers savent comment indexer ton site.",
+              "fix": "Maintenir le robots.txt à jour."
+            },
+            {
+              "id": "https_active",
+              "label": "HTTPS activé",
+              "status": "pass",
+              "value": "HTTPS actif",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "critical",
+              "impact": "HTTPS actif  -  sécurité assurée et signal positif pour Google.",
+              "fix": "Maintenir le certificat SSL à jour."
+            },
+            {
+              "id": "redirect_301",
+              "label": "Redirection HTTP → HTTPS (301)",
+              "status": "warning",
+              "value": "Redirection 308",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "Redirection 308 vers HTTPS mais pas 301 permanente.",
+              "fix": "Configurer une redirection 301 pour consolider le PageRank."
+            },
+            {
+              "id": "canonical_correct",
+              "label": "Balise canonical correcte",
+              "status": "warning",
+              "value": "https://www.develly.io",
+              "points": 0,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "La balise canonical ne pointe pas vers l'URL analysée  -  risque de contenu dupliqué.",
+              "fix": "Vérifier et corriger l'URL dans la balise canonical."
+            },
+            {
+              "id": "schema_present",
+              "label": "Données structurées (JSON-LD) présentes",
+              "status": "pass",
+              "value": "5 bloc(s) JSON-LD",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "Données structurées présentes  -  Google peut afficher des rich snippets dans ses résultats.",
+              "fix": "Maintenir et enrichir les schémas JSON-LD."
+            },
+            {
+              "id": "lang_attr",
+              "label": "Attribut lang sur <html>",
+              "status": "pass",
+              "value": "fr",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "Langue déclarée (fr)  -  Google sert ta page aux bons utilisateurs.",
+              "fix": "Maintenir lang=\"fr\"."
+            },
+            {
+              "id": "images_alt",
+              "label": "Attributs alt sur les images",
+              "status": "warning",
+              "value": "62/64 (97%)",
+              "points": 0,
+              "maxPoints": 1,
+              "severity": "low",
+              "impact": "2 image(s) sans alt  -  Google ne peut pas indexer leur contenu.",
+              "fix": "Ajouter des attributs alt descriptifs sur toutes les images."
+            },
+            {
+              "id": "no_broken_links",
+              "label": "Pas de liens cassés (10 premiers)",
+              "status": "pass",
+              "value": "10 lien(s) vérifié(s), 0 cassé",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "Aucun lien cassé  -  bonne expérience utilisateur et pas de perte de PageRank.",
+              "fix": "Continuer à surveiller les liens après chaque mise à jour."
+            },
+            {
+              "id": "og_image",
+              "label": "Open Graph image (og:image)",
+              "status": "pass",
+              "value": "https://www.develly.io/og-image.webp",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "og:image presente - partage visuel sur LinkedIn, Facebook, WhatsApp.",
+              "fix": "Maintenir og:image."
+            },
+            {
+              "id": "twitter_card",
+              "label": "Twitter / X Card",
+              "status": "pass",
+              "value": "summary_large_image",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "low",
+              "impact": "Twitter Card presente - affichage enrichi lors des partages sur X/Twitter.",
+              "fix": "Maintenir twitter:card."
+            },
+            {
+              "id": "word_count",
+              "label": "Nombre de mots (contenu texte)",
+              "status": "pass",
+              "value": "2084 mots",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "medium",
+              "impact": "Contenu suffisant (2084 mots).",
+              "fix": "Maintenir un contenu riche."
+            }
+          ]
+        },
+        "legal": {
+          "score": 10,
+          "maxScore": 20,
+          "checks": [
+            {
+              "id": "cookie_banner",
+              "label": "Bandeau cookies / consentement RGPD",
+              "status": "fail",
+              "value": "Non détecté",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "critical",
+              "impact": "Aucun bandeau cookies  -  tu risques une amende CNIL pouvant atteindre 4 % du CA annuel.",
+              "fix": "Installer une solution de consentement (Axeptio, Tarteaucitron, Cookiebot…)."
+            },
+            {
+              "id": "mentions_legales",
+              "label": "Lien mentions légales",
+              "status": "pass",
+              "value": "Trouvé",
+              "points": 5,
+              "maxPoints": 5,
+              "severity": "critical",
+              "impact": "Lien vers les mentions légales présent  -  obligation légale respectée.",
+              "fix": "Maintenir le lien visible."
+            },
+            {
+              "id": "politique_conf",
+              "label": "Politique de confidentialité",
+              "status": "pass",
+              "value": "Trouvée",
+              "points": 5,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Politique de confidentialité présente  -  confiance et conformité RGPD.",
+              "fix": "Maintenir la politique à jour."
+            },
+            {
+              "id": "consent_checkbox",
+              "label": "Case de consentement dans les formulaires",
+              "status": "warning",
+              "value": "Non détectée",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "medium",
+              "impact": "Aucune case de consentement  -  obligatoire avant d'envoyer des emails marketing.",
+              "fix": "Ajouter une case à cocher de consentement dans chaque formulaire de contact."
+            }
+          ]
+        },
+        "conversion": {
+          "score": 5,
+          "maxScore": 20,
+          "checks": [
+            {
+              "id": "cta_above_fold",
+              "label": "Appel à l'action visible dès l'arrivée",
+              "status": "fail",
+              "value": "Aucun CTA détecté",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "critical",
+              "impact": "Aucun appel à l'action visible  -  tes visiteurs ne savent pas par où commencer et partent.",
+              "fix": "Ajouter un bouton CTA visible dès la première vue (ex : 'Demander un devis', 'Prendre RDV')."
+            },
+            {
+              "id": "form_present",
+              "label": "Formulaire de contact présent",
+              "status": "fail",
+              "value": "Aucun formulaire",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Aucun formulaire  -  tu perds des contacts de visiteurs intéressés.",
+              "fix": "Ajouter un formulaire de contact simple (prénom, email, message) sur la page."
+            },
+            {
+              "id": "phone_detectable",
+              "label": "Numéro de téléphone détectable",
+              "status": "fail",
+              "value": "Non trouvé",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Aucun numéro de téléphone  -  tu perds des clients qui préfèrent appeler directement.",
+              "fix": "Afficher ton numéro de téléphone de façon bien visible, de préférence dans le header."
+            },
+            {
+              "id": "social_proof",
+              "label": "Preuve sociale (avis, témoignages, notes)",
+              "status": "pass",
+              "value": "4 indicateur(s)",
+              "points": 5,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Preuve sociale détectée  -  les visiteurs sont rassurés par les avis clients.",
+              "fix": "Maintenir les avis et témoignages bien visibles."
+            },
+            {
+              "id": "maps_address",
+              "label": "Carte ou adresse intégrée (informatif)",
+              "status": "warning",
+              "value": "Non détectée",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Aucune carte ni adresse physique  -  les visiteurs ne savent pas où tu te trouves.",
+              "fix": "Intégrer une carte Google Maps ou afficher ton adresse avec la balise <address>."
+            },
+            {
+              "id": "chat_widget",
+              "label": "Widget de chat en ligne (informatif)",
+              "status": "pass",
+              "value": "Détecté",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Widget de chat détecté  -  tu peux engager les visiteurs en temps réel.",
+              "fix": "Maintenir le chat en ligne."
+            }
+          ]
+        },
+        "mobile": {
+          "score": 4,
+          "maxScore": 10,
+          "checks": [
+            {
+              "id": "viewport_set",
+              "label": "Balise meta viewport présente",
+              "status": "pass",
+              "value": "width=device-width, initial-scale=1",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "critical",
+              "impact": "Meta viewport présente  -  le site s'adapte correctement aux écrans mobiles.",
+              "fix": "Maintenir <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">."
+            },
+            {
+              "id": "mobile_score_50",
+              "label": "Score mobile > 50",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Score mobile non disponible.",
+              "fix": "Vérifier la configuration PageSpeed API."
+            },
+            {
+              "id": "text_readable",
+              "label": "Texte lisible sur mobile (taille minimale)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Textes trop petits sur mobile  -  les visiteurs doivent zoomer pour lire.",
+              "fix": "Augmenter la taille de police à 16px minimum pour les textes de corps."
+            },
+            {
+              "id": "no_blocking_res",
+              "label": "Ressources bloquant le rendu (informatif)",
+              "status": "warning",
+              "value": "Ressources bloquantes détectées",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "medium",
+              "impact": "Des ressources bloquent le rendu  -  elles retardent l'affichage de ta page.",
+              "fix": "Différer ou déplacer les scripts et CSS non critiques."
+            }
+          ]
+        },
+        "geo": {
+          "score": 16,
+          "maxScore": 20,
+          "geoScore": 82,
+          "checks": [
+            {
+              "id": "ai_crawlers_allowed",
+              "label": "Accès des robots IA (GPTBot, ClaudeBot…)",
+              "status": "pass",
+              "value": "6/6 autorisés",
+              "points": 20,
+              "maxPoints": 20,
+              "severity": "high",
+              "impact": "Tous les crawlers IA sont autorisés  -  ton contenu peut être cité par ChatGPT, Claude, Perplexity…",
+              "fix": "Maintenir l'accès aux crawlers IA."
+            },
+            {
+              "id": "sitemap_in_robots",
+              "label": "Sitemap déclaré dans robots.txt",
+              "status": "pass",
+              "value": "Déclaré",
+              "points": 10,
+              "maxPoints": 10,
+              "severity": "medium",
+              "impact": "Le sitemap est déclaré dans robots.txt  -  les crawlers le trouvent automatiquement.",
+              "fix": "Maintenir la ligne Sitemap: dans robots.txt."
+            },
+            {
+              "id": "llms_txt_present",
+              "label": "Fichier llms.txt présent",
+              "status": "pass",
+              "value": "Trouvé",
+              "points": 20,
+              "maxPoints": 20,
+              "severity": "high",
+              "impact": "llms.txt présent  -  les IA comme Claude et ChatGPT comprennent le contexte de ton site.",
+              "fix": "Maintenir et enrichir le fichier llms.txt."
+            },
+            {
+              "id": "org_type",
+              "label": "Type d'organisation précis (JSON-LD)",
+              "status": "pass",
+              "value": "ProfessionalService",
+              "points": 8,
+              "maxPoints": 8,
+              "severity": "medium",
+              "impact": "Type précis (ProfessionalService)  -  meilleure compréhension par les IA.",
+              "fix": "Maintenir le type précis."
+            },
+            {
+              "id": "same_as",
+              "label": "Propriété sameAs (profils réseaux, annuaires)",
+              "status": "pass",
+              "value": "9 profil(s) : https://www.linkedin.com/company/develly, https://www.instagram.com/develly.io/, https://fr.trustpilot.com/review/develly",
+              "points": 10,
+              "maxPoints": 10,
+              "severity": "high",
+              "impact": "9 profil(s) lié(s)  -  les IA peuvent vérifier ton identité sur d'autres plateformes.",
+              "fix": "Ajouter d'autres profils (LinkedIn, GBP…) si non présents."
+            },
+            {
+              "id": "speakable",
+              "label": "Propriété speakable",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "low",
+              "impact": "speakable absent  -  tes contenus ne sont pas optimisés pour les assistants vocaux.",
+              "fix": "Ajouter speakable dans tes schémas pour cibler les assistants vocaux IA."
+            },
+            {
+              "id": "price_spec_valid",
+              "label": "priceSpecification valide",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Aucune priceSpecification  -  non applicable pour ce type de page.",
+              "fix": "Ajouter des priceSpecification si tu vends des produits ou services."
+            },
+            {
+              "id": "founding_date",
+              "label": "foundingDate dans Organization",
+              "status": "pass",
+              "value": "2025",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Date de création déclarée (2025)  -  renforce la crédibilité auprès des IA.",
+              "fix": "Maintenir foundingDate."
+            },
+            {
+              "id": "employee_count",
+              "label": "numberOfEmployees dans Organization",
+              "status": "pass",
+              "value": "{'@type': 'QuantitativeValue', 'value': 2}",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Taille d'équipe déclarée  -  signal de confiance pour les IA.",
+              "fix": "Maintenir numberOfEmployees."
+            },
+            {
+              "id": "person_schema",
+              "label": "Schema Person avec knowsAbout",
+              "status": "pass",
+              "value": "['Architecture web moderne', 'Développement SaaS', 'Product engineering', 'Scala",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Schema Person avec knowsAbout  -  les IA comprennent l'expertise de l'auteur.",
+              "fix": "Maintenir Person avec knowsAbout."
+            },
+            {
+              "id": "date_modified",
+              "label": "dateModified dans BlogPosting/Article",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun article détecté sur cette page.",
+              "fix": "Ajouter dateModified sur chaque article de blog."
+            },
+            {
+              "id": "breadcrumb",
+              "label": "BreadcrumbList dans JSON-LD",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "medium",
+              "impact": "BreadcrumbList absent  -  tu rates l'affichage du fil d'ariane dans Google.",
+              "fix": "Ajouter un schéma BreadcrumbList sur chaque page."
+            },
+            {
+              "id": "aggregate_rating",
+              "label": "AggregateRating ou Review en JSON-LD",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "high",
+              "impact": "Aucune note en JSON-LD  -  tu rates les rich snippets avec étoiles dans Google.",
+              "fix": "Ajouter un schéma AggregateRating avec tes avis Google/Trustpilot."
+            },
+            {
+              "id": "faq_schema",
+              "label": "Schema FAQPage",
+              "status": "pass",
+              "value": "Present",
+              "points": 6,
+              "maxPoints": 6,
+              "severity": "medium",
+              "impact": "FAQPage present - Google peut afficher la FAQ directement dans les resultats (AI Overviews).",
+              "fix": "Maintenir le schema FAQPage."
+            },
+            {
+              "id": "how_to",
+              "label": "Schema HowTo",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun schema HowTo  -  opportunité manquée pour les contenus de type 'guide'.",
+              "fix": "Envisager un schema HowTo pour tes pages de type 'comment faire'."
+            },
+            {
+              "id": "images_absolute",
+              "label": "URLs d'images absolues (JSON-LD)",
+              "status": "pass",
+              "value": "1 image(s)  -  toutes absolues",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "Toutes les URLs d'images dans les schémas sont absolues  -  correct.",
+              "fix": "Maintenir les URLs absolues."
+            },
+            {
+              "id": "word_count",
+              "label": "wordCount dans BlogPosting/Article",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun article détecté sur cette page.",
+              "fix": "Ajouter wordCount sur chaque article de blog."
+            }
+          ]
+        },
+        "security": {
+          "score": 0,
+          "maxScore": 0,
+          "securityScore": 100,
+          "checks": [
+            {
+              "id": "hsts",
+              "label": "Strict-Transport-Security (HSTS)",
+              "status": "pass",
+              "value": "max-age=63072000; includeSubDomains; preload",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "HSTS actif - le navigateur force HTTPS pour toutes les visites futures.",
+              "fix": "Maintenir HSTS."
+            },
+            {
+              "id": "x_content_type",
+              "label": "X-Content-Type-Options: nosniff",
+              "status": "pass",
+              "value": "nosniff",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "MIME sniffing desactive - protege contre les attaques de type sniffing.",
+              "fix": "Maintenir X-Content-Type-Options: nosniff."
+            },
+            {
+              "id": "x_frame_options",
+              "label": "X-Frame-Options (clickjacking)",
+              "status": "pass",
+              "value": "DENY",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "Clickjacking protege (DENY).",
+              "fix": "Maintenir X-Frame-Options."
+            },
+            {
+              "id": "csp",
+              "label": "Content-Security-Policy (CSP)",
+              "status": "pass",
+              "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsaf",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "CSP presente - protege contre les attaques XSS.",
+              "fix": "Maintenir et renforcer la CSP."
+            },
+            {
+              "id": "referrer_policy",
+              "label": "Referrer-Policy",
+              "status": "pass",
+              "value": "strict-origin-when-cross-origin",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Referrer-Policy presente - controle les donnees envoyees aux sites tiers.",
+              "fix": "Maintenir Referrer-Policy."
+            }
+          ]
+        },
+        "localSeo": {
+          "score": 0,
+          "maxScore": 0,
+          "localScore": 51,
+          "isLocal": true,
+          "checks": [
+            {
+              "id": "local_schema",
+              "label": "Schema LocalBusiness (ou type derive)",
+              "status": "pass",
+              "value": "ProfessionalService",
+              "points": 8,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Schema ProfessionalService present - Google comprend qu'il s'agit d'un etablissement local.",
+              "fix": "Maintenir et enrichir le schema."
+            },
+            {
+              "id": "local_address",
+              "label": "Adresse dans le schema",
+              "status": "pass",
+              "value": "{'@type': 'PostalAddress', 'streetAddress': '50 Avenue des Champs Elysées', 'add",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Adresse declaree dans le schema - utilisable par Google Maps et les assistants IA.",
+              "fix": "Maintenir l'adresse complete."
+            },
+            {
+              "id": "local_telephone",
+              "label": "Telephone dans le schema",
+              "status": "pass",
+              "value": "+33744448733",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Telephone declare (+33744448733) - cliquable dans Google et les assistants.",
+              "fix": "Maintenir le telephone."
+            },
+            {
+              "id": "opening_hours",
+              "label": "Horaires d'ouverture dans le schema",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "Horaires absents - informations manquantes pour les recherches locales.",
+              "fix": "Ajouter openingHours dans le schema (ex: 'Mo-Fr 09:00-18:00')."
+            },
+            {
+              "id": "area_served",
+              "label": "Zone de service (areaServed)",
+              "status": "pass",
+              "value": "[{'@type': 'Country', 'name': 'France'}, {'@type': 'Country'",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Zone de service declaree - Google cible les bons internautes locaux.",
+              "fix": "Maintenir areaServed."
+            },
+            {
+              "id": "gbp_link",
+              "label": "Google Business Profile lie (sameAs)",
+              "status": "fail",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "GBP absent de sameAs - opportunite de consolidation locale manquee.",
+              "fix": "Ajouter l'URL de ta fiche Google Business Profile dans sameAs."
+            },
+            {
+              "id": "local_rating",
+              "label": "Note agregee (AggregateRating) dans le schema local",
+              "status": "fail",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Aucune note dans le schema local - tu rates les rich snippets etoiles.",
+              "fix": "Ajouter AggregateRating avec ratingValue et reviewCount depuis tes avis Google."
+            },
+            {
+              "id": "nap_visible",
+              "label": "Telephone visible dans le texte de la page",
+              "status": "warning",
+              "value": "Non trouve",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Telephone non detecte dans le texte - risque d'incoherence NAP.",
+              "fix": "Afficher le telephone de facon claire dans le contenu textuel de la page."
+            }
+          ]
+        },
+        "ecommerce": {
+          "score": 0,
+          "maxScore": 0,
+          "ecommerceScore": 0,
+          "isEcommerce": false,
+          "checks": [
+            {
+              "id": "ecom_detected",
+              "label": "Site e-commerce detecte (CMS ou schema Product)",
+              "status": "warning",
+              "value": "Non detecte",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Aucun e-commerce detecte sur cette page - checks non applicables.",
+              "fix": "Non applicable pour ce type de site."
+            },
+            {
+              "id": "product_schema",
+              "label": "Schema Product en JSON-LD",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Aucun schema Product - tes produits sont invisibles dans Google Shopping.",
+              "fix": "Ajouter un schema Product sur chaque page produit avec name, image, description."
+            },
+            {
+              "id": "product_price",
+              "label": "Prix dans les offres (offers.price)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Prix absent des offres - tes produits n'apparaissent pas dans Google Shopping.",
+              "fix": "Ajouter price et priceCurrency dans l'objet offers du schema Product."
+            },
+            {
+              "id": "product_availability",
+              "label": "Disponibilite (offers.availability)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "medium",
+              "impact": "Disponibilite absente - Google ne peut pas indiquer si le produit est disponible.",
+              "fix": "Ajouter availability: 'https://schema.org/InStock' dans offers."
+            },
+            {
+              "id": "product_rating",
+              "label": "AggregateRating sur le produit",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Aucune note produit - tu rates les rich snippets etoiles sur tes produits.",
+              "fix": "Ajouter aggregateRating avec ratingValue et reviewCount sur chaque schema Product."
+            },
+            {
+              "id": "product_brand",
+              "label": "Marque (brand) dans le schema Product",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Marque absente du schema Product - signal manquant pour Google Shopping.",
+              "fix": "Ajouter brand: {name: 'NomDeLaMarque'} dans le schema Product."
+            },
+            {
+              "id": "product_currency",
+              "label": "Devise (priceCurrency) dans les offres",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Devise absente - Google Shopping requiert priceCurrency avec le prix.",
+              "fix": "Ajouter priceCurrency: 'EUR' dans l'objet offers."
+            }
+          ]
+        }
+      },
+      "topIssues": [
+        {
+          "block": "legal",
+          "id": "cookie_banner",
+          "label": "Bandeau cookies / consentement RGPD",
+          "status": "fail",
+          "value": "Non détecté",
+          "points": 0,
+          "maxPoints": 6,
+          "severity": "critical",
+          "impact": "Aucun bandeau cookies  -  tu risques une amende CNIL pouvant atteindre 4 % du CA annuel.",
+          "fix": "Installer une solution de consentement (Axeptio, Tarteaucitron, Cookiebot…)."
+        },
+        {
+          "block": "conversion",
+          "id": "cta_above_fold",
+          "label": "Appel à l'action visible dès l'arrivée",
+          "status": "fail",
+          "value": "Aucun CTA détecté",
+          "points": 0,
+          "maxPoints": 6,
+          "severity": "critical",
+          "impact": "Aucun appel à l'action visible  -  tes visiteurs ne savent pas par où commencer et partent.",
+          "fix": "Ajouter un bouton CTA visible dès la première vue (ex : 'Demander un devis', 'Prendre RDV')."
+        },
+        {
+          "block": "conversion",
+          "id": "form_present",
+          "label": "Formulaire de contact présent",
+          "status": "fail",
+          "value": "Aucun formulaire",
+          "points": 0,
+          "maxPoints": 5,
+          "severity": "high",
+          "impact": "Aucun formulaire  -  tu perds des contacts de visiteurs intéressés.",
+          "fix": "Ajouter un formulaire de contact simple (prénom, email, message) sur la page."
+        }
+      ]
+    },
+    {
+      "url": "https://www.gemeosagency.com/fr",
+      "domain": "www.gemeosagency.com",
+      "isClient": false,
+      "globalScore": 57,
+      "grade": "FAIR",
+      "cms": "Webflow",
+      "techStack": {
+        "Serveur": [
+          "Cloudflare"
+        ],
+        "Analytics": [
+          "Google Analytics 4",
+          "Microsoft Clarity"
+        ],
+        "Gestionnaire de balises": [
+          "Google Tag Manager"
+        ],
+        "CDN": [
+          "Cloudflare",
+          "jsDelivr"
+        ],
+        "Cookies & Consentement": [
+          "Axeptio"
+        ],
+        "Polices": [
+          "Montserrat",
+          "Source%20Sans%203"
+        ],
+        "Interface & Graphiques": [
+          "Open Graph",
+          "Twitter Card"
+        ]
+      },
+      "messaging": {
+        "h1": "On construit lessites Webflow de tes entreprises préférées",
+        "metaDescription": "Gemeos construit des sites web sur mesure qui évoluent avec votre business sans l’aide de développeurs.",
+        "lang": "fr"
+      },
+      "freshness": {
+        "lastModified": null,
+        "copyrightYear": 2025,
+        "hasBlog": true,
+        "recentArticleCount": 10
+      },
+      "acquisitionProfile": {
+        "channels": [
+          "SEO"
+        ],
+        "channelCount": 1,
+        "level": "basique"
+      },
+      "marketingBudget": {
+        "level": "minimal",
+        "score": 0,
+        "signals": []
+      },
+      "internationalisation": {
+        "hreflang": [
+          "fr",
+          "en",
+          "x-default"
+        ],
+        "i18nTools": [],
+        "isMultilingual": true
+      },
+      "socialPresence": {
+        "linkedin": "https://www.linkedin.com/company/gemeos/?viewAsMember=true",
+        "facebook": null,
+        "instagram": "https://www.instagram.com/gemeosagency/",
+        "tiktok": null,
+        "youtube": "https://www.youtube.com/@sandro-et-sacha",
+        "twitter": null,
+        "pinterest": null,
+        "score": 3,
+        "total": 7
+      },
+      "targetKeyword": "L'agence Webflow qui propulse votre entreprise",
+      "screenshots": {
+        "desktop": "C:\\Users\\Kilian\\Documents\\tech\\develly\\AA-Tools\\develly-server\\services\\..\\output\\screenshots\\desktop_www.gemeosagency.com_20260614_230959.png",
+        "mobile": "C:\\Users\\Kilian\\Documents\\tech\\develly\\AA-Tools\\develly-server\\services\\..\\output\\screenshots\\mobile_www.gemeosagency.com_20260614_230959.png"
+      },
+      "blocks": {
+        "performance": {
+          "score": 0,
+          "maxScore": 25,
+          "checks": [
+            {
+              "id": "score_mobile",
+              "label": "Score performance mobile",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Impossible de récupérer le score mobile depuis Google PageSpeed.",
+              "fix": "Vérifier que la page est accessible publiquement."
+            },
+            {
+              "id": "score_desktop",
+              "label": "Score performance desktop",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Impossible de récupérer le score desktop depuis Google PageSpeed.",
+              "fix": "Vérifier que la page est accessible publiquement."
+            },
+            {
+              "id": "lcp",
+              "label": "Largest Contentful Paint (LCP)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "critical",
+              "impact": "LCP non disponible  -  donnée PageSpeed manquante.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "cls",
+              "label": "Cumulative Layout Shift (CLS)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "CLS non disponible.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "inp",
+              "label": "Interaction to Next Paint (INP)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "INP non disponible.",
+              "fix": "Vérifier l'accessibilité de la page."
+            },
+            {
+              "id": "fetchpriority_hero",
+              "label": "fetchpriority sur l'image principale (LCP)",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "L'image principale n'est pas priorisée  -  elle est chargée avec un retard inutile.",
+              "fix": "Ajouter fetchpriority=\"high\" sur la balise <img> du hero."
+            },
+            {
+              "id": "font_display",
+              "label": "Attribut font-display sur les polices",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Les polices bloquent le rendu  -  les visiteurs voient du texte invisible pendant le chargement.",
+              "fix": "Ajouter font-display: swap dans vos déclarations @font-face."
+            },
+            {
+              "id": "preconnect",
+              "label": "Préconnexion aux domaines tiers",
+              "status": "warning",
+              "value": "Non optimisé",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Absence de préconnexion aux ressources tierces  -  ralentit le chargement.",
+              "fix": "Ajouter <link rel=\"preconnect\" href=\"...\"> pour les domaines tiers critiques."
+            }
+          ]
+        },
+        "seo": {
+          "score": 25,
+          "maxScore": 25,
+          "checks": [
+            {
+              "id": "title_present",
+              "label": "Balise <title> présente",
+              "status": "pass",
+              "value": "L'agence Webflow qui propulse votre entreprise | Gemeos Agency",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "critical",
+              "impact": "La balise title est présente  -  bon signal pour les moteurs de recherche.",
+              "fix": "Maintenir une balise title pertinente et unique sur chaque page."
+            },
+            {
+              "id": "title_length",
+              "label": "Longueur balise title (50-60 car.)",
+              "status": "warning",
+              "value": "62 caractères",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Title trop long (62 car.)  -  il sera tronqué dans les résultats Google.",
+              "fix": "Raccourcir le title à 50-60 caractères."
+            },
+            {
+              "id": "meta_desc_present",
+              "label": "Meta description présente",
+              "status": "pass",
+              "value": "Gemeos construit des sites web sur mesure qui évoluent avec votre business sans l’aide de développeu…",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "La meta description est présente  -  elle s'affiche dans les résultats Google.",
+              "fix": "Maintenir une meta description pertinente sur chaque page."
+            },
+            {
+              "id": "meta_desc_length",
+              "label": "Longueur meta description (150-160 car.)",
+              "status": "warning",
+              "value": "103 caractères",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Meta description trop courte (103 car.)  -  tu n'utilises pas tout l'espace disponible.",
+              "fix": "Enrichir la meta description pour atteindre 150-160 caractères."
+            },
+            {
+              "id": "h1_unique",
+              "label": "H1 unique présent",
+              "status": "pass",
+              "value": "On construit lessites Webflow de tes entreprises préférées",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Un seul H1  -  structure correcte pour les moteurs de recherche.",
+              "fix": "Continuer à utiliser un seul H1 par page."
+            },
+            {
+              "id": "hn_hierarchy",
+              "label": "Hiérarchie des titres (H1 > H2 > H3)",
+              "status": "pass",
+              "value": "47 titres détectés",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Structure des titres correcte  -  facilite la compréhension par les crawlers.",
+              "fix": "Maintenir cette hiérarchie."
+            },
+            {
+              "id": "sitemap_accessible",
+              "label": "Sitemap XML accessible",
+              "status": "pass",
+              "value": "/sitemap.xml trouvé",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Le sitemap est accessible  -  Google peut découvrir toutes tes pages facilement.",
+              "fix": "Maintenir et soumettre le sitemap dans Google Search Console."
+            },
+            {
+              "id": "robots_accessible",
+              "label": "robots.txt accessible",
+              "status": "pass",
+              "value": "/robots.txt trouvé",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "robots.txt présent  -  les crawlers savent comment indexer ton site.",
+              "fix": "Maintenir le robots.txt à jour."
+            },
+            {
+              "id": "https_active",
+              "label": "HTTPS activé",
+              "status": "pass",
+              "value": "HTTPS actif",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "critical",
+              "impact": "HTTPS actif  -  sécurité assurée et signal positif pour Google.",
+              "fix": "Maintenir le certificat SSL à jour."
+            },
+            {
+              "id": "redirect_301",
+              "label": "Redirection HTTP → HTTPS (301)",
+              "status": "pass",
+              "value": "HTTP → HTTPS (301)",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "Redirection permanente HTTP → HTTPS  -  pas de contenu dupliqué.",
+              "fix": "Maintenir la redirection 301."
+            },
+            {
+              "id": "canonical_correct",
+              "label": "Balise canonical correcte",
+              "status": "pass",
+              "value": "https://www.gemeosagency.com/fr",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "La balise canonical pointe vers l'URL analysée  -  pas de risque de contenu dupliqué.",
+              "fix": "Maintenir la balise canonical sur toutes les pages."
+            },
+            {
+              "id": "schema_present",
+              "label": "Données structurées (JSON-LD) présentes",
+              "status": "pass",
+              "value": "3 bloc(s) JSON-LD",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "high",
+              "impact": "Données structurées présentes  -  Google peut afficher des rich snippets dans ses résultats.",
+              "fix": "Maintenir et enrichir les schémas JSON-LD."
+            },
+            {
+              "id": "lang_attr",
+              "label": "Attribut lang sur <html>",
+              "status": "pass",
+              "value": "fr",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "Langue déclarée (fr)  -  Google sert ta page aux bons utilisateurs.",
+              "fix": "Maintenir lang=\"fr\"."
+            },
+            {
+              "id": "images_alt",
+              "label": "Attributs alt sur les images",
+              "status": "fail",
+              "value": "66/158 (42%)",
+              "points": 0,
+              "maxPoints": 1,
+              "severity": "low",
+              "impact": "La majorité des images (92/158) n'ont pas d'alt  -  mauvais signal SEO.",
+              "fix": "Ajouter des attributs alt descriptifs sur toutes les images."
+            },
+            {
+              "id": "no_broken_links",
+              "label": "Pas de liens cassés (10 premiers)",
+              "status": "pass",
+              "value": "10 lien(s) vérifié(s), 0 cassé",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "medium",
+              "impact": "Aucun lien cassé  -  bonne expérience utilisateur et pas de perte de PageRank.",
+              "fix": "Continuer à surveiller les liens après chaque mise à jour."
+            },
+            {
+              "id": "og_image",
+              "label": "Open Graph image (og:image)",
+              "status": "pass",
+              "value": "https://cdn.prod.website-files.com/6134d4b1c1599d51e79c37a7/66c4b09a108745b9cf17",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "og:image presente - partage visuel sur LinkedIn, Facebook, WhatsApp.",
+              "fix": "Maintenir og:image."
+            },
+            {
+              "id": "twitter_card",
+              "label": "Twitter / X Card",
+              "status": "pass",
+              "value": "summary_large_image",
+              "points": 1,
+              "maxPoints": 1,
+              "severity": "low",
+              "impact": "Twitter Card presente - affichage enrichi lors des partages sur X/Twitter.",
+              "fix": "Maintenir twitter:card."
+            },
+            {
+              "id": "word_count",
+              "label": "Nombre de mots (contenu texte)",
+              "status": "pass",
+              "value": "3824 mots",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "medium",
+              "impact": "Contenu suffisant (3824 mots).",
+              "fix": "Maintenir un contenu riche."
+            }
+          ]
+        },
+        "legal": {
+          "score": 11,
+          "maxScore": 20,
+          "checks": [
+            {
+              "id": "cookie_banner",
+              "label": "Bandeau cookies / consentement RGPD",
+              "status": "pass",
+              "value": "Détecté",
+              "points": 6,
+              "maxPoints": 6,
+              "severity": "critical",
+              "impact": "Bandeau de consentement détecté  -  conformité RGPD assurée.",
+              "fix": "Maintenir la solution de consentement."
+            },
+            {
+              "id": "mentions_legales",
+              "label": "Lien mentions légales",
+              "status": "pass",
+              "value": "Trouvé",
+              "points": 5,
+              "maxPoints": 5,
+              "severity": "critical",
+              "impact": "Lien vers les mentions légales présent  -  obligation légale respectée.",
+              "fix": "Maintenir le lien visible."
+            },
+            {
+              "id": "politique_conf",
+              "label": "Politique de confidentialité",
+              "status": "fail",
+              "value": "Non trouvée",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Aucune politique de confidentialité  -  obligatoire si tu collectes des données personnelles.",
+              "fix": "Ajouter une page 'Politique de confidentialité' et la lier depuis le footer."
+            },
+            {
+              "id": "consent_checkbox",
+              "label": "Case de consentement dans les formulaires",
+              "status": "warning",
+              "value": "Non détectée",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "medium",
+              "impact": "Aucune case de consentement  -  obligatoire avant d'envoyer des emails marketing.",
+              "fix": "Ajouter une case à cocher de consentement dans chaque formulaire de contact."
+            }
+          ]
+        },
+        "conversion": {
+          "score": 9,
+          "maxScore": 20,
+          "checks": [
+            {
+              "id": "cta_above_fold",
+              "label": "Appel à l'action visible dès l'arrivée",
+              "status": "fail",
+              "value": "Aucun CTA détecté",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "critical",
+              "impact": "Aucun appel à l'action visible  -  tes visiteurs ne savent pas par où commencer et partent.",
+              "fix": "Ajouter un bouton CTA visible dès la première vue (ex : 'Demander un devis', 'Prendre RDV')."
+            },
+            {
+              "id": "form_present",
+              "label": "Formulaire de contact présent",
+              "status": "fail",
+              "value": "Aucun formulaire",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Aucun formulaire  -  tu perds des contacts de visiteurs intéressés.",
+              "fix": "Ajouter un formulaire de contact simple (prénom, email, message) sur la page."
+            },
+            {
+              "id": "phone_detectable",
+              "label": "Numéro de téléphone détectable",
+              "status": "pass",
+              "value": "Trouvé",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Numéro de téléphone visible  -  facilite le contact direct avec tes prospects.",
+              "fix": "Maintenir le numéro visible et cliquable (lien tel:)."
+            },
+            {
+              "id": "social_proof",
+              "label": "Preuve sociale (avis, témoignages, notes)",
+              "status": "pass",
+              "value": "5 indicateur(s)",
+              "points": 5,
+              "maxPoints": 5,
+              "severity": "high",
+              "impact": "Preuve sociale détectée  -  les visiteurs sont rassurés par les avis clients.",
+              "fix": "Maintenir les avis et témoignages bien visibles."
+            },
+            {
+              "id": "maps_address",
+              "label": "Carte ou adresse intégrée (informatif)",
+              "status": "warning",
+              "value": "Non détectée",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Aucune carte ni adresse physique  -  les visiteurs ne savent pas où tu te trouves.",
+              "fix": "Intégrer une carte Google Maps ou afficher ton adresse avec la balise <address>."
+            },
+            {
+              "id": "chat_widget",
+              "label": "Widget de chat en ligne (informatif)",
+              "status": "warning",
+              "value": "Non détecté",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "low",
+              "impact": "Aucun widget de chat  -  tu rates des opportunités de conversion en temps réel.",
+              "fix": "Envisager l'ajout d'un chat (Tidio, Crisp…) pour engager les visiteurs."
+            }
+          ]
+        },
+        "mobile": {
+          "score": 4,
+          "maxScore": 10,
+          "checks": [
+            {
+              "id": "viewport_set",
+              "label": "Balise meta viewport présente",
+              "status": "pass",
+              "value": "width=device-width, initial-scale=1",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "critical",
+              "impact": "Meta viewport présente  -  le site s'adapte correctement aux écrans mobiles.",
+              "fix": "Maintenir <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">."
+            },
+            {
+              "id": "mobile_score_50",
+              "label": "Score mobile > 50",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Score mobile non disponible.",
+              "fix": "Vérifier la configuration PageSpeed API."
+            },
+            {
+              "id": "text_readable",
+              "label": "Texte lisible sur mobile (taille minimale)",
+              "status": "unavailable",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "high",
+              "impact": "Textes trop petits sur mobile  -  les visiteurs doivent zoomer pour lire.",
+              "fix": "Augmenter la taille de police à 16px minimum pour les textes de corps."
+            },
+            {
+              "id": "no_blocking_res",
+              "label": "Ressources bloquant le rendu (informatif)",
+              "status": "warning",
+              "value": "Ressources bloquantes détectées",
+              "points": 0,
+              "maxPoints": 0,
+              "severity": "medium",
+              "impact": "Des ressources bloquent le rendu  -  elles retardent l'affichage de ta page.",
+              "fix": "Différer ou déplacer les scripts et CSS non critiques."
+            }
+          ]
+        },
+        "geo": {
+          "score": 8,
+          "maxScore": 20,
+          "geoScore": 39,
+          "checks": [
+            {
+              "id": "ai_crawlers_allowed",
+              "label": "Accès des robots IA (GPTBot, ClaudeBot…)",
+              "status": "pass",
+              "value": "6/6 autorisés",
+              "points": 20,
+              "maxPoints": 20,
+              "severity": "high",
+              "impact": "Tous les crawlers IA sont autorisés  -  ton contenu peut être cité par ChatGPT, Claude, Perplexity…",
+              "fix": "Maintenir l'accès aux crawlers IA."
+            },
+            {
+              "id": "sitemap_in_robots",
+              "label": "Sitemap déclaré dans robots.txt",
+              "status": "pass",
+              "value": "Déclaré",
+              "points": 10,
+              "maxPoints": 10,
+              "severity": "medium",
+              "impact": "Le sitemap est déclaré dans robots.txt  -  les crawlers le trouvent automatiquement.",
+              "fix": "Maintenir la ligne Sitemap: dans robots.txt."
+            },
+            {
+              "id": "llms_txt_present",
+              "label": "Fichier llms.txt présent",
+              "status": "fail",
+              "value": "Non trouvé",
+              "points": 0,
+              "maxPoints": 20,
+              "severity": "high",
+              "impact": "Aucun fichier llms.txt  -  ton site n'est pas optimisé pour la visibilité dans les outils IA.",
+              "fix": "Créer /llms.txt décrivant ton entreprise, tes services et ton domaine d'expertise."
+            },
+            {
+              "id": "org_type",
+              "label": "Type d'organisation précis (JSON-LD)",
+              "status": "fail",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "medium",
+              "impact": "Aucun schéma d'organisation  -  les IA ne comprennent pas la nature de ton activité.",
+              "fix": "Remplacer @type: Organization par LocalBusiness ou ProfessionalService."
+            },
+            {
+              "id": "same_as",
+              "label": "Propriété sameAs (profils réseaux, annuaires)",
+              "status": "warning",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 10,
+              "severity": "high",
+              "impact": "Aucun sameAs  -  les IA ne peuvent pas vérifier ton identité sur d'autres plateformes.",
+              "fix": "Ajouter sameAs avec tes profils LinkedIn, Google Business Profile, Facebook."
+            },
+            {
+              "id": "speakable",
+              "label": "Propriété speakable",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 5,
+              "severity": "low",
+              "impact": "speakable absent  -  tes contenus ne sont pas optimisés pour les assistants vocaux.",
+              "fix": "Ajouter speakable dans tes schémas pour cibler les assistants vocaux IA."
+            },
+            {
+              "id": "price_spec_valid",
+              "label": "priceSpecification valide",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 3,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Aucune priceSpecification  -  non applicable pour ce type de page.",
+              "fix": "Ajouter des priceSpecification si tu vends des produits ou services."
+            },
+            {
+              "id": "founding_date",
+              "label": "foundingDate dans Organization",
+              "status": "warning",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "foundingDate absent  -  les IA ne connaissent pas l'ancienneté de ton entreprise.",
+              "fix": "Ajouter foundingDate dans le schéma Organization."
+            },
+            {
+              "id": "employee_count",
+              "label": "numberOfEmployees dans Organization",
+              "status": "warning",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "numberOfEmployees absent  -  information manquante pour les IA.",
+              "fix": "Ajouter numberOfEmployees dans le schéma Organization."
+            },
+            {
+              "id": "person_schema",
+              "label": "Schema Person avec knowsAbout",
+              "status": "warning",
+              "value": " - ",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "low",
+              "impact": "Aucun schema Person  -  les IA ne connaissent pas l'expertise de l'équipe.",
+              "fix": "Ajouter un schéma Person avec knowsAbout pour les auteurs ou fondateurs."
+            },
+            {
+              "id": "date_modified",
+              "label": "dateModified dans BlogPosting/Article",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun article détecté sur cette page.",
+              "fix": "Ajouter dateModified sur chaque article de blog."
+            },
+            {
+              "id": "breadcrumb",
+              "label": "BreadcrumbList dans JSON-LD",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "medium",
+              "impact": "BreadcrumbList absent  -  tu rates l'affichage du fil d'ariane dans Google.",
+              "fix": "Ajouter un schéma BreadcrumbList sur chaque page."
+            },
+            {
+              "id": "aggregate_rating",
+              "label": "AggregateRating ou Review en JSON-LD",
+              "status": "pass",
+              "value": "Présent",
+              "points": 8,
+              "maxPoints": 8,
+              "severity": "high",
+              "impact": "Notes et avis en JSON-LD  -  Google peut afficher les étoiles dans les résultats.",
+              "fix": "Maintenir les avis en JSON-LD."
+            },
+            {
+              "id": "faq_schema",
+              "label": "Schema FAQPage",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "medium",
+              "impact": "FAQPage absent - opportunite manquee pour les rich snippets et AI Overviews.",
+              "fix": "Ajouter un schema FAQPage si tu as des questions/reponses sur la page."
+            },
+            {
+              "id": "how_to",
+              "label": "Schema HowTo",
+              "status": "warning",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun schema HowTo  -  opportunité manquée pour les contenus de type 'guide'.",
+              "fix": "Envisager un schema HowTo pour tes pages de type 'comment faire'."
+            },
+            {
+              "id": "images_absolute",
+              "label": "URLs d'images absolues (JSON-LD)",
+              "status": "warning",
+              "value": "Aucune image dans les schémas",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "Aucune image déclarée dans les schémas JSON-LD.",
+              "fix": "Ajouter des images absolues (https://…) dans les schémas Organization ou Article."
+            },
+            {
+              "id": "word_count",
+              "label": "wordCount dans BlogPosting/Article",
+              "status": "pass",
+              "value": "Non applicable",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Aucun article détecté sur cette page.",
+              "fix": "Ajouter wordCount sur chaque article de blog."
+            }
+          ]
+        },
+        "security": {
+          "score": 0,
+          "maxScore": 0,
+          "securityScore": 25,
+          "checks": [
+            {
+              "id": "hsts",
+              "label": "Strict-Transport-Security (HSTS)",
+              "status": "pass",
+              "value": "max-age=31536000",
+              "points": 4,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "HSTS actif - le navigateur force HTTPS pour toutes les visites futures.",
+              "fix": "Maintenir HSTS."
+            },
+            {
+              "id": "x_content_type",
+              "label": "X-Content-Type-Options: nosniff",
+              "status": "fail",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "X-Content-Type-Options absent - les navigateurs peuvent interpreter des fichiers de maniere incorrecte.",
+              "fix": "Ajouter l'en-tete X-Content-Type-Options: nosniff"
+            },
+            {
+              "id": "x_frame_options",
+              "label": "X-Frame-Options (clickjacking)",
+              "status": "fail",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "X-Frame-Options absent - le site peut etre integre dans une iframe malveillante.",
+              "fix": "Ajouter X-Frame-Options: SAMEORIGIN"
+            },
+            {
+              "id": "csp",
+              "label": "Content-Security-Policy (CSP)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "CSP absente - les scripts injectes peuvent s'executer librement.",
+              "fix": "Ajouter une Content-Security-Policy adaptee a votre stack."
+            },
+            {
+              "id": "referrer_policy",
+              "label": "Referrer-Policy",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Referrer-Policy absente - les URLs de navigation sont transmises aux sites externes.",
+              "fix": "Ajouter Referrer-Policy: strict-origin-when-cross-origin"
+            }
+          ]
+        },
+        "localSeo": {
+          "score": 0,
+          "maxScore": 0,
+          "localScore": 6,
+          "isLocal": false,
+          "checks": [
+            {
+              "id": "local_schema",
+              "label": "Schema LocalBusiness (ou type derive)",
+              "status": "fail",
+              "value": "Absent",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Aucun schema LocalBusiness - Google ne peut pas afficher ta fiche locale dans les resultats.",
+              "fix": "Ajouter un schema LocalBusiness ou ProfessionalService avec nom, adresse, telephone."
+            },
+            {
+              "id": "local_address",
+              "label": "Adresse dans le schema",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Adresse absente du schema - Google ne peut pas verifier ta localisation.",
+              "fix": "Ajouter PostalAddress dans le schema avec streetAddress, addressLocality, postalCode."
+            },
+            {
+              "id": "local_telephone",
+              "label": "Telephone dans le schema",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Telephone absent du schema - Google ne peut pas l'afficher dans la fiche.",
+              "fix": "Ajouter telephone dans le schema LocalBusiness."
+            },
+            {
+              "id": "opening_hours",
+              "label": "Horaires d'ouverture dans le schema",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 3,
+              "severity": "medium",
+              "impact": "Horaires absents - informations manquantes pour les recherches locales.",
+              "fix": "Ajouter openingHours dans le schema (ex: 'Mo-Fr 09:00-18:00')."
+            },
+            {
+              "id": "area_served",
+              "label": "Zone de service (areaServed)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Zone de service absente - Google ne sait pas ou tu interviens.",
+              "fix": "Ajouter areaServed dans le schema avec les villes ou regions couvertes."
+            },
+            {
+              "id": "gbp_link",
+              "label": "Google Business Profile lie (sameAs)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "GBP absent de sameAs - opportunite de consolidation locale manquee.",
+              "fix": "Ajouter l'URL de ta fiche Google Business Profile dans sameAs."
+            },
+            {
+              "id": "local_rating",
+              "label": "Note agregee (AggregateRating) dans le schema local",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Aucune note dans le schema local - tu rates les rich snippets etoiles.",
+              "fix": "Ajouter AggregateRating avec ratingValue et reviewCount depuis tes avis Google."
+            },
+            {
+              "id": "nap_visible",
+              "label": "Telephone visible dans le texte de la page",
+              "status": "pass",
+              "value": "Trouve",
+              "points": 2,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Telephone visible dans le texte - coherence NAP (Nom/Adresse/Phone) assures.",
+              "fix": "Maintenir le numero visible."
+            }
+          ]
+        },
+        "ecommerce": {
+          "score": 0,
+          "maxScore": 0,
+          "ecommerceScore": 0,
+          "isEcommerce": false,
+          "checks": [
+            {
+              "id": "ecom_detected",
+              "label": "Site e-commerce detecte (CMS ou schema Product)",
+              "status": "warning",
+              "value": "Non detecte",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "high",
+              "impact": "Aucun e-commerce detecte sur cette page - checks non applicables.",
+              "fix": "Non applicable pour ce type de site."
+            },
+            {
+              "id": "product_schema",
+              "label": "Schema Product en JSON-LD",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 8,
+              "severity": "critical",
+              "impact": "Aucun schema Product - tes produits sont invisibles dans Google Shopping.",
+              "fix": "Ajouter un schema Product sur chaque page produit avec name, image, description."
+            },
+            {
+              "id": "product_price",
+              "label": "Prix dans les offres (offers.price)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Prix absent des offres - tes produits n'apparaissent pas dans Google Shopping.",
+              "fix": "Ajouter price et priceCurrency dans l'objet offers du schema Product."
+            },
+            {
+              "id": "product_availability",
+              "label": "Disponibilite (offers.availability)",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 4,
+              "severity": "medium",
+              "impact": "Disponibilite absente - Google ne peut pas indiquer si le produit est disponible.",
+              "fix": "Ajouter availability: 'https://schema.org/InStock' dans offers."
+            },
+            {
+              "id": "product_rating",
+              "label": "AggregateRating sur le produit",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 6,
+              "severity": "high",
+              "impact": "Aucune note produit - tu rates les rich snippets etoiles sur tes produits.",
+              "fix": "Ajouter aggregateRating avec ratingValue et reviewCount sur chaque schema Product."
+            },
+            {
+              "id": "product_brand",
+              "label": "Marque (brand) dans le schema Product",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "low",
+              "impact": "Marque absente du schema Product - signal manquant pour Google Shopping.",
+              "fix": "Ajouter brand: {name: 'NomDeLaMarque'} dans le schema Product."
+            },
+            {
+              "id": "product_currency",
+              "label": "Devise (priceCurrency) dans les offres",
+              "status": "warning",
+              "value": "-",
+              "points": 0,
+              "maxPoints": 2,
+              "severity": "medium",
+              "impact": "Devise absente - Google Shopping requiert priceCurrency avec le prix.",
+              "fix": "Ajouter priceCurrency: 'EUR' dans l'objet offers."
+            }
+          ]
+        }
+      },
+      "topIssues": [
+        {
+          "block": "conversion",
+          "id": "cta_above_fold",
+          "label": "Appel à l'action visible dès l'arrivée",
+          "status": "fail",
+          "value": "Aucun CTA détecté",
+          "points": 0,
+          "maxPoints": 6,
+          "severity": "critical",
+          "impact": "Aucun appel à l'action visible  -  tes visiteurs ne savent pas par où commencer et partent.",
+          "fix": "Ajouter un bouton CTA visible dès la première vue (ex : 'Demander un devis', 'Prendre RDV')."
+        },
+        {
+          "block": "legal",
+          "id": "politique_conf",
+          "label": "Politique de confidentialité",
+          "status": "fail",
+          "value": "Non trouvée",
+          "points": 0,
+          "maxPoints": 5,
+          "severity": "high",
+          "impact": "Aucune politique de confidentialité  -  obligatoire si tu collectes des données personnelles.",
+          "fix": "Ajouter une page 'Politique de confidentialité' et la lier depuis le footer."
+        },
+        {
+          "block": "conversion",
+          "id": "form_present",
+          "label": "Formulaire de contact présent",
+          "status": "fail",
+          "value": "Aucun formulaire",
+          "points": 0,
+          "maxPoints": 5,
+          "severity": "high",
+          "impact": "Aucun formulaire  -  tu perds des contacts de visiteurs intéressés.",
+          "fix": "Ajouter un formulaire de contact simple (prénom, email, message) sur la page."
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "block": "geo",
+      "checkId": "aggregate_rating",
+      "label": "AggregateRating ou Review en JSON-LD",
+      "clientStatus": "warning",
+      "pointsMissed": 8,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Ajouter un schéma AggregateRating avec tes avis Google/Trustpilot."
+    },
+    {
+      "block": "legal",
+      "checkId": "cookie_banner",
+      "label": "Bandeau cookies / consentement RGPD",
+      "clientStatus": "fail",
+      "pointsMissed": 6,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Installer une solution de consentement (Axeptio, Tarteaucitron, Cookiebot…)."
+    },
+    {
+      "block": "conversion",
+      "checkId": "phone_detectable",
+      "label": "Numéro de téléphone détectable",
+      "clientStatus": "fail",
+      "pointsMissed": 4,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Afficher ton numéro de téléphone de façon bien visible, de préférence dans le header."
+    },
+    {
+      "block": "seo",
+      "checkId": "hn_hierarchy",
+      "label": "Hiérarchie des titres (H1 > H2 > H3)",
+      "clientStatus": "warning",
+      "pointsMissed": 2,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Respecter l'ordre H1 > H2 > H3 sans sauter de niveau."
+    },
+    {
+      "block": "seo",
+      "checkId": "redirect_301",
+      "label": "Redirection HTTP → HTTPS (301)",
+      "clientStatus": "warning",
+      "pointsMissed": 2,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Configurer une redirection 301 pour consolider le PageRank."
+    },
+    {
+      "block": "localSeo",
+      "checkId": "nap_visible",
+      "label": "Telephone visible dans le texte de la page",
+      "clientStatus": "warning",
+      "pointsMissed": 2,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Afficher le telephone de facon claire dans le contenu textuel de la page."
+    },
+    {
+      "block": "seo",
+      "checkId": "canonical_correct",
+      "label": "Balise canonical correcte",
+      "clientStatus": "warning",
+      "pointsMissed": 1,
+      "competitors": [
+        "www.gemeosagency.com"
+      ],
+      "fix": "Vérifier et corriger l'URL dans la balise canonical."
+    }
+  ],
+  "opportunities": [
+    {
+      "block": "conversion",
+      "checkId": "cta_above_fold",
+      "label": "Appel à l'action visible dès l'arrivée",
+      "pointsGainable": 6,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "geo",
+      "checkId": "breadcrumb",
+      "label": "BreadcrumbList dans JSON-LD",
+      "pointsGainable": 6,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "localSeo",
+      "checkId": "gbp_link",
+      "label": "Google Business Profile lie (sameAs)",
+      "pointsGainable": 6,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "localSeo",
+      "checkId": "local_rating",
+      "label": "Note agregee (AggregateRating) dans le schema local",
+      "pointsGainable": 6,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "conversion",
+      "checkId": "form_present",
+      "label": "Formulaire de contact présent",
+      "pointsGainable": 5,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "geo",
+      "checkId": "speakable",
+      "label": "Propriété speakable",
+      "pointsGainable": 5,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "legal",
+      "checkId": "consent_checkbox",
+      "label": "Case de consentement dans les formulaires",
+      "pointsGainable": 4,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "localSeo",
+      "checkId": "opening_hours",
+      "label": "Horaires d'ouverture dans le schema",
+      "pointsGainable": 3,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "seo",
+      "checkId": "title_length",
+      "label": "Longueur balise title (50-60 car.)",
+      "pointsGainable": 2,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "geo",
+      "checkId": "how_to",
+      "label": "Schema HowTo",
+      "pointsGainable": 2,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    },
+    {
+      "block": "seo",
+      "checkId": "images_alt",
+      "label": "Attributs alt sur les images",
+      "pointsGainable": 1,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrivé, premier servi"
+    }
+  ],
+  "competitiveIntel": {
+    "clientRank": 1,
+    "totalSites": 2,
+    "avgCompetitorScore": 57,
+    "scoreGap": 3,
+    "strongestCompetitor": "www.gemeosagency.com",
+    "weakestCompetitor": "www.gemeosagency.com",
+    "clientAdvantages": [
+      {
+        "checkId": "meta_desc_length",
+        "label": "Longueur meta description (150-160 car.)",
+        "block": "seo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "politique_conf",
+        "label": "Politique de confidentialité",
+        "block": "legal",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "chat_widget",
+        "label": "Widget de chat en ligne (informatif)",
+        "block": "conversion",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "llms_txt_present",
+        "label": "Fichier llms.txt présent",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "org_type",
+        "label": "Type d'organisation précis (JSON-LD)",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "same_as",
+        "label": "Propriété sameAs (profils réseaux, annuaires)",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "founding_date",
+        "label": "foundingDate dans Organization",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "employee_count",
+        "label": "numberOfEmployees dans Organization",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "person_schema",
+        "label": "Schema Person avec knowsAbout",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      },
+      {
+        "checkId": "faq_schema",
+        "label": "Schema FAQPage",
+        "block": "geo",
+        "competitorsFailing": [
+          "www.gemeosagency.com"
+        ]
+      }
+    ],
+    "criticalGaps": [
+      "aggregate_rating",
+      "cookie_banner",
+      "phone_detectable"
+    ]
+  },
+  "matrix": {
+    "score_mobile": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "score_desktop": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "lcp": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "cls": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "inp": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "fetchpriority_hero": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "font_display": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "preconnect": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "title_present": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "title_length": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "meta_desc_present": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "meta_desc_length": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "h1_unique": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "hn_hierarchy": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "pass"
+    },
+    "sitemap_accessible": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "robots_accessible": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "https_active": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "redirect_301": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "pass"
+    },
+    "canonical_correct": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "pass"
+    },
+    "schema_present": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "lang_attr": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "images_alt": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "fail"
+    },
+    "no_broken_links": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "og_image": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "twitter_card": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "word_count": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "cookie_banner": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "pass"
+    },
+    "mentions_legales": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "politique_conf": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "consent_checkbox": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "cta_above_fold": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "fail"
+    },
+    "form_present": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "fail"
+    },
+    "phone_detectable": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "pass"
+    },
+    "social_proof": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "maps_address": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "chat_widget": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "viewport_set": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "mobile_score_50": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "text_readable": {
+      "develly.io": "unavailable",
+      "www.gemeosagency.com": "unavailable"
+    },
+    "no_blocking_res": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "ai_crawlers_allowed": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "sitemap_in_robots": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "llms_txt_present": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "org_type": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "same_as": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "speakable": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "price_spec_valid": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "founding_date": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "employee_count": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "person_schema": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "date_modified": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "breadcrumb": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "aggregate_rating": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "pass"
+    },
+    "faq_schema": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "how_to": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "images_absolute": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "hsts": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "pass"
+    },
+    "x_content_type": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "x_frame_options": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "csp": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "referrer_policy": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "local_schema": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "fail"
+    },
+    "local_address": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "local_telephone": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "opening_hours": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "area_served": {
+      "develly.io": "pass",
+      "www.gemeosagency.com": "warning"
+    },
+    "gbp_link": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "warning"
+    },
+    "local_rating": {
+      "develly.io": "fail",
+      "www.gemeosagency.com": "warning"
+    },
+    "nap_visible": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "pass"
+    },
+    "ecom_detected": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_schema": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_price": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_availability": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_rating": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_brand": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    },
+    "product_currency": {
+      "develly.io": "warning",
+      "www.gemeosagency.com": "warning"
+    }
+  }
+}

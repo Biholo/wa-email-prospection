@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 from api.router import router
 from core.db import init_db
-from scheduler.jobs import init_scheduler
+# from scheduler.jobs import init_scheduler  # décommenter pour réactiver les crons
 
 load_dotenv()
 
@@ -13,9 +13,9 @@ load_dotenv()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
-    scheduler = init_scheduler()
+    # scheduler = init_scheduler()  # décommenter pour réactiver les crons
     yield
-    scheduler.shutdown(wait=False)
+    # scheduler.shutdown(wait=False)  # décommenter pour réactiver les crons
 
 
 app = FastAPI(

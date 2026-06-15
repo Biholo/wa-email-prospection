@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 2</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 2 - Overrides */
+        body { background-color: var(--bg-light); }
+        .slide-container { background-color: var(--surface); padding: 4.7vh 6.25vw 0; padding-top: 8vh; }
+        .bg-typography { opacity: 0.03; }
+        .bg-word { font-size: 17.5vw; letter-spacing: -0.3vw; }
+        .header { margin-bottom: 6.25vh; }
+        .title-section { margin-bottom: 5.5vh; }
+        .footer { display: flex; justify-content: space-between; align-items: flex-start; gap: 5vh; }
+        .slide-number { opacity: 0.1; padding-top: 1vh; }
+        .slide-image { margin-bottom: 5.5vh; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3vh; align-items: center; }
+        .slide-image img { width: 100%; height: 20vh; object-fit: contain; }
+        .develly-pill { display: inline-flex; align-items: center; gap: 0.5vw; }
+        .develly-pill img { height: 2vw; object-fit: contain; border-radius: 50px; }
+
+        /* Comparison Table styling */
+        .comparison-container {
+            margin-top: 4vh;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .comparison-table th {
+            padding: 2.2vh 2.5vw;
+            font-size: 1vw;
+            font-weight: 800;
+            letter-spacing: 0.05vw;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            background-color: #ffffff;
+        }
+
+        .comparison-table th:last-child {
+            border-right: none;
+        }
+
+        .comparison-table th.col-canal {
+            text-align: left;
+            color: #1a1a1a;
+            width: 40%;
+        }
+
+        .comparison-table th.col-sans {
+            text-align: center;
+            color: var(--brand-red);
+            width: 30%;
+        }
+
+        .comparison-table th.col-avec {
+            text-align: center;
+            color: #2e7d32;
+            width: 30%;
+        }
+
+        .comparison-table td {
+            padding: 2.2vh 2.5vw;
+            font-size: 1.1vw;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            vertical-align: middle;
+            color: #2d3748;
+        }
+
+        .comparison-table td:last-child {
+            border-right: none;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .channel-cell {
+            display: flex;
+            align-items: center;
+            gap: 1.2vw;
+            font-weight: 600;
+        }
+
+        .channel-icon {
+            width: 2.5vw;
+            height: 2.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .status-cell {
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.15vw;
+            letter-spacing: 0.05vw;
+        }
+
+        .status-red {
+            color: var(--brand-red);
+        }
+
+        .status-green {
+            color: #2e7d32;
+        }
+
+        .status-orange {
+            color: #ef6c00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">CONVERSION</div>
+            <div class="bg-word">STRATEGY</div>
+            <div class="bg-word">OPTIMIZATION</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="develly-pill">
+                    <img src="/images/develly_black.png" alt="">
+                    <span>Develly</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2vh;">
+            <div class="title-section">
+                <h1 class="main-headline">D'où viennent vos clients aujourd'hui ?</h1>
+                <div class="red-underline"></div>
+            </div>
+            <div class="footer">
+                <div class="ceo-compact">
+                    <div class="ceo-img"></div>
+                    <div class="ceo-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+        </div>
+
+        <div class="comparison-container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th class="col-canal">Canal</th>
+                        <th class="col-sans">Sans site</th>
+                        <th class="col-avec">Avec site optimisé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/bouche.png" alt="" srcset="" width="32" height="32">
+                                </div>
+                                <span>Bouche à oreille</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-red">OK</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/carte.png" alt="" srcset="" width="32" height="32">
+                                </div>
+                                <span>Carte de visite / autocollant</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-red">OK</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/instagram.webp" alt="" srcset="" width="48" height="48">
+                                </div>
+                                <span>Réseaux sociaux</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-orange">PARTIEL</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/map.png" alt="" srcset="" width="32" height="32">
+                                </div>
+                                <span>Google Maps / GMB</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-orange">PARTIEL</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/google.webp" alt="" srcset="" width="32" height="32">
+                                </div>
+                                <span>Recherche Google</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-red">NON</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="channel-cell">
+                                <div class="channel-icon">
+                                    <img src="/images/chatgpt.png" alt="" srcset="" width="32" height="32">
+                                </div>
+                                <span>IA / ChatGPT</span>
+                            </div>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-red">NON</span>
+                        </td>
+                        <td class="status-cell">
+                            <span class="status-green">OK</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

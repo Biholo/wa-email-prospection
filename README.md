@@ -249,6 +249,274 @@ Les dossiers `data/`, `config/` et `prompts/` sont montés en volume — pas bes
 
 ---
 
+## Moteur d'audit de site web
+
+Deux routes distinctes pour l'analyse de site. Les deux sauvegardent automatiquement un JSON dans `/output/` et des screenshots dans `/output/screenshots/`.
+
+---
+
+### `POST /api/audit` - Analyse solo
+
+Analyse complète d'un site en 7 blocs + intelligence signals.
+
+```bash
+curl -X POST http://localhost:8000/api/audit \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://monsite.fr", "max_pages": 3}'
+```
+
+| Champ | Type | Defaut | Description |
+|-------|------|--------|-------------|
+| `url` | string | requis | URL a analyser (avec https://) |
+| `max_pages` | int | 1 | Pages nav a auditer en plus (max 5 ou AUDIT_MAX_PAGES) |
+
+**Reponse :**
+
+```json
+{
+  "url": "https://monsite.fr",
+  "domain": "monsite.fr",
+  "analyzedAt": "2026-06-15T10:00:00Z",
+  "globalScore": 67,
+  "grade": "FAIR",
+  "summary": "Ton site a des bases correctes mais...",
+  "cms": "Next.js",
+  "targetKeyword": "Agence web Lyon",
+  "techStack": {
+    "Framework JS": ["Next.js"],
+    "Analytics": ["Google Analytics 4"],
+    "Polices": ["Inter", "Montserrat"],
+    "Serveur": ["Vercel"]
+  },
+  "messaging": {
+    "h1": "Titre principal de la page",
+    "metaDescription": "Description meta...",
+    "lang": "fr"
+  },
+  "freshness": {
+    "lastModified": "2025-11-01",
+    "copyrightYear": 2025,
+    "hasBlog": true,
+    "recentArticleCount": 4
+  },
+  "acquisitionProfile": {
+    "channels": ["SEO", "Paid", "Email"],
+    "channelCount": 3,
+    "level": "multi-canal"
+  },
+  "marketingBudget": {
+    "level": "modere",
+    "score": 5,
+    "signals": ["Google Ads", "HubSpot"]
+  },
+  "internationalisation": {
+    "hreflang": ["fr", "en"],
+    "i18nTools": [],
+    "isMultilingual": true
+  },
+  "socialPresence": {
+    "linkedin": "https://linkedin.com/company/monsite",
+    "facebook": null,
+    "instagram": "https://instagram.com/monsite",
+    "tiktok": null,
+    "youtube": null,
+    "twitter": null,
+    "pinterest": null,
+    "score": 2,
+    "total": 7
+  },
+  "screenshots": {
+    "desktop": "output/screenshots/desktop_monsite_fr_20260615_100000.png",
+    "mobile": "output/screenshots/mobile_monsite_fr_20260615_100000.png"
+  },
+  "blocks": {
+    "performance": {"score": 18, "maxScore": 25, "checks": [...]},
+    "seo":         {"score": 20, "maxScore": 25, "checks": [...]},
+    "legal":       {"score": 15, "maxScore": 20, "checks": [...]},
+    "conversion":  {"score": 10, "maxScore": 20, "checks": [...]},
+    "mobile":      {"score": 7,  "maxScore": 10, "checks": [...]},
+    "geo":         {"score": 0,  "maxScore": 0,  "geoScore": 45, "checks": [...]},
+    "security":    {"score": 0,  "maxScore": 0,  "securityScore": 60, "checks": [...]}
+  },
+  "topIssues": [...],
+  "pages": [...]
+}
+```
+
+**Blocs de scoring :**
+
+| Bloc | Max | Ce qu'il mesure |
+|------|-----|-----------------|
+| performance | 25 | PSI mobile/desktop, LCP, CLS, INP |
+| seo | 25 | title, meta, H1, sitemap, robots, canonical, schema, OG image, Twitter Card |
+| legal | 20 | cookie banner, mentions legales, politique confidentialite, consentement |
+| conversion | 20 | CTA, formulaire, telephone, preuve sociale |
+| mobile | 10 | viewport, score mobile PSI, taille texte |
+| geo | bonus /100 | crawlers IA, llms.txt, JSON-LD richesse, sameAs, FAQPage |
+| security | bonus /100 | HSTS, CSP, X-Frame-Options, X-Content-Type-Options |
+
+`globalScore = performance + seo + legal + conversion + mobile` (max 100)
+
+Les blocs `geo` et `security` sont informatifs (hors globalScore).
+
+**CLI :**
+
+```bash
+# Audit simple
+python cli_audit.py audit https://monsite.fr
+
+# Audit multi-page (analyse 3 pages de la nav)
+python cli_audit.py audit https://monsite.fr --pages 3
+
+# Detail complet de tous les checks
+python cli_audit.py audit https://monsite.fr --detail
+
+# Uniquement les fails et warnings
+python cli_audit.py audit https://monsite.fr --issues
+
+# JSON brut
+python cli_audit.py audit https://monsite.fr --raw
+```
+
+---
+
+### `POST /api/audit/compare` - Analyse concurrentielle
+
+Compare 2 a 5 sites en parallele. Le premier URL est le client, les suivants sont les concurrents.
+
+```bash
+curl -X POST http://localhost:8000/api/audit/compare \
+  -H "Content-Type: application/json" \
+  -d '{"urls": ["https://client.fr", "https://concurrent1.fr", "https://concurrent2.fr"]}'
+```
+
+| Champ | Type | Description |
+|-------|------|-------------|
+| `urls` | list[string] | 2 a 5 URLs - la 1ere est le client |
+
+**Reponse :**
+
+```json
+{
+  "urls": ["https://client.fr", "https://concurrent1.fr"],
+  "results": [
+    {
+      "url": "https://client.fr",
+      "domain": "client.fr",
+      "isClient": true,
+      "globalScore": 42,
+      "grade": "FAIR",
+      "targetKeyword": "Plombier Paris",
+      "techStack": {...},
+      "messaging": {...},
+      "freshness": {...},
+      "acquisitionProfile": {...},
+      "marketingBudget": {...},
+      "socialPresence": {...},
+      "screenshots": {"desktop": "output/screenshots/...", "mobile": "..."},
+      "blocks": {...},
+      "topIssues": [...]
+    }
+  ],
+  "gaps": [
+    {
+      "block": "legal",
+      "checkId": "cookie_banner",
+      "label": "Bandeau cookies / consentement RGPD",
+      "clientStatus": "fail",
+      "pointsMissed": 6,
+      "competitors": ["concurrent1.fr"],
+      "fix": "Installer une solution de consentement (Axeptio, Tarteaucitron...)."
+    }
+  ],
+  "opportunities": [
+    {
+      "block": "geo",
+      "checkId": "faq_schema",
+      "label": "Schema FAQPage",
+      "pointsGainable": 6,
+      "failingCount": 2,
+      "message": "Aucun concurrent ne l'a - premier arrive, premier servi"
+    }
+  ],
+  "competitiveIntel": {
+    "clientRank": 2,
+    "totalSites": 2,
+    "avgCompetitorScore": 71,
+    "scoreGap": -29,
+    "strongestCompetitor": "concurrent1.fr",
+    "weakestCompetitor": "concurrent1.fr",
+    "clientAdvantages": [...],
+    "criticalGaps": ["cookie_banner", "cta_above_fold", "schema_present"]
+  },
+  "matrix": {
+    "cookie_banner":  {"client.fr": "fail", "concurrent1.fr": "pass"},
+    "cta_above_fold": {"client.fr": "pass", "concurrent1.fr": "pass"},
+    "schema_present": {"client.fr": "fail", "concurrent1.fr": "pass"}
+  }
+}
+```
+
+**Champs cles :**
+
+| Champ | Description |
+|-------|-------------|
+| `gaps[]` | Checks que le client rate et qu'au moins un concurrent reussit, tries par points perdus |
+| `opportunities[]` | Checks que TOUS les sites ratent = first-mover advantage |
+| `competitiveIntel.scoreGap` | Score client moins moyenne concurrents (negatif = en retard) |
+| `competitiveIntel.clientAdvantages` | Checks que le client reussit et que les concurrents ratent |
+| `matrix` | Tableau croise {checkId: {domain: status}} - vue complete de qui a quoi |
+
+**CLI :**
+
+```bash
+# Comparaison (1er = client)
+python cli_audit.py compare https://client.fr https://concurrent.fr
+
+# Avec plusieurs concurrents
+python cli_audit.py compare https://client.fr https://conc1.fr https://conc2.fr https://conc3.fr
+
+# JSON brut
+python cli_audit.py compare https://client.fr https://concurrent.fr --raw
+```
+
+**Output CLI compare :**
+1. SCORES - tableau des scores globaux par bloc
+2. TECH STACK - side-by-side par categorie
+3. PROPOSITION DE VALEUR - H1, canaux, budget, internationalisation
+4. FRAICHEUR - copyright year, blog, date modification
+5. AVANTAGES CONCURRENTS (gaps) - checks rates avec points manques
+6. PLAN D'ACTION - top 5 fixes priorises
+7. OPPORTUNITES FIRST-MOVER - checks que personne n'a encore
+8. SYNTHESE CONCURRENTIELLE - rang, ecart de score, avantages client
+9. MOT-CLE CIBLE - keyword cible par site
+10. PRESENCE SOCIALE - qui est sur quelles plateformes
+11. SECURITE HEADERS - score /100 par site
+12. SCREENSHOTS - chemins vers les fichiers PNG
+
+---
+
+### Capture email post-audit
+
+Apres un audit solo, enregistre l'email du visiteur et envoie un email de rapport.
+
+```bash
+curl -X PATCH http://localhost:8000/api/audit/{audit_id}/email \
+  -H "Content-Type: application/json" \
+  -d '{"email": "contact@monsite.fr"}'
+```
+
+---
+
+### Variables d'environnement audit
+
+```env
+PAGESPEED_API_KEY=AIza...       # Google PageSpeed API key (recommande)
+AUDIT_MAX_PAGES=10              # Nombre max de pages nav a auditer
+```
+
+---
+
 ## API de monitoring
 
 Le serveur expose uniquement des routes de **lecture**. Le pipeline se lance via le cron, pas via API.

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 7 - Contact</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 9 - Overrides */
+        body {
+            background-color: var(--brand-red);
+        }
+
+        .slide-container {
+            background-color: var(--brand-red);
+            padding: 8vh 6.25vw;
+        }
+
+        .bg-typography {
+            opacity: 0.1;
+        }
+
+        .bg-word {
+            font-size: 21.875vw;
+            letter-spacing: -0.39vw;
+        }
+
+        .header {
+            align-items: flex-start;
+        }
+
+        .develly-pill {
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .develly-pill img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        .main-headline {
+            font-size: 3.5vw;
+            line-height: 1.05;
+            color: white;
+            max-width: 85vw;
+            letter-spacing: -0.08vw;
+        }
+
+        .subtitle {
+            font-size: 1.5vw;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 62.5vw;
+        }
+
+        .cta-button {
+            padding: 2vh 3.5vw;
+            font-size: 1.1vw;
+            margin-top: 3.13vh;
+        }
+
+        .ceo-img {
+            border: 0.2vw solid white;
+        }
+
+        .ceo-details h5 {
+            color: white;
+        }
+
+        .ceo-details p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .slide-number {
+            color: white;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">CONTACT</div>
+            <div class="bg-word">ACTION</div>
+            <div class="bg-word">DÉMARRAGE</div>
+        </div>
+
+        <div class="header">
+            <div class="develly-pill">
+                <img src="/images/develly.png" alt="">
+                <span>Develly</span>
+            </div>
+        </div>
+
+        <div class="center-content">
+            <h1 class="main-headline">ON A UN PLAN D'ACTION PRÊT POUR {{PROSPECT.company}}.</h1>
+            <p class="subtitle">Auriez-vous 15 minutes cette semaine
+                pour qu'on vous le présente ?</p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z">
+                        </path>
+                    </svg>
+                    contact@develly.io
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z">
+                        </path>
+                    </svg>
+                    07 44 44 87 33
+                </div>
+            </div>
+
+            <div class="social-links">
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                    </svg>
+                    @develly.io
+                </div>
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z" />
+                    </svg>
+                    www.develly.io
+                </div>
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.68 1.68 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                    </svg>
+                    /company/develly
+                </div>
+            </div>
+
+            <button class="cta-button">Réserver MON CRENEAU GRATUIT </button>
+        </div>
+
+        <div class="footer">
+            <div class="ceo-compact">
+                <div class="ceo-img"></div>
+                <div class="ceo-details">
+                    <h5>Kilian Trouet</h5>
+                    <p>Co-Fondateur Develly</p>
+                </div>
+            </div>
+            <div class="slide-number">07</div>
+        </div>
+    </div>
+</body>
+
+</html>

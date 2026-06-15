@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 6 - Preuve Sociale</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 6 - Overrides */
+        body {
+            background-color: var(--bg-light);
+        }
+
+        .slide-container {
+            background-color: var(--surface);
+            padding: 8vh 6.25vw;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .bg-typography {
+            opacity: 0.03;
+        }
+
+        .bg-word {
+            font-size: 21.875vw;
+            letter-spacing: -0.39vw;
+        }
+
+        .header {
+            margin-bottom: 6.25vh;
+        }
+
+        .logo-area {
+            gap: 0.94vw;
+        }
+
+        .title-section {
+            margin-bottom: 3.5vh;
+        }
+
+        .red-underline {
+            width: 9.375vw;
+        }
+
+        .slide-number {
+            color: var(--text-main);
+            opacity: 0.1;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2vw;
+            font-weight: 700;
+        }
+
+        .develly-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .develly-pill img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        /* Case Cards Grid */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2vw;
+            z-index: 10;
+            position: relative;
+        }
+
+        .case-card {
+            background: #ffffff;
+            border: 1px solid var(--ui-border);
+            border-radius: 1.25vw;
+            padding: 3.5vh 2vw;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            min-height: 36vh;
+        }
+
+        .case-card:hover {
+            transform: translateY(-0.52vh);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--brand-red);
+        }
+
+        /* Top row: icon + name/city side by side */
+        .case-header {
+            display: flex;
+            align-items: center;
+            gap: 0.9vw;
+            width: 100%;
+        }
+
+        .case-icon {
+            width: 2.8vw;
+            height: 2.8vw;
+            border-radius: 50%;
+            border: 2px solid var(--brand-red);
+            /* Dark navy circle */
+            color: var(--brand-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .case-icon svg {
+            width: 1.5vw;
+            height: 1.5vw;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            fill: none;
+        }
+
+        .case-identity {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2vh;
+        }
+
+        .case-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1vw;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .case-city {
+            font-size: 0.82vw;
+            color: var(--text-grey);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Separator between header and metric */
+        .case-divider {
+            width: 100%;
+            border: none;
+            border-top: 1px solid var(--ui-border);
+            margin: 2.2vh 0;
+        }
+
+        /* Large metric */
+        .case-metric {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.2vw;
+            font-weight: 700;
+            color: var(--brand-red);
+            line-height: 1;
+            margin: 0 0 0.6vh 0;
+        }
+
+        .case-metric-label {
+            font-size: 0.88vw;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Bottom pill – always at bottom via justify-content: space-between on parent */
+        .case-pill {
+            padding-top: 0;
+            width: 100%;
+        }
+
+        .case-pill-inner {
+            display: inline-block;
+            background: rgba(232, 93, 76, 0.07);
+            color: var(--brand-red);
+            border: 1px solid rgba(232, 93, 76, 0.2);
+            padding: 0.9vh 1.1vw;
+            border-radius: 0.47vw;
+            font-size: 0.75vw;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">CLIENTS</div>
+            <div class="bg-word">RÉSULTATS</div>
+            <div class="bg-word">PREUVES</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="develly-pill">
+                    <img src="/images/develly_black.png" alt="">
+                    <span>Develly</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2vh;">
+            <div class="title-section">
+                <h1 class="main-headline">ON L'A DÉJÀ FAIT POUR DES {{NICHE.LABEL}}S</h1>
+                <div class="red-underline"></div>
+            </div>
+
+            <div style="display: flex; align-items: flex-end; gap: 5vh;">
+                <div class="ceo-compact">
+                    <div class="ceo-img"></div>
+                    <div class="ceo-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="slide-number">06</div>
+            </div>
+        </div>
+
+        <div class="cases-grid">
+
+            <!-- Case 1 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="case-identity">
+                        <p class="case-name" id="c1-name">Électricité Fontaine</p>
+                        <p class="case-city" id="c1-city">Grenoble</p>
+                    </div>
+                </div>
+                <hr class="case-divider">
+                <p class="case-metric" id="c1-metric">+52%</p>
+                <p class="case-metric-label" id="c1-label">d'appels en 3 mois</p>
+                <div class="case-pill">
+                    <span class="case-pill-inner" id="c1-pill">Optimisation GMB + stratégie avis</span>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="case-identity">
+                        <p class="case-name" id="c2-name">ProElec</p>
+                        <p class="case-city" id="c2-city">Strasbourg</p>
+                    </div>
+                </div>
+                <hr class="case-divider">
+                <p class="case-metric" id="c2-metric">+38%</p>
+                <p class="case-metric-label" id="c2-label">de clics Google Maps</p>
+                <div class="case-pill">
+                    <span class="case-pill-inner" id="c2-pill">Refonte fiche + 60 photos</span>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+                <div class="case-header">
+                    <div class="case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="case-identity">
+                        <p class="case-name" id="c3-name">Habilit'Elec</p>
+                        <p class="case-city" id="c3-city">Rennes</p>
+                    </div>
+                </div>
+                <hr class="case-divider">
+                <p class="case-metric" id="c3-metric">+44%</p>
+                <p class="case-metric-label" id="c3-label">de demandes de devis</p>
+                <div class="case-pill">
+                    <span class="case-pill-inner" id="c3-pill">Top 3 sur "électricien Rennes"</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

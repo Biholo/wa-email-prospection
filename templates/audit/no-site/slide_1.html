@@ -1,0 +1,378 @@
+﻿<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Pitch Slide 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@700&display=swap');
+
+        :root {
+            --brand-red: #e85d4c;
+            --brand-dark-red: #c03a2b;
+            --surface: #ffffff;
+            --text-main: #1a1a1a;
+            --text-secondary: #65676b;
+            --ui-border: #dbdbdb;
+            --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-pop: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-red);
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--brand-red);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5vw;
+            box-sizing: border-box;
+        }
+
+        .bg-typography {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.15;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+        }
+
+        .bg-word {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+            white-space: nowrap;
+            letter-spacing: -0.6vw;
+        }
+
+        .content-layer {
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            gap: 4vw;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            padding-left: 1.5vw;
+        }
+
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1vw;
+            width: fit-content;
+            margin-bottom: 2vh;
+            letter-spacing: 0vw;
+            text-transform: uppercase;
+        }
+
+        .pill-badge img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        .headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5vw;
+            line-height: 0.95;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 2vh 0;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .subheadline {
+            font-size: 1.5vw;
+            line-height: 1.4;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 90%;
+            margin-bottom: 4vh;
+            border-left: 0.25vw solid white;
+            padding-left: 1.5vw;
+        }
+
+        .ceo-block {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+        }
+
+        .ceo-avatar {
+            width: 4vw;
+            height: 4vw;
+            border-radius: 50%;
+            background-color: #eee;
+            background-image: url('https://www.develly.io/assets/team/kilian-trouet.webp');
+            background-size: cover;
+            border: 0.2vw solid white;
+        }
+
+        .ceo-info h4 {
+            margin: 0;
+            font-size: 1.1vw;
+            font-weight: 700;
+        }
+
+        .ceo-info span {
+            font-size: 0.9vw;
+            opacity: 0.8;
+        }
+
+        .visual-column {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .laptop-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 42vw;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .laptop-mockup:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .laptop-screen {
+            background: #1a1a1a;
+            border-radius: 1vw 1vw 0 0;
+            padding: 1.5vw 1.5vw 0 1.5vw;
+            box-shadow: var(--shadow-card);
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 50vh;
+            background: white;
+            border-radius: 0.5vw 0.5vw 0 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .browser-bar {
+            background: #f5f5f5;
+            padding: 1vh 1vw;
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .browser-dot {
+            width: 0.6vw;
+            height: 0.6vw;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .address-bar {
+            flex: 1;
+            background: white;
+            border-radius: 0.3vw;
+            padding: 0.5vh 1vw;
+            font-size: 0.7vw;
+            color: #666;
+            margin-left: 0.5vw;
+        }
+
+        .landing-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laptop-base {
+            background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+            height: 1.5vh;
+            border-radius: 0 0 1.5vw 1.5vw;
+            position: relative;
+        }
+
+        .laptop-base::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15vw;
+            height: 0.5vh;
+            background: #a0a0a0;
+            border-radius: 0 0 0.5vw 0.5vw;
+        }
+
+        .pop-out-stat {
+            position: absolute;
+            bottom: -3vh;
+            right: -2.5vw;
+            background: white;
+            padding: 2.2vh 1.9vw;
+            border-radius: 1vw;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            z-index: 50;
+            text-align: center;
+            transform: rotate(5deg);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2vw;
+            font-weight: 800;
+            color: var(--brand-red);
+        }
+
+        .stat-label {
+            font-size: 0.75vw;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .floating-ui {
+            position: absolute;
+            background: white;
+            padding: 0.75vw;
+            border-radius: 0.75vw;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            font-size: 0.75vw;
+            font-weight: 600;
+            color: var(--brand-red);
+            z-index: 5;
+        }
+
+        .f-ui-1 {
+            top: 20%;
+            right: 10%;
+            transform: rotate(10deg);
+        }
+
+        .f-ui-2 {
+            bottom: 15%;
+            left: -1.25vw;
+            transform: rotate(-5deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">RESULT</div>
+            <div class="bg-word" style="color: transparent; -webkit-text-stroke: 0.12vw rgba(0,0,0,0.2);">GROWTH</div>
+            <div class="bg-word">VISIBILITE</div>
+            <div class="bg-word" style="color: transparent; -webkit-text-stroke: 0.12vw rgba(0,0,0,0.2);">SALES</div>
+        </div>
+
+        <div class="content-layer">
+            <div class="text-column">
+                <div class="pill-badge">
+                    <img src="/images/develly.png" alt="">
+                    <p>Develly</p>
+                </div>
+
+                <h1 class="headline">
+                    Comment<br>
+                    augmenter de<br>
+                    <div style="margin-top: 2vh;"></div>
+                    <span style="color: black; background: white; padding: 0 0.6vw; margin-top: 10rem;">30% vos appels
+                        <br>
+                        <div style="margin-top: 2vh;"></div>
+                        entrants ?
+                    </span>
+                </h1>
+
+                <p class="subheadline">
+                    Audit digital présenté pour <br>
+                    <span style="color: black; background: white; padding: 0 0.6vw; margin-top: 10rem;">{{PROSPECT.company}}</span>
+                    <br><span style="font-size: 1.3rem; font-weight: 800;">{{NICHE.label}} à {{PROSPECT.ville}} - {{DATE}}</span>
+                </p>
+
+                <div class="ceo-block">
+                    <div class="ceo-avatar"></div>
+                    <div class="ceo-info">
+                        <h4>Kilian Trouet</h4>
+                        <span>Co-Fondateur Develly</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-column">
+                <div class="floating-ui f-ui-1">Analytics ↗</div>
+                <div class="floating-ui f-ui-2">+128% Traffic</div>
+
+                <div class="laptop-mockup">
+                    <div class="laptop-screen">
+                        <div class="screen-content">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="address-bar">www.hiro.fr</div>
+                            </div>
+                            <div class="landing-content">
+                                <img src="/images/slide1.png" alt="Restaurant Website" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="laptop-base"></div>
+                    
+                    <div class="pop-out-stat">
+                        <span class="stat-number">+342</span>
+                        <span class="stat-label">Réservations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

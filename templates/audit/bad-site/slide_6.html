@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 6 - Avant/Après Hero Section</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        /* Slide 6 - Avant/Après Hero Section */
+        body {
+            background-color: var(--bg-light);
+        }
+
+        .slide-container {
+            background-color: var(--surface);
+            padding: 6vh 6.25vw 4.5vh;
+        }
+
+        .bg-typography {
+            opacity: 0.03;
+        }
+
+        .bg-word {
+            font-size: 21.875vw;
+            letter-spacing: -0.39vw;
+        }
+
+        .header {
+            margin-bottom: 2vh;
+        }
+
+        .logo-area {
+            gap: 0.94vw;
+        }
+
+        .slide-number {
+            color: var(--text-main);
+            opacity: 0.1;
+        }
+
+        .develly-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .develly-pill img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        /* Title row */
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2vw;
+            margin-bottom: 2vh;
+            z-index: 10;
+            position: relative;
+        }
+
+        .section-tag {
+            display: block;
+            font-size: 0.78vw;
+            font-weight: 700;
+            color: var(--brand-red);
+            text-transform: uppercase;
+            letter-spacing: 0.15vw;
+            margin: 0 0 0.3vh 0;
+        }
+
+        .red-underline {
+            width: 9.375vw;
+        }
+
+        .slide-desc {
+            font-size: 0.78vw;
+            color: var(--text-grey);
+            font-weight: 500;
+            margin: 0.8vh 0 0;
+            line-height: 1.45;
+            max-width: 36vw;
+        }
+
+        /* 2×2 grid */
+        .ab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1.8vh 2vw;
+            z-index: 10;
+            position: relative;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .ab-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7vh;
+            min-height: 0;
+        }
+
+        /* Badges row */
+        .ab-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .ab-num {
+            width: 1.5vw;
+            height: 1.5vw;
+            border-radius: 50%;
+            background: var(--brand-red);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75vw;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .badge-avant {
+            background: var(--brand-red);
+            color: white;
+            font-size: 0.5vw;
+            font-weight: 700;
+            padding: 0.22vh 0.45vw;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.05vw;
+        }
+
+        .badge-apres {
+            background: #16a34a;
+            color: white;
+            font-size: 0.5vw;
+            font-weight: 700;
+            padding: 0.22vh 0.45vw;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.05vw;
+        }
+
+        .ab-arrow-svg {
+            color: var(--brand-red);
+            width: 1.2vw;
+            height: 0.8vw;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        /* Screens pair */
+        .ab-screens {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5vw;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* ── AVANT screen ── */
+        .screen-avant {
+            background: #111827;
+            border-radius: 0.5vw;
+            padding: 1.5vh 1.2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avant-headline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+            margin: 0 0 0.5vh 0;
+        }
+
+        .avant-sub {
+            font-size: 0.46vw;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.4;
+            margin: 0 0 1.2vh 0;
+        }
+
+        .avant-btn {
+            display: inline-block;
+            background: var(--brand-red);
+            color: white;
+            font-size: 0.4vw;
+            font-weight: 700;
+            padding: 0.35vh 0.6vw;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.04vw;
+            width: fit-content;
+        }
+
+        /* ── APRÈS screen ── */
+        .screen-apres {
+            border-radius: 0.5vw;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+        }
+
+        .apres-left {
+            background: #111827;
+            padding: 1.5vh 1.2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .apres-cat {
+            font-size: 0.36vw;
+            font-weight: 700;
+            color: var(--brand-red);
+            text-transform: uppercase;
+            letter-spacing: 0.1vw;
+            margin: 0 0 0.35vh 0;
+        }
+
+        .apres-headline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72vw;
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            margin: 0 0 0.6vh 0;
+        }
+
+        .apres-checks {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.75vh 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.18vh;
+        }
+
+        .apres-checks li {
+            font-size: 0.38vw;
+            color: rgba(255, 255, 255, 0.72);
+            display: flex;
+            align-items: center;
+            gap: 0.22vw;
+        }
+
+        .apres-checks li::before {
+            content: '✓';
+            color: #4ade80;
+            font-weight: 800;
+            font-size: 0.42vw;
+            flex-shrink: 0;
+        }
+
+        .apres-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2vw;
+            background: #f59e0b;
+            color: #1a1a1a;
+            font-size: 0.38vw;
+            font-weight: 800;
+            padding: 0.45vh 0.6vw;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.03vw;
+            width: fit-content;
+        }
+
+        .apres-right {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .apres-badge {
+            position: absolute;
+            background: white;
+            border-radius: 0.25vw;
+            padding: 0.35vh 0.45vw;
+            font-size: 0.36vw;
+            font-weight: 700;
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+            line-height: 1.3;
+        }
+
+        .apres-badge.bottom-right {
+            bottom: 1vh;
+            right: 0.4vw;
+        }
+
+        .apres-badge.top-left {
+            top: 1vh;
+            left: 0.4vw;
+        }
+
+        .apres-badge-secondary {
+            font-weight: 400;
+            color: #888;
+            font-size: 0.3vw;
+            display: block;
+        }
+
+        /* Icon row (pair 2) */
+        .apres-icons-row {
+            display: flex;
+            gap: 0.7vw;
+            margin-bottom: 0.75vh;
+        }
+
+        .apres-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15vh;
+            font-size: 0.3vw;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .apres-icon-circle {
+            width: 1.2vw;
+            height: 1.2vw;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5vw;
+        }
+
+        /* Cert circle (pair 3) */
+        .cert-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.36vw;
+            font-weight: 800;
+            color: var(--brand-red);
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.3;
+        }
+
+        /* ── Summary bar ── */
+        .summary-bar {
+            background: #fff5f4;
+            border: 1px solid rgba(232, 93, 76, 0.18);
+            border-radius: 0.6vw;
+            padding: 1.1vh 1.8vw;
+            display: flex;
+            align-items: center;
+            gap: 0.9vw;
+            margin-top: 1.8vh;
+            z-index: 10;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .summary-star-circle {
+            width: 1.8vw;
+            height: 1.8vw;
+            background: var(--brand-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85vw;
+            color: white;
+        }
+
+        .summary-text {
+            font-size: 0.78vw;
+            color: var(--text-main);
+            font-weight: 500;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">AVANT</div>
+            <div class="bg-word">APRÈS</div>
+            <div class="bg-word">HERO</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-area">
+                <div class="develly-pill">
+                    <img src="/images/develly_black.png" alt="">
+                    <span>Develly</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="title-row">
+            <div class="title-section">
+                <span class="section-tag">Hero Section</span>
+                <h1 class="main-headline">AVANT / APRÈS</h1>
+                <div class="red-underline"></div>
+                <p class="slide-desc">4 exemples concrets de transformation de la section principale pour plus de confiance, de clarté et de conversions.</p>
+            </div>
+            <div style="display: flex; align-items: flex-end; gap: 5vh;">
+                <div class="ceo-compact">
+                    <div class="ceo-img"></div>
+                    <div class="ceo-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="slide-number">06</div>
+            </div>
+        </div>
+
+        <div class="ab-grid">
+
+            <!-- ── Pair 1 ── -->
+            <div class="ab-pair">
+                <div class="ab-header">
+                    <div class="ab-num">1</div>
+                    <span class="badge-avant">AVANT</span>
+                    <svg class="ab-arrow-svg" viewBox="0 0 30 14" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 7 Q14 1 27 7" />
+                        <polyline points="22 4 27 7 22 10" />
+                    </svg>
+                    <span class="badge-apres">APRÈS</span>
+                </div>
+                <div class="ab-screens">
+                    <div class="screen-avant">
+                        <p class="avant-headline">{{NICHE.LABEL}} à Lyon</p>
+                        <p class="avant-sub">Intervention rapide 24h/24 – 7j/7<br>Nous intervenons pour tous vos besoins dans la région lyonnaise.</p>
+                        <span class="avant-btn">Nous contacter</span>
+                    </div>
+                    <div class="screen-apres">
+                        <div class="apres-left">
+                            <p class="apres-cat">{{NICHE.LABEL}} à Lyon</p>
+                            <p class="apres-headline">Intervention rapide<br>24h/24 – 7j/7</p>
+                            <ul class="apres-checks">
+                                <li>Déplacement en 30 min</li>
+                                <li>Tarifs transparents</li>
+                                <li>Professionnels certifiés</li>
+                            </ul>
+                            <span class="apres-btn">📞 Appeler maintenant</span>
+                        </div>
+                        <div class="apres-right"
+                            style="background: linear-gradient(160deg, #1a2f50 0%, #0d1b2a 100%);">
+                            <div class="apres-badge bottom-right">
+                                ⭐ 4.9/5
+                                <span class="apres-badge-secondary">120+ avis Google</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Pair 2 ── -->
+            <div class="ab-pair">
+                <div class="ab-header">
+                    <div class="ab-num">2</div>
+                    <span class="badge-avant">AVANT</span>
+                    <svg class="ab-arrow-svg" viewBox="0 0 30 14" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 7 Q14 1 27 7" />
+                        <polyline points="22 4 27 7 22 10" />
+                    </svg>
+                    <span class="badge-apres">APRÈS</span>
+                </div>
+                <div class="ab-screens">
+                    <div class="screen-avant">
+                        <p class="avant-headline">{{NICHE.LABEL}} & Services</p>
+                        <p class="avant-sub">À votre service<br>Remplacement, ouverture, sécurisation et plus encore.</p>
+                        <span class="avant-btn">Demander un devis</span>
+                    </div>
+                    <div class="screen-apres">
+                        <div class="apres-left">
+                            <p class="apres-cat">{{NICHE.LABEL}} – Services</p>
+                            <p class="apres-headline">Votre sécurité,<br>notre priorité</p>
+                            <div class="apres-icons-row">
+                                <div class="apres-icon-item">
+                                    <div class="apres-icon-circle">💬</div>
+                                    Devis gratuit
+                                </div>
+                                <div class="apres-icon-item">
+                                    <div class="apres-icon-circle">⚡</div>
+                                    Intervention<br>rapide
+                                </div>
+                                <div class="apres-icon-item">
+                                    <div class="apres-icon-circle">🛡</div>
+                                    Garantie<br>1 an
+                                </div>
+                            </div>
+                            <span class="apres-btn">📞 Appelez maintenant</span>
+                        </div>
+                        <div class="apres-right"
+                            style="background: linear-gradient(160deg, #1c2a3e 0%, #0e1622 100%);">
+                            <div class="apres-badge top-left"
+                                style="font-size:0.32vw; font-weight:600; color:#4a4a4a;">
+                                Disponible 24h/24 – 7j/7
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Pair 3 ── -->
+            <div class="ab-pair">
+                <div class="ab-header">
+                    <div class="ab-num">3</div>
+                    <span class="badge-avant">AVANT</span>
+                    <svg class="ab-arrow-svg" viewBox="0 0 30 14" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 7 Q14 1 27 7" />
+                        <polyline points="22 4 27 7 22 10" />
+                    </svg>
+                    <span class="badge-apres">APRÈS</span>
+                </div>
+                <div class="ab-screens">
+                    <div class="screen-avant">
+                        <p class="avant-headline">{{NICHE.LABEL}} professionnel</p>
+                        <p class="avant-sub">Interventions dans toute la métropole lyonnaise.</p>
+                        <span class="avant-btn">Contact</span>
+                    </div>
+                    <div class="screen-apres">
+                        <div class="apres-left">
+                            <p class="apres-cat">{{NICHE.LABEL}} Professionnel</p>
+                            <p class="apres-headline">Sécurisez votre projet<br>en toute sérénité</p>
+                            <ul class="apres-checks">
+                                <li>Ouverture de porte</li>
+                                <li>Changement de serrure</li>
+                                <li>Blindage & sécurisation</li>
+                            </ul>
+                            <span class="apres-btn">📞 Appeler maintenant</span>
+                        </div>
+                        <div class="apres-right"
+                            style="background: linear-gradient(160deg, #1e2b3c 0%, #111827 100%);">
+                            <div class="cert-circle">
+                                Certifié<br>✓
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Pair 4 ── -->
+            <div class="ab-pair">
+                <div class="ab-header">
+                    <div class="ab-num">4</div>
+                    <span class="badge-avant">AVANT</span>
+                    <svg class="ab-arrow-svg" viewBox="0 0 30 14" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 7 Q14 1 27 7" />
+                        <polyline points="22 4 27 7 22 10" />
+                    </svg>
+                    <span class="badge-apres">APRÈS</span>
+                </div>
+                <div class="ab-screens">
+                    <div class="screen-avant">
+                        <p class="avant-headline">Dépannage {{NICHE.LABEL}}</p>
+                        <p class="avant-sub">Disponible 24h/24 et 7j/7.</p>
+                        <span class="avant-btn">Nous appeler</span>
+                    </div>
+                    <div class="screen-apres">
+                        <div class="apres-left">
+                            <p class="apres-cat">Dépannage {{NICHE.LABEL}}</p>
+                            <p class="apres-headline">Nous arrivons<br>avant votre stress</p>
+                            <ul class="apres-checks">
+                                <li>Disponible 24h/24 – 7j/7</li>
+                                <li>Déplacement en 30 min</li>
+                                <li>Tarifs clairs, sans surprise</li>
+                            </ul>
+                            <span class="apres-btn">📞 Appeler maintenant</span>
+                        </div>
+                        <div class="apres-right"
+                            style="background: linear-gradient(160deg, #1a2535 0%, #0d1520 100%);">
+                            <div class="apres-badge bottom-right">
+                                ⏱ 30 min
+                                <span class="apres-badge-secondary">Temps d'arrivée moyen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary-bar">
+            <div class="summary-star-circle">★</div>
+            <p class="summary-text">Un hero clair, avec preuve sociale et appel à l'action visible = <strong>+ d'appels,
+                    + de devis, + de clients.</strong></p>
+        </div>
+
+    </div>
+</body>
+
+</html>

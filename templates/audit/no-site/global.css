@@ -1,0 +1,836 @@
+/* Develly Slides - Global Styles - TOUT LE CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap');
+
+/* ========================================
+   VARIABLES CSS
+   ======================================== */
+:root {
+    --brand-red: #e85d4c;
+    --brand-dark-red: #c03a2b;
+    --surface: #ffffff;
+    --text-main: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-grey: #666666;
+    --text-dark: #1a1a1a;
+    --bg-light: #f8f9fa;
+    --ui-border: #eeeeee;
+    --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-pop: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
+    --light-red-bg: #fff5f4;
+    --bg-dark-red: #d14d3d;
+}
+
+/* ========================================
+   RESET DE BASE
+   ======================================== */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ========================================
+   CONTAINER DE SLIDE
+   ======================================== */
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   TYPOGRAPHIE DE FOND
+   ======================================== */
+.bg-typography {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+    line-height: 0.85;
+}
+
+.bg-word {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    white-space: nowrap;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75vw;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.56vh;
+}
+
+.develly-pill {
+    color: black;
+    padding: 0.83vh 0;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9vw;
+    letter-spacing: 0.08vw;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+/* ========================================
+   TITRES
+   ======================================== */
+.title-section {
+    z-index: 10;
+}
+
+.main-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8vw;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--text-main);
+    letter-spacing: -0.05vw;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8vw;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.red-underline {
+    display: block;
+    width: 9.4vw;
+    height: 0.83vh;
+    background: var(--brand-red);
+    margin-top: 1.56vh;
+}
+
+.subtitle {
+    font-size: 1.5vw;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ========================================
+   GRILLES ET CARTES
+   ======================================== */
+.points-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 4.2vh 3.1vw;
+    z-index: 10;
+    align-content: start;
+}
+
+.point-card {
+    background: white;
+    padding: 4.2vh 3.1vw;
+    border-radius: 1.875vw;
+    border: 1px solid var(--ui-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.point-card:hover {
+    transform: translateY(-0.52vh);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--brand-red);
+}
+
+.point-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.56vw;
+    margin-bottom: 2.08vh;
+}
+
+.point-title {
+    font-size: 1.15vw;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.point-number {
+    color: var(--brand-red);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5vw;
+    margin-right: 0.63vw;
+}
+
+.point-description {
+    font-size: 0.9vw;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ========================================
+   ICÔNES
+   ======================================== */
+.icon-box {
+    width: 2.5vw;
+    height: 2.5vw;
+    background: rgba(232, 93, 76, 0.1);
+    border-radius: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-box svg {
+    width: 1.8vw;
+    height: 2.4vh;
+    stroke: var(--brand-red);
+    stroke-width: 2.5;
+    fill: none;
+}
+
+/* ========================================
+   KEYWORDS PILLS
+   ======================================== */
+.keyword-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.63vw;
+    margin: 1.25vh 0;
+}
+
+.keyword-pill {
+    background: rgba(232, 93, 76, 0.08);
+    color: var(--brand-red);
+    border: 1px solid rgba(232, 93, 76, 0.2);
+    padding: 0.42vh 0.94vw;
+    border-radius: 0.47vw;
+    font-size: 0.65vw;
+    font-weight: 600;
+}
+
+/* ========================================
+   IMPACT CARDS (SLIDE 4)
+   ======================================== */
+.impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 3.13vh 2.34vw;
+    z-index: 10;
+    align-content: start;
+}
+
+.impact-card {
+    background: white;
+    padding: 3.17vh 3.13vw;
+    border-radius: 1.875vw;
+    border: 1px solid var(--ui-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: center;
+    gap: 3.13vw;
+    position: relative;
+}
+
+.symbol-large {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5.94vw;
+    line-height: 1;
+    color: var(--brand-red);
+    min-width: 7.81vw;
+    text-align: center;
+}
+
+.impact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.impact-title {
+    font-size: 1.4vw;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1.25vh;
+}
+
+.impact-description {
+    font-size: 0.95vw;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ========================================
+   AUDIT STACK (SLIDE 5)
+   ======================================== */
+.priority-badge {
+    background: var(--light-red-bg);
+    color: var(--brand-red);
+    padding: 0.63vh 1.25vw;
+    border-radius: 0.31vw;
+    font-weight: 700;
+    font-size: 1.09vw;
+    text-transform: uppercase;
+    letter-spacing: 0.04vw;
+    border-left: 0.23vw solid var(--brand-red);
+    width: fit-content;
+}
+
+.audit-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2.08vh;
+    z-index: 10;
+    flex-grow: 1;
+}
+
+.audit-row {
+    background: white;
+    padding: 2.6vh 3.13vw;
+    border-top-right-radius: 1.25vw;
+    border-bottom-right-radius: 1.25vw;
+    border: 1px solid var(--ui-border);
+    border-left: 0.47vw solid var(--brand-red);
+    display: flex;
+    align-items: center;
+    gap: 2.73vw;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.x-icon-container {
+    width: 2vw;
+    height: 2vw;
+    background: var(--brand-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.x-icon {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5vw;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.audit-info {
+    display: grid;
+    grid-template-columns: 25vw 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 3.13vw;
+}
+
+.audit-problem-title {
+    font-size: 1.2vw;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.audit-explanation {
+    font-size: 0.9vw;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.note-pill {
+    margin-top: 1.56vh;
+    background: var(--brand-red);
+    color: white;
+    padding: 1.04vh 1.88vw;
+    border-radius: 50px;
+    font-size: 0.8vw;
+    font-weight: 600;
+    width: fit-content;
+    align-self: center;
+    z-index: 10;
+}
+
+/* ========================================
+   CTA SLIDE (SLIDE 6)
+   ======================================== */
+.center-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    gap: 3.13vh;
+}
+
+.cta-button {
+    background: white;
+    color: var(--brand-red);
+    padding: 2.29vh 3.91vw;
+    border-radius: 60px;
+    font-size: 1vw;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08vw;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-top: 2.08vh;
+    transition: transform 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   CASE STUDIES (SLIDE 7)
+   ======================================== */
+.main-layout {
+    display: flex;
+    gap: 4.69vw;
+    flex-grow: 1;
+    z-index: 10;
+    align-items: flex-start;
+}
+
+.mockup-container {
+    flex: 1.1;
+    perspective: 1000px;
+}
+
+.browser-mockup {
+    width: 100%;
+    border-radius: 0.94vw;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    border: 1px solid #eee;
+    background: white;
+}
+
+.browser-header {
+    height: 3.13vh;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding: 0 1.17vw;
+    gap: 0.47vw;
+}
+
+.dot {
+    width: 0.53vw;
+    height: 0.53vw;
+    border-radius: 50%;
+}
+
+.dot.r {
+    background: #ff5f56;
+}
+
+.dot.y {
+    background: #ffbd2e;
+}
+
+.dot.g {
+    background: #27c93f;
+}
+
+.website-content {
+    height: 54.17vh;
+    background: #111;
+    position: relative;
+}
+
+.web-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.08vh 3.13vw;
+    align-items: center;
+}
+
+.web-logo {
+    color: white;
+    font-weight: 800;
+    font-size: 1.56vw;
+}
+
+.web-links {
+    display: flex;
+    gap: 1.56vw;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.94vw;
+    text-transform: uppercase;
+}
+
+.hero-visual {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6.25vh 4.69vw;
+}
+
+.hero-text h2 {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.75vw;
+    margin: 0 0 2.08vh 0;
+    line-height: 1.1;
+}
+
+.web-cta {
+    background: var(--brand-red);
+    color: white;
+    border: none;
+    padding: 1.56vh 2.34vw;
+    border-radius: 0.31vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 1.09vw;
+}
+
+.content-side {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 3.13vh;
+}
+
+.title-group {
+    margin-bottom: 1.04vh;
+}
+
+.case-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.08vh;
+}
+
+.case-card {
+    background: white;
+    border-left: 0.39vw solid var(--brand-red);
+    border-radius: 0.63vw;
+    padding: 2.08vh 2.34vw;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.case-header {
+    display: flex;
+    align-items: center;
+    gap: 1.56vw;
+    margin-bottom: 1.04vh;
+}
+
+.case-logo {
+    width: 3.13vw;
+    height: 3.13vw;
+    border-radius: 0.47vw;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.09vw;
+    color: var(--brand-red);
+}
+
+.case-name {
+    font-weight: 700;
+    font-size: 1.1vw;
+    color: var(--text-dark);
+}
+
+.case-metric {
+    font-size: 0.8vw;
+    color: var(--text-grey);
+    margin-bottom: 0.83vh;
+}
+
+.case-result {
+    font-size: 1.4vw;
+    font-weight: 800;
+    color: var(--brand-red);
+    font-family: 'Oswald', sans-serif;
+}
+
+/* ========================================
+   SERVICES (SLIDE 8)
+   ======================================== */
+.intro-section {
+    z-index: 10;
+    margin-bottom: 5.21vh;
+    max-width: 62.5vw;
+}
+
+.intro-text {
+    font-size: 0.9vw;
+    color: var(--text-grey);
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+}
+
+.columns-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.34vw;
+    z-index: 10;
+    flex-grow: 1;
+}
+
+.service-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 1.88vw;
+    padding: 4.17vh 3.13vw;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.service-card:hover {
+    border-color: var(--brand-red);
+    transform: translateY(-0.52vh);
+}
+
+.service-card.locked {
+    background: #fafafa;
+    border-style: dashed;
+}
+
+.service-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin: 0 0 1.04vh 0;
+}
+
+.service-subtitle {
+    font-size: 0.8vw;
+    font-weight: 700;
+    color: var(--brand-red);
+    margin-bottom: 2.08vh;
+}
+
+.service-desc {
+    font-size: 0.82vw;
+    line-height: 1.4;
+    color: var(--text-grey);
+    margin-bottom: 2.08vh;
+}
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3.13vh 0;
+}
+
+.bullet-item {
+    font-size: 0.7vw;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 1vh;
+    display: flex;
+    align-items: center;
+    gap: 0.94vw;
+}
+
+.bullet-item::before {
+    content: '';
+    width: 0.47vw;
+    height: 0.47vw;
+    background: var(--brand-red);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.objective-tag {
+    margin-top: auto;
+    background: rgba(232, 93, 76, 0.05);
+    color: var(--brand-red);
+    padding: 1vh 1.41vw;
+    border-radius: 0.94vw;
+    font-size: 0.65vw;
+    font-weight: 700;
+    line-height: 1.3;
+    border: 1px solid rgba(232, 93, 76, 0.1);
+}
+
+.badge-soon {
+    position: absolute;
+    top: 2.08vh;
+    right: 1.56vw;
+    background: var(--brand-red);
+    color: white;
+    padding: 0.42vh 0.94vw;
+    border-radius: 20px;
+    font-size: 0.78vw;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04vw;
+}
+
+/* ========================================
+   CONTACT (SLIDE 9)
+   ======================================== */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.08vh;
+    margin-top: 2.08vh;
+}
+
+.contact-item {
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.56vw;
+}
+
+.contact-item svg {
+    width: 1.5vw;
+    height: 1.5vw;
+    fill: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 3vw;
+    margin-top: 2vh;
+    justify-content: center;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    font-size: 1vw;
+    font-weight: 600;
+    color: white;
+}
+
+.social-item svg {
+    width: 1.2vw;
+    height: 1.2vw;
+    fill: white;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 10;
+}
+
+.ceo-compact {
+    display: flex;
+    align-items: center;
+    gap: 1.17vw;
+}
+
+.ceo-img {
+    width: 3.9vw;
+    height: 3.9vw;
+    margin-left: 6px;
+    border-radius: 50%;
+    background: url('https://www.develly.io/assets/team/kilian-trouet.webp') center/cover;
+    border: 2px solid var(--brand-red);
+}
+
+.ceo-details h5 {
+    margin: 0;
+    font-size: 1.1vw;
+    font-weight: 700;
+}
+
+.ceo-details p {
+    margin: 0;
+    font-size: 0.9vw;
+    color: var(--text-secondary);
+}
+
+.ceo-block {
+    display: flex;
+    align-items: center;
+    gap: 1.17vw;
+}
+
+.ceo-info h5 {
+    margin: 0;
+    font-size: 1.1vw;
+    font-weight: 700;
+}
+
+.ceo-info p {
+    margin: 0;
+    font-size: 0.9vw;
+    color: var(--text-secondary);
+}
+
+.slide-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5vw;
+    opacity: 0.15;
+}

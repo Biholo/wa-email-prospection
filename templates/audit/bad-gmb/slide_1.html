@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develly - Slide 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@700&display=swap');
+
+        :root {
+            --brand-red: #e85d4c;
+            --brand-dark-red: #c03a2b;
+            --surface: #ffffff;
+            --text-main: #1a1a1a;
+            --text-secondary: #65676b;
+            --ui-border: #dbdbdb;
+            --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-pop: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
+            --light-red-bg: #fff5f4;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-red);
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--brand-red);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 6vh 5vw;
+            box-sizing: border-box;
+        }
+
+        .bg-typography {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.15;
+            pointer-events: none;
+            user-select: none;
+            line-height: 0.85;
+        }
+
+        .bg-word {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000000;
+            white-space: nowrap;
+            letter-spacing: -0.6vw;
+        }
+
+        .main-content-flow {
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        /* Pill Badge logo */
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5vw;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1vw;
+            width: fit-content;
+            margin-bottom: 2vh;
+            letter-spacing: 0vw;
+            text-transform: uppercase;
+        }
+
+        .pill-badge img {
+            height: 2vw;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        /* Title section */
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            margin-top: 2vh;
+        }
+
+        .title-headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5vw;
+            line-height: 1.1;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0;
+            color: white;
+            letter-spacing: -0.05vw;
+        }
+
+        .title-headline span.black-badge {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 0.1vw 0.8vw;
+            display: inline-block;
+            margin-right: 0.3vw;
+            border-radius: 4px;
+        }
+
+        .title-headline span.black-text {
+            color: #000000;
+        }
+
+        /* Comparison Card */
+        .comparison-card {
+            background: #ffffff;
+            border-radius: 1.25vw;
+            padding: 3vh 3vw;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 55vw;
+            margin: auto 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+
+        .card-header {
+            font-size: 0.9vw;
+            font-weight: 800;
+            letter-spacing: 0.05vw;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 1.2vh;
+        }
+
+        .card-body-vs {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+
+        .vs-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vh;
+        }
+
+        .vs-column.left-prospect {
+            padding-right: 2vw;
+        }
+
+        .vs-column.right-competitor {
+            padding-left: 2vw;
+        }
+
+        .vs-company-name {
+            font-size: 1.3vw;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        .vs-stats {
+            font-size: 1.15vw;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .vs-stats.prospect-stats {
+            color: var(--brand-red);
+        }
+
+        .vs-stats.competitor-stats {
+            color: #1a1a1a;
+        }
+
+        .vs-stats.competitor-stats .star-icon {
+            color: var(--brand-red);
+        }
+
+        .vs-stats.competitor-stats .green-avis {
+            color: #2e7d32;
+        }
+
+        .vs-divider {
+            width: 1px;
+            background-color: #e2e8f0;
+            height: 7vh;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .vs-circle {
+            background: #000000;
+            color: #ffffff;
+            width: 2.2vw;
+            height: 2.2vw;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85vw;
+            font-weight: 800;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* Audit Details */
+        .audit-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3vh;
+            color: white;
+            margin-bottom: 3vh;
+        }
+
+        .audit-label {
+            font-size: 0.85vw;
+            opacity: 0.8;
+            letter-spacing: 0.02vw;
+        }
+
+        .audit-prospect-company {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 0.5vh 0;
+            letter-spacing: -0.02vw;
+            line-height: 1.1;
+        }
+
+        .audit-meta {
+            font-size: 1vw;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .ceo-info-block {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+        }
+
+        .ceo-avatar-img {
+            width: 3.5vw;
+            height: 3.5vw;
+            border-radius: 50%;
+            background-image: url('https://www.develly.io/assets/team/kilian-trouet.webp');
+            background-size: cover;
+            border: 2px solid white;
+        }
+
+        .ceo-text-details h5 {
+            margin: 0;
+            font-size: 1vw;
+            font-weight: 700;
+            color: white;
+        }
+
+        .ceo-text-details p {
+            margin: 0;
+            font-size: 0.85vw;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .footer-slide-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2vw;
+            color: white;
+            opacity: 0.4;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <div class="bg-typography">
+            <div class="bg-word">GOOGLE</div>
+            <div class="bg-word" style="color: transparent; -webkit-text-stroke: 0.12vw rgba(0,0,0,0.2);">MAPS</div>
+            <div class="bg-word">VISIBILITÉ</div>
+            <div class="bg-word" style="color: transparent; -webkit-text-stroke: 0.12vw rgba(0,0,0,0.2);">LOCAL</div>
+        </div>
+
+        <div class="main-content-flow">
+            <div class="title-section">
+                <div class="pill-badge">
+                    <img src="/images/develly.png" alt="">
+                    <span>Develly</span>
+                </div>
+                <h1 class="title-headline">
+                    COMMENT AUGMENTER DE<br>
+                    <span class="black-badge">40%</span> <span class="black-text">VOTRE VISIBILITÉ</span><br>
+                    <span class="black-text">SUR GOOGLE ?</span>
+                </h1>
+            </div>
+
+            <div class="comparison-card">
+                <div class="card-header">
+                    CE QU'ON A TROUVÉ SUR GOOGLE MAPS CE MATIN :
+                </div>
+                <div class="card-body-vs">
+                    <div class="vs-column left-prospect">
+                        <div class="vs-company-name">{{PROSPECT.company}}</div>
+                        <div class="vs-stats prospect-stats">
+                            <span>★</span> {{PROSPECT.average_rate}}/5 - {{PROSPECT.number_of_rate}} avis
+                        </div>
+                    </div>
+
+                    <div class="vs-divider">
+                        <div class="vs-circle">VS</div>
+                    </div>
+
+                    <div class="vs-column right-competitor">
+                        <div class="vs-company-name">{{PROSPECT.concurrent_1_nom}}</div>
+                        <div class="vs-stats competitor-stats">
+                            <span class="star-icon">★</span> {{PROSPECT.concurrent_1_note}}/5 - <span class="green-avis">{{PROSPECT.concurrent_1_avis}} avis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audit-details">
+                <span class="audit-label">Audit Google préparé pour</span>
+                <h2 class="audit-prospect-company">{{PROSPECT.company}}</h2>
+                <div class="audit-meta">{{NICHE.label}} à {{PROSPECT.ville}} - {{DATE}}</div>
+            </div>
+
+            <div class="slide-footer">
+                <div class="ceo-info-block">
+                    <div class="ceo-avatar-img"></div>
+                    <div class="ceo-text-details">
+                        <h5>Kilian Trouet</h5>
+                        <p>Co-Fondateur Develly</p>
+                    </div>
+                </div>
+                <div class="footer-slide-number">01</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

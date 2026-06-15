@@ -115,3 +115,33 @@ class WasenderService:
             if self._is_session_error(exc):
                 print("[Wasender] ⚠️ Session expirée")
             raise
+
+    def upload_file(self, file_bytes: bytes, content_type: str = "application/pdf") -> str:
+        """Upload file to WaSender CDN. Returns public URL (valid 24h)."""
+        url = f"{WASENDER_API_BASE}/upload"
+        upload_headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": content_type,
+        }
+        with httpx.Client(timeout=60) as client:
+            resp = client.post(url, headers=upload_headers, content=file_bytes)
+            resp.raise_for_status()
+            return resp.json()["publicUrl"]
+
+    def send_document(self, numero: str, file_url: str, caption: str = "") -> dict:
+        """Send a document (PDF) via WhatsApp."""
+        url = f"{WASENDER_API_BASE}/send-message"
+        payload = {
+            "to": self._normalize(numero),
+            "document": file_url,
+            "caption": caption,
+        }
+        try:
+            with httpx.Client(headers=self.headers, timeout=30) as client:
+                resp = client.post(url, json=payload)
+                resp.raise_for_status()
+                return resp.json()
+        except httpx.HTTPStatusError as exc:
+            if self._is_session_error(exc):
+                self._notify_disconnect()
+            raise

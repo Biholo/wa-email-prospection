@@ -25,3 +25,29 @@ class ResendService:
             resp = client.post(f"{RESEND_API_BASE}/emails", json=payload)
             resp.raise_for_status()
             return resp.json()
+
+    def send_email_with_attachment(
+        self,
+        to: str,
+        subject: str,
+        html: str,
+        pdf_bytes: bytes,
+        filename: str,
+    ) -> dict:
+        import base64
+        payload = {
+            "from": self.from_email,
+            "to": [to],
+            "subject": subject,
+            "html": html,
+            "attachments": [
+                {
+                    "filename": filename,
+                    "content": base64.b64encode(pdf_bytes).decode(),
+                }
+            ],
+        }
+        with httpx.Client(headers=self.headers, timeout=60) as client:
+            resp = client.post(f"{RESEND_API_BASE}/emails", json=payload)
+            resp.raise_for_status()
+            return resp.json()
